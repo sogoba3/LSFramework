@@ -23,6 +23,13 @@ phases:
 
   post_build:
     commands:
+
+      - sed -i "s|<TASK_EXECUTION_ROLE_ARN>|$TASK_EXECUTION_ROLE_ARN|g" deploy/gateway-api/taskdef.json
+      - sed -i "s|<TASK_ROLE_ARN>|$TASK_ROLE_ARN|g" deploy/gateway-api/taskdef.json
+      - sed -i "s|<SQLSERVER_SECRET_ARN>|$SQLSERVER_SECRET_ARN|g" deploy/gateway-api/taskdef.json
+      - echo "Generated taskdef:"
+      - cat deploy/gateway-api/taskdef.json
+
       - echo "Pushing Docker images..."
       - docker push $REPOSITORY_URI:$IMAGE_TAG
       #- docker push $REPOSITORY_URI:latest
@@ -30,55 +37,6 @@ phases:
       # IMPORTANT: required by CodeDeploy ECS Blue/Green
       - echo "Creating imageDetail.json..."
       - printf '{"ImageURI":"%s"}' $REPOSITORY_URI:$IMAGE_TAG > imageDetail.json
-
-      # - echo "Creating task definition file..."
-
-      # - |
-      #   cat <<EOF > deploy/gateway-api/taskdef.json
-      #   {
-      #     "family": "${SERVICE_NAME}-ecs-td-name",
-      #     "networkMode": "awsvpc",
-      #     "executionRoleArn": "${TASK_EXECUTION_ROLE_ARN}",
-      #     "taskRoleArn": "${TASK_ROLE_ARN}",
-      #     "requiresCompatibilities": ["FARGATE"],
-      #     "cpu": "256",
-      #     "memory": "512",
-      #     "containerDefinitions": [
-      #       {
-      #         "name": "gateway-api",
-      #         "image": "${REPOSITORY_URI}:${IMAGE_TAG}",
-      #         "essential": true,
-      #         "portMappings": [
-      #           { 
-      #             "containerPort": 4400,
-      #             "hostPort": 4400
-      #           }
-      #         ],
-      #         "environment": [
-      #           {
-      #             "name": "AwsSettings__Region",
-      #             "value": "us-east-2"
-      #           }
-      #         ],
-
-      #         "secrets": [
-      #           {
-      #             "name": "ConnectionStrings__DefaultConnection",
-      #             "valueFrom": "SECRET_ARN"
-      #           }
-      #         ],
-      #         "logConfiguration": {
-      #           "logDriver": "awslogs",
-      #           "options": {
-      #             "awslogs-group": "/ecs/gateway-api",
-      #             "awslogs-region": "us-east-2",
-      #             "awslogs-stream-prefix": "ecs"
-      #           }
-      #         }
-      #       }
-      #     ]
-      #   }
-      #   EOF
 
       - echo "Build completed successfully."
 

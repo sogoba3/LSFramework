@@ -1,8 +1,8 @@
 {
   "family": "gateway-api-task-def",
   "networkMode": "awsvpc",
-  "executionRoleArn": "arn:aws:iam::968715863111:role/ls-dev-gateway-api-ecs-task-execution-role",
-  "taskRoleArn": "arn:aws:iam::968715863111:role/ls-dev-gateway-api-ecs-task-role",
+  "executionRoleArn": "<TASK_EXECUTION_ROLE_ARN>",
+  "taskRoleArn": "<TASK_ROLE_ARN>",
   "requiresCompatibilities": ["FARGATE"],
   "cpu": "256",
   "memory": "512",
@@ -21,7 +21,7 @@
       "secrets": [
         {
           "name": "ConnectionStrings__DefaultConnection",
-          "valueFrom": "arn:aws:secretsmanager:us-east-2:968715863111:secret:ls-dev/sqlserver13-d8jm9k"
+          "valueFrom": "<SQLSERVER_SECRET_ARN>"
         }
       ]
     }

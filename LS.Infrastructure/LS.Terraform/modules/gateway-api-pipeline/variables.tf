@@ -44,3 +44,6 @@ variable "ls_framework_lb_listner_test_arn" {
 variable "ls_framework_ecs_service_name" {
   type = string
 }
+variable "ls_framework_sqlserver_secret_arn" {
+  type = string
+}

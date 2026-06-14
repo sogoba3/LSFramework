@@ -35,5 +35,9 @@ resource "aws_codebuild_project" "ls_framework_blue_green_build" {
       name  = "TASK_ROLE_ARN"
       value = var.ls_framework_ecs_task_role_arn
     }
+    environment_variable {
+      name = "SQLSERVER_SECRET_ARN"
+      value = var.ls_framework_sqlserver_secret_arn
+    }
   }
 }

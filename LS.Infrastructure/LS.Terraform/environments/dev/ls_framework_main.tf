@@ -292,7 +292,7 @@ module "ls_framework_gateway_api_service_pipeline" {
 
   # ECS Service Name
   ls_framework_ecs_service_name = module.ls_framework_gateway_api_service.ls_framework_ecs_service_name
-
+  ls_framework_sqlserver_secret_arn = module.ls_framework_data.ls_framework_sqlserver_secret_arn
   # Target Groups
   ls_framework_lb_blue_tg_name  = module.ls_framework_gateway_api_service.ls_framework_lb_blue_tg_name
   ls_framework_lb_green_tg_name = module.ls_framework_gateway_api_service.ls_framework_lb_green_tg_name

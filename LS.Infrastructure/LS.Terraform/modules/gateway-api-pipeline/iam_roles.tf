@@ -226,3 +226,27 @@ resource "aws_iam_role_policy_attachment" "ls_framework_policy_attachment" {
   role       = aws_iam_role.ls_framework_blue_green_codedeploy_role.name
   policy_arn = "arn:aws:iam::aws:policy/AWSCodeDeployRoleForECS"
 }
+
+
+
+resource "aws_iam_policy" "ls_framework_ecs_passrole_policy" {
+  name = "${var.project_prefix}-${var.service_name}-ecs-passrole-policy"
+
+  policy = jsonencode({
+    Version = "2012-10-17",
+    Statement = [
+      {
+        Effect = "Allow",
+        Action = "iam:PassRole",
+        Resource = [
+          aws_iam_role.ls_framework_ecs_task_role.arn,
+          aws_iam_role.ls_framework_ecs_task_execution_role.arn
+        ]
+      }
+    ]
+  })
+}
+resource "aws_iam_role_policy_attachment" "ls_framework_attach_passrole" {
+  role       = aws_iam_role.ls_framework_gateway_api_service_codepipeline_role.name
+  policy_arn = aws_iam_policy.ls_framework_ecs_passrole_policy.arn
+}

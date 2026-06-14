@@ -21,7 +21,7 @@
       "secrets": [
         {
           "name": "ConnectionStrings__DefaultConnection",
-          "valueFrom": "arn:aws:secretsmanager:us-east-2:968715863111:secret:ls-dev/sqlserver10-FpIAKv"
+          "valueFrom": "arn:aws:secretsmanager:us-east-2:968715863111:secret:ls-dev/sqlserver13-d8jm9k"
         }
       ]
     }

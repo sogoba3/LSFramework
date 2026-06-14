@@ -239,8 +239,8 @@ resource "aws_iam_policy" "ls_framework_ecs_passrole_policy" {
         Effect = "Allow",
         Action = "iam:PassRole",
         Resource = [
-          aws_iam_role.ls_framework_ecs_task_role.arn,
-          aws_iam_role.ls_framework_ecs_task_execution_role.arn
+          var.ls_framework_ecs_task_role_arn,
+          var.ls_framework_ecs_task_execution_role_arn
         ]
       }
     ]

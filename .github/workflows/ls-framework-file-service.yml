@@ -1,0 +1,22 @@
+name: File Service
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'src/LS.FileServiceApi/**'
+      - 'deploy/file-service/**'
+
+jobs:
+
+  # BUILD AND DEPLOY (CD)
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Deploy File Service
+        run: |
+          aws codepipeline start-pipeline-execution \
+            --name file-service-pipeline

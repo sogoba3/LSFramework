@@ -1,0 +1,22 @@
+name: Gateway API
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'src/LS.Gateway/**'
+      - 'deploy/gateway-api/**'
+
+jobs:
+
+  # BUILD AND DEPLOY (CD)
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Deploy Gateway API
+        run: |
+          aws codepipeline start-pipeline-execution \
+            --name gateway-api-pipeline

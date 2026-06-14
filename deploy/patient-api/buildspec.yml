@@ -1,0 +1,45 @@
+version: 0.2
+
+phases:
+  pre_build:
+    commands:
+      - echo "Logging into ECR..."
+      - AWS_ACCOUNT_ID=$(aws sts get-caller-identity --query Account --output text)
+      - AWS_DEFAULT_REGION=us-east-2
+
+      # ECR Repo
+      - REPOSITORY_URI=$AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/lsf-dev-patient-api-repo
+
+      - IMAGE_TAG=${CODEBUILD_RESOLVED_SOURCE_VERSION:0:7}
+
+      - echo "Logging in to ECR..."
+      - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $REPOSITORY_URI
+
+  build:
+    commands:
+
+      - echo "SERVICE_NAME=$SERVICE_NAME"
+      - echo "DOCKERFILE_PATH=$DOCKERFILE_PATH"
+      - ls -R deploy
+
+      - echo "Building Patient API Docker image..."
+      - docker build -t ${SERVICE_NAME} -f ${DOCKERFILE_PATH} .
+
+      - echo "Tagging image..."
+      - docker tag ${SERVICE_NAME} $REPOSITORY_URI:$IMAGE_TAG
+      # - docker tag ${SERVICE_NAME} $REPOSITORY_URI:latest
+  post_build:
+    commands:
+      - echo "Pushing Patient Api Docker image to ECR..."
+      - docker push $REPOSITORY_URI:$IMAGE_TAG
+      # - docker push $REPOSITORY_URI:latest
+
+      - echo "Writing image definition file..."
+      - printf '[{"name":"patient-api","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
+
+      - echo "Build completed successfully."
+
+artifacts:
+  files:
+    - imagedefinitions.json
+  discard-paths: yes

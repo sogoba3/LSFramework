@@ -1,0 +1,41 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - yum install -y unzip wget
+      - wget https://releases.hashicorp.com/terraform/1.15.5/terraform_1.15.5_linux_amd64.zip
+      - unzip terraform_1.15.5_linux_amd64.zip
+      - mv terraform /usr/local/bin/
+
+      - echo "Terraform Version"
+      - terraform version
+
+  pre_build:
+    commands:
+      - echo "Checking Terraform Formatting"
+      - cd LS.Infrastructure/LS.Terraform/environments/dev
+      - terraform fmt -check
+
+      - echo "Initializing Terraform"
+      - terraform init
+
+  build:
+    commands:
+      - echo "Validating Terraform"
+      - terraform validate
+
+      - echo "Creating Terraform Plan"
+      - terraform plan -var-file="terraform.tfvars" -out=tfplan
+      - terraform show tfplan > plan.txt
+
+  post_build:
+    commands:
+      - ls -lah
+      - pwd
+
+artifacts:
+  files:
+    - "**/*"
+    # - LS.Infrastructure/LS.Terraform/environments/dev/tfplan
+    # - LS.Infrastructure/LS.Terraform/environments/dev/plan.txt

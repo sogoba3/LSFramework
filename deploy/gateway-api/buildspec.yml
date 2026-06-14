@@ -1,0 +1,93 @@
+version: 0.2
+
+phases:
+  pre_build:
+    commands:
+      - echo "Logging into ECR..."
+      - AWS_ACCOUNT_ID=$(aws sts get-caller-identity --query Account --output text)
+      - AWS_DEFAULT_REGION=us-east-2
+
+      # ECR Repo
+      - REPOSITORY_URI=$AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/lsf-dev-gateway-api-repo
+      - IMAGE_TAG=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c1-7)
+
+      - echo "Logging in to ECR..."
+      - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $REPOSITORY_URI
+
+  build:
+    commands:
+      - echo "Building Gateway API Docker image..."
+      - docker build -t $REPOSITORY_URI:$IMAGE_TAG -f $DOCKERFILE_PATH .
+
+      #- docker tag $REPOSITORY_URI:$IMAGE_TAG $REPOSITORY_URI:latest
+
+  post_build:
+    commands:
+      - echo "Pushing Docker images..."
+      - docker push $REPOSITORY_URI:$IMAGE_TAG
+      #- docker push $REPOSITORY_URI:latest
+
+      # IMPORTANT: required by CodeDeploy ECS Blue/Green
+      - echo "Creating imageDetail.json..."
+      - printf '{"ImageURI":"%s"}' $REPOSITORY_URI:$IMAGE_TAG > imageDetail.json
+
+      # - echo "Creating task definition file..."
+
+      # - |
+      #   cat <<EOF > deploy/gateway-api/taskdef.json
+      #   {
+      #     "family": "${SERVICE_NAME}-ecs-td-name",
+      #     "networkMode": "awsvpc",
+      #     "executionRoleArn": "${TASK_EXECUTION_ROLE_ARN}",
+      #     "taskRoleArn": "${TASK_ROLE_ARN}",
+      #     "requiresCompatibilities": ["FARGATE"],
+      #     "cpu": "256",
+      #     "memory": "512",
+      #     "containerDefinitions": [
+      #       {
+      #         "name": "gateway-api",
+      #         "image": "${REPOSITORY_URI}:${IMAGE_TAG}",
+      #         "essential": true,
+      #         "portMappings": [
+      #           { 
+      #             "containerPort": 4400,
+      #             "hostPort": 4400
+      #           }
+      #         ],
+      #         "environment": [
+      #           {
+      #             "name": "AwsSettings__Region",
+      #             "value": "us-east-2"
+      #           }
+      #         ],
+
+      #         "secrets": [
+      #           {
+      #             "name": "ConnectionStrings__DefaultConnection",
+      #             "valueFrom": "SECRET_ARN"
+      #           }
+      #         ],
+      #         "logConfiguration": {
+      #           "logDriver": "awslogs",
+      #           "options": {
+      #             "awslogs-group": "/ecs/gateway-api",
+      #             "awslogs-region": "us-east-2",
+      #             "awslogs-stream-prefix": "ecs"
+      #           }
+      #         }
+      #       }
+      #     ]
+      #   }
+      #   EOF
+
+      - echo "Build completed successfully."
+
+artifacts:
+  name: build_output
+  files:
+    #- taskdef.json
+    #- appspec.yaml
+    - imageDetail.json
+    #- deploy/gateway-api/imageDetail.json
+    - deploy/gateway-api/taskdef.json
+    - deploy/gateway-api/appspec.yaml

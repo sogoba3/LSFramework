@@ -1,0 +1,22 @@
+name: Appointment API
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'src/LS.AppointmentApi/**'
+      - 'deploy/appointment-api/**'
+
+jobs:
+
+  # BUILD AND DEPLOY (CD)
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Deploy Auth API
+        run: |
+          aws codepipeline start-pipeline-execution \
+            --name appointment-api-pipeline

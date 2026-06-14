@@ -1,0 +1,121 @@
+ Error: creating S3 Bucket (lsf-dev-alb-logs): operation error S3: CreateBucket, https response error StatusCode: 409, RequestID: ZEHJ496K609RNMDG, HostID: Zai0+ZYMsZpG14QQ7b4Zrbypj0x/KhSmRr5WKyhdVyDZjKRPso0LyfYSzM/j3FeYisoWSxptLoU55oWOa2RU9Lu9jQ9xVpJW, BucketAlreadyExists: 
+│ 
+│   with module.ls_framework_data.aws_s3_bucket.ls_framework_alb_logs,
+│   on ../../modules/data/s3_buckets.tf line 71, in resource "aws_s3_bucket" "ls_framework_alb_logs":
+│   71: resource "aws_s3_bucket" "ls_framework_alb_logs" {
+│ 
+╵
+╷
+│ Error: creating S3 Bucket (lsf-dev-frontend-bucket): operation error S3: CreateBucket, https response error StatusCode: 409, RequestID: ZEHZGE0KJ0Y40DHM, HostID: n/mVniUAdfOLi98g7mG7Tb44VlpdnzcEUpThywQooMIStygxA1FSGQvM3USfOEWkgJWlxLIwXYTirchGUWW8qNmXmTpFDOPE, BucketAlreadyExists: 
+│ 
+│   with module.ls_framework_data.aws_s3_bucket.ls_framework_frontend_bucket,
+│   on ../../modules/data/s3_buckets.tf line 186, in resource "aws_s3_bucket" "ls_framework_frontend_bucket":
+│  186: resource "aws_s3_bucket" "ls_framework_frontend_bucket" {
+│ 
+╵
+╷
+│ Error: creating S3 Bucket (lsf-dev-pipeline-artifacts-bucket): operation error S3: CreateBucket, https response error StatusCode: 409, RequestID: DD7WX8CAC7D7YZSQ, HostID: 4STKCQISIb2JXdKrGcoYQNhzryLObmolTl4XdOHOlg4yXuDM+OHBND99ug5/bf4kLO8Mi21NMIAplNmOsVwcDrmPOqJVAafl, BucketAlreadyExists: 
+│ 
+│   with module.ls_framework_data.aws_s3_bucket.ls_framework_pipeline_artifacts_bucket,
+│   on ../../modules/data/s3_buckets.tf line 281, in resource "aws_s3_bucket" "ls_framework_pipeline_artifacts_bucket":
+│  281: resource "aws_s3_bucket" "ls_framework_pipeline_artifacts_bucket" {
+│ 
+╵
+╷
+│ Error: creating CodeDeploy Application (gateway-api-codedeploy-ecs): operation error CodeDeploy: CreateApplication, https response error StatusCode: 400, RequestID: 2fe036b2-3adb-497f-8025-d1167c848324, api error SubscriptionRequiredException: The AWS Access Key Id needs a subscription for the service
+│ 
+│   with module.ls_framework_gateway_api_service_pipeline.aws_codedeploy_app.ls_framework_blue_green_codedeploy_app,
+│   on ../../modules/gateway-api-pipeline/code_deploy.tf line 1, in resource "aws_codedeploy_app" "ls_framework_blue_green_codedeploy_app":
+│    1: resource "aws_codedeploy_app" "ls_framework_blue_green_codedeploy_app" {
+│ 
+╵
+╷
+│ Error: creating ECS Service (gateway-api-service): operation error ECS: CreateService, https response error StatusCode: 400, RequestID: df3306f8-4176-4d02-9a6f-e79f9f1a151c, InvalidParameterException: The target group with targetGroupArn arn:aws:elasticloadbalancing:us-east-2:968715863111:targetgroup/lsf-dev-gateway-api-blue-tg/ebf21f58628c33d5 does not have an associated load balancer.
+│ 
+│   with module.ls_framework_gateway_api_service.aws_ecs_service.ls_framework_ecs_service_name,
+│   on ../../modules/ls_framework_core/ecs_service.tf line 1, in resource "aws_ecs_service" "ls_framework_ecs_service_name":
+│    1: resource "aws_ecs_service" "ls_framework_ecs_service_name" {
+│ 
+╵
+
+
+
+
+
+
+
+
+
+
+
+# module "ls_framework_backend_pipelines" {
+#   for_each = var.api_services_config
+#   # Source
+#   source = "../../modules/backend-pipelines"
+
+#   # Service Name
+#   service_name = each.key
+
+#   deployment_type = lookup(
+#     each.value, "is_web_service", false
+#   ) ? "BLUE_GREEN" : "ECS_ROLLING"
+
+#   buildspec_path  = each.value.buildspec
+#   dockerfile_path = each.value.dockerfile
+
+#   # Cluster Name
+#   ls_framework_ecs_cluster_name = module.ls_framework_ecs_cluster.ls_framework_ecs_cluster_name
+
+#   # ECS Service Name
+#   ls_framework_ecs_service_name = each.key == "gateway-api" ? module.ls_framework_gateway_api_service.ls_framework_ecs_service_name : module.ls_framework_services[each.key].ls_framework_ecs_service_name
+
+#   # Target Groups
+#   # Only needed by gateway-api
+
+#   ls_framework_lb_blue_tg_name = lookup(each.value, "is_web_service", false) ? module.ls_framework_gateway_api_service.ls_framework_lb_blue_tg_name : null
+
+#   ls_framework_lb_green_tg_name = lookup(each.value, "is_web_service", false) ? module.ls_framework_gateway_api_service.ls_framework_lb_green_tg_name : null
+
+#   # Listners
+#   ls_framework_lb_listner_production_arn = lookup(each.value, "is_web_service", false) ? module.ls_framework_alb.ls_framework_lb_listner_production_arn : null
+
+#   ls_framework_lb_listner_test_arn = lookup(each.value, "is_web_service", false) ? module.ls_framework_alb.ls_framework_lb_listner_test_arn : null
+
+#   ls_framework_ecs_task_execution_role_arn = each.key == "gateway-api" ? module.ls_framework_gateway_api_service.ls_framework_ecs_task_execution_role_arn : module.ls_framework_services[each.key].ls_framework_ecs_task_execution_role_arn
+
+#   ls_framework_ecs_task_role_arn = each.key == "gateway-api" ? module.ls_framework_gateway_api_service.ls_framework_ecs_task_role_arn : module.ls_framework_services[each.key].ls_framework_ecs_task_role_arn
+
+#   # pipeline artifacts bucket
+#   ls_framework_pipeline_artifacts_bucket     = module.ls_framework_data.ls_framework_pipeline_artifacts_bucket
+#   ls_framework_pipeline_artifacts_bucket_arn = module.ls_framework_data.ls_framework_pipeline_artifacts_bucket_arn
+
+#   # project environment context
+#   project_prefix = local.env_context.resource_prefix
+# }
+
+{
+    "Version": "2008-10-17",
+    "Id": "PolicyForCloudFrontPrivateContent",
+    "Statement": [
+        {
+            "Sid": "AllowCloudFrontServicePrincipal",
+            "Effect": "Allow",
+            "Principal": {
+                "Service": "cloudfront.amazonaws.com"
+            },
+            "Action": "s3:GetObject",
+            "Resource": "arn:aws:s3:::lsf-dev-frontend-bucket/*",
+            "Condition": {
+                "StringEquals": {
+                    "AWS:SourceArn": "arn:aws:cloudfront::188675676343:distribution/E3UBS2YOJH0TD4"
+                }
+            }
+        }
+    ]
+}
+
+│ Error: creating CodeBuild Project (ls-framework-frontend-frontend-codebuild): operation error CodeBuild: CreateProject, https response error StatusCode: 400, RequestID: 9483009c-82f3-4291-98db-1bddd7995b43, InvalidInputException: Invalid input: when using CodePipeline both sourceType, and artifactType must be set to: CODEPIPELINE
+│ 
+│   with module.ls_framework_frontend_ci_cd_pipeline.aws_codebuild_project.ls_framework_frontend_codebuild,
+│   on ../../modules/frontend-ci-cd-pipeline/code_build.tf line 1, in resource "aws_codebuild_project" "ls_framework_frontend_codebuild":
+│    1: resource "aws_codebuild_project" "ls_framework_frontend_codebuild" {

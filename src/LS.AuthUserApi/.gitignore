@@ -1,0 +1,30 @@
+# Build output
+bin/
+obj/
+
+# Ignore DLL files in general (if any DLLs slip outside bin/obj)
+*.dll
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Visual Studio folders and files
+.vs/
+
+# Other typical ignores for .NET projects
+*.exe
+*.log
+*.cache
+
+# NuGet packages folder
+packages/
+
+# Rider IDE files
+.idea/
+
+# OS generated files
+.DS_Store
+Thumbs.db

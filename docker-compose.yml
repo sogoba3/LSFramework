@@ -1,0 +1,91 @@
+version: '3.8'
+services:
+  gateway:
+    build:
+      context: .
+      dockerfile: LS.Docker/Gateway.Dockerfile
+    ports: 
+      - "4400:4400"
+    environment:
+      - ASPNETCORE_URLS=http://+:4400
+    depends_on: ["auth","patient","billing","appointment","audit","doctor","notification","tenant"]
+
+  auth:
+    build:
+      context: .
+      dockerfile: LS.Docker/Auth.Dockerfile
+    environment:
+      - ASPNETCORE_URLS=http://localhost:4404
+    ports: ["4404:4404"]
+
+  patient:
+    build:
+      context: .
+      dockerfile: LS.Docker/Patient.Dockerfile
+    environment:
+      - ASPNETCORE_URLS=http://localhost:4442
+    ports: ["4442:4442"]
+
+  billing:
+    build:
+      context: .
+      dockerfile: LS.Docker/Billing.Dockerfile
+    environment:
+      - ASPNETCORE_URLS=http://localhost:4408
+    ports: ["4408:4408"]
+
+  appointment:
+    build:
+      context: .
+      dockerfile: LS.Docker/Appointment.Dockerfile
+    environment:
+      - ASPNETCORE_URLS=http://localhost:4466
+    ports: ["4466:4466"]
+  
+  notification:
+    build:
+      context: .
+      dockerfile: LS.Docker/Notification.Dockerfile
+    environment:
+      - ASPNETCORE_URLS=http://localhost:4428
+    ports: ["4428:4428"]
+
+  doctor:
+    build:
+      context: .
+      dockerfile: LS.Docker/Doctor.Dockerfile
+    environment:
+      - ASPNETCORE_URLS=http://localhost:4440
+    ports: ["4440:4440"]
+
+  tenant:
+    build:
+      context: .
+      dockerfile: LS.Docker/Tenant.Dockerfile
+    environment:
+      - ASPNETCORE_URLS=http://localhost:4482
+    ports: ["4482:4482"]
+
+  audit:
+    build:
+      context: .
+      dockerfile: LS.Docker/Audit.Dockerfile
+    environment:
+      - ASPNETCORE_URLS=http://localhost:4488
+    ports: ["4488:4488"]
+    
+  # worker-service:
+  #   build:
+  #     context: .
+  #     dockerfile: LS.Docker/WorkerService.Dockerfile
+  #   environment:
+  #     - ASPNETCORE_ENVIRONMENT=Docker
+  #   depends_on:
+  #     - auth-api
+  #     - tenant-api
+  mssql:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    environment:
+      SA_PASSWORD: "Bouba2025$"
+      ACCEPT_EULA: "Y"
+    ports: ["1433:1433"]

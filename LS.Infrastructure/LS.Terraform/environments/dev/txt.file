@@ -1,0 +1,821 @@
+using data aws_iam_policy_document instead of jsonencode for multiple Statement
+using for each for multiple modules creating instead of harcoding them
+using a boolean is_service_name on api's modules creation(worker-service do not have a port, it's just sns/sqs fan out)
+ls_framework_core been doing too much()
+circular dependency
+treating my workerservice like a web service, it’s just an ECS Fargate task consuming SQS/SNS events.
+dynamically creating both my api services and workerservice under the same module by using is_service_name 
+no need to provide from_port and to_port for aws_vpc_security_group_egress_rule
+rds db beeing recreated on each terraform apply
+You’re running into a classic Terraform “cascade replacement” problem caused by one small attribute change breaking computed dependencies across multiple resources.(move front end s3 policy to a single place into cloudfront policy)
+created multiple ci/cd pipelines for internal services, gateway-api service, frontend.. Best practice create only one ci/cd pipeline
+no connection was established between codepipeline and my github
+A common improvement is to add path filtering. and only trigger the relevant pipeline. avoiding many unnecessary builds.
+one nat gateway for each subnets
+
+# Gateway Api
+# module "ls_framework_gateway" {
+#   # Source
+#   source = "../../modules/ls_framework_core"
+#   aws_region = "us-east-2"
+
+#   # Service Name
+#   service_name = var.service_names.gateway_api_name
+
+#   # DNS Routing
+#   ls_framework_acm_certificate_arn = module.ls_framework_dns_routing.ls_framework_backend_cert_arn
+#   ls_framework_route53_zone_id     = module.ls_framework_dns_routing.ls_framework_route53_zone_id
+
+#   # Network
+#   ls_framework_vpc_id              = module.ls_framework_network.ls_framework_vpc_id
+#   ls_framework_private_subnets = module.ls_framework_network.ls_framework_private_subnets
+#   ls_framework_public_subnets  = module.ls_framework_network.ls_framework_public_subnets
+
+#   # load balancer
+#   alb_arn = aws_alb.ls_framework_external_alb.arn
+
+#   # Data
+#   ls_framework_alb_logs = module.ls_framework_data.ls_framework_alb_logs
+
+#   ### api services configurations
+#   container_port     = var.api_services_config["gateway-api"].container_port
+#   routing_port       = var.api_services_config["gateway-api"].routing_port
+#   routing_test_port  = var.api_services_config["gateway-api"].routing_test_port
+#   health_check_path  = var.api_services_config["gateway-api"].health_check_path
+#   log_retention_days = var.api_services_config["gateway-api"].log_retention_days
+#   cpu                = var.api_services_config["gateway-api"].cpu
+#   memory             = var.api_services_config["gateway-api"].memory
+#   desired_count      = var.api_services_config["gateway-api"].desired_count
+
+#   # project environment context
+#   project_prefix = local.env_context.resource_prefix
+# }
+
+# Auth User Api
+module "ls_framework_auth_api" {
+  # Source
+  source = "../../modules/ls_framework_core"
+  aws_region = "us-east-2"
+
+  # Service Name
+  service_name = var.service_names.auth_user_api_name
+
+  # DNS Routing
+  ls_framework_route53_zone_id     = module.ls_framework_dns_routing.ls_framework_route53_zone_id
+  ls_framework_acm_certificate_arn = module.ls_framework_dns_routing.ls_framework_backend_cert_arn
+
+  # Network
+  ls_framework_vpc_id              = module.ls_framework_network.ls_framework_vpc_id
+  ls_framework_private_subnets = module.ls_framework_network.ls_framework_private_subnets
+  ls_framework_public_subnets  = module.ls_framework_network.ls_framework_public_subnets
+
+  # load balancer
+  alb_arn = aws_alb.ls_framework_internal_alb.arn
+
+  # Data
+  ls_framework_alb_logs = module.ls_framework_data.ls_framework_alb_logs
+
+  ### api services configurations
+  container_port     = var.api_services_config["auth-api"].container_port
+  routing_port       = var.api_services_config["auth-api"].routing_port
+  routing_test_port  = var.api_services_config["auth-api"].routing_test_port
+  health_check_path  = var.api_services_config["auth-api"].health_check_path
+  log_retention_days = var.api_services_config["auth-api"].log_retention_days
+  cpu                = var.api_services_config["auth-api"].cpu
+  memory             = var.api_services_config["auth-api"].memory
+  desired_count      = var.api_services_config["auth-api"].desired_count
+
+  # project environment context
+  project_prefix = local.env_context.resource_prefix
+}
+
+# Tenant Api
+module "ls_framework_tenant_api" {
+  # Source
+  source = "../../modules/ls_framework_core"
+  aws_region = "us-east-2"
+
+  # Service Name
+  service_name = var.service_names.tenant_api_name
+
+  # DNS Routing
+  ls_framework_route53_zone_id     = module.ls_framework_dns_routing.ls_framework_route53_zone_id
+  ls_framework_acm_certificate_arn = module.ls_framework_dns_routing.ls_framework_backend_cert_arn
+
+  # Network
+  ls_framework_vpc_id              = module.ls_framework_network.ls_framework_vpc_id
+  ls_framework_private_subnets = module.ls_framework_network.ls_framework_private_subnets
+  ls_framework_public_subnets  = module.ls_framework_network.ls_framework_public_subnets
+
+  # load balancer
+  alb_arn = aws_alb.ls_framework_internal_alb.arn
+
+  # Data
+  ls_framework_alb_logs = module.ls_framework_data.ls_framework_alb_logs
+
+  ### api services configurations
+  container_port     = var.api_services_config["tenant-api"].container_port
+  routing_port       = var.api_services_config["tenant-api"].routing_port
+  routing_test_port  = var.api_services_config["tenant-api"].routing_test_port
+  health_check_path  = var.api_services_config["tenant-api"].health_check_path
+  log_retention_days = var.api_services_config["tenant-api"].log_retention_days
+  cpu                = var.api_services_config["tenant-api"].cpu
+  memory             = var.api_services_config["tenant-api"].memory
+  desired_count      = var.api_services_config["tenant-api"].desired_count
+
+  # project environment context
+  project_prefix = local.env_context.resource_prefix
+}
+
+# Appointment Api
+module "ls_framework_appointment_api" {
+  # Source
+  source = "../../modules/ls_framework_core"
+  aws_region = "us-east-2"
+
+  # Service Name
+  service_name = var.service_names.appointment_api_name
+
+  # DNS Routing
+  ls_framework_route53_zone_id     = module.ls_framework_dns_routing.ls_framework_route53_zone_id
+  ls_framework_acm_certificate_arn = module.ls_framework_dns_routing.ls_framework_backend_cert_arn
+
+  # Network
+  ls_framework_vpc_id              = module.ls_framework_network.ls_framework_vpc_id
+  ls_framework_private_subnets = module.ls_framework_network.ls_framework_private_subnets
+  ls_framework_public_subnets  = module.ls_framework_network.ls_framework_public_subnets
+
+  # load balancer
+  alb_arn = aws_alb.ls_framework_internal_alb.arn
+
+  # Data
+  ls_framework_alb_logs = module.ls_framework_data.ls_framework_alb_logs
+
+  ### api services configurations
+  container_port     = var.api_services_config["appointment-api"].container_port
+  routing_port       = var.api_services_config["appointment-api"].routing_port
+  routing_test_port  = var.api_services_config["appointment-api"].routing_test_port
+  health_check_path  = var.api_services_config["appointment-api"].health_check_path
+  log_retention_days = var.api_services_config["appointment-api"].log_retention_days
+  cpu                = var.api_services_config["appointment-api"].cpu
+  memory             = var.api_services_config["appointment-api"].memory
+  desired_count      = var.api_services_config["appointment-api"].desired_count
+
+  # project environment context
+  project_prefix = local.env_context.resource_prefix
+}
+
+# Audit Api
+module "ls_framework_audit_api" {
+  # Source
+  source = "../../modules/ls_framework_core"
+  aws_region = "us-east-2"
+
+  # Service Name
+  service_name = var.service_names.audit_api_name
+
+  # DNS Routing
+  ls_framework_route53_zone_id     = module.ls_framework_dns_routing.ls_framework_route53_zone_id
+  ls_framework_acm_certificate_arn = module.ls_framework_dns_routing.ls_framework_backend_cert_arn
+
+  # Network
+  ls_framework_vpc_id              = module.ls_framework_network.ls_framework_vpc_id
+  ls_framework_private_subnets = module.ls_framework_network.ls_framework_private_subnets
+  ls_framework_public_subnets  = module.ls_framework_network.ls_framework_public_subnets
+
+  # load balancer
+  alb_arn = aws_alb.ls_framework_internal_alb.arn
+
+  # Data
+  ls_framework_alb_logs = module.ls_framework_data.ls_framework_alb_logs
+
+  ### api services configurations
+  container_port     = var.api_services_config["audit-api"].container_port
+  routing_port       = var.api_services_config["audit-api"].routing_port
+  routing_test_port  = var.api_services_config["audit-api"].routing_test_port
+  health_check_path  = var.api_services_config["audit-api"].health_check_path
+  log_retention_days = var.api_services_config["audit-api"].log_retention_days
+  cpu                = var.api_services_config["audit-api"].cpu
+  memory             = var.api_services_config["audit-api"].memory
+  desired_count      = var.api_services_config["audit-api"].desired_count
+
+  # project environment context
+  project_prefix = local.env_context.resource_prefix
+}
+
+# Billing Api
+module "ls_framework_billing_api" {
+  # Source
+  source = "../../modules/ls_framework_core"
+  aws_region = "us-east-2"
+
+  # Service Name
+  service_name = var.service_names.billing_api_name
+
+  # DNS Routing
+  ls_framework_route53_zone_id     = module.ls_framework_dns_routing.ls_framework_route53_zone_id
+  ls_framework_acm_certificate_arn = module.ls_framework_dns_routing.ls_framework_backend_cert_arn
+
+  # Network
+  ls_framework_vpc_id              = module.ls_framework_network.ls_framework_vpc_id
+  ls_framework_private_subnets = module.ls_framework_network.ls_framework_private_subnets
+  ls_framework_public_subnets  = module.ls_framework_network.ls_framework_public_subnets
+
+  # load balancer
+  alb_arn = aws_alb.ls_framework_internal_alb.arn
+
+  # Data
+  ls_framework_alb_logs = module.ls_framework_data.ls_framework_alb_logs
+
+  ### api services configurations
+  container_port     = var.api_services_config["billing-api"].container_port
+  routing_port       = var.api_services_config["billing-api"].routing_port
+  routing_test_port  = var.api_services_config["billing-api"].routing_test_port
+  health_check_path  = var.api_services_config["billing-api"].health_check_path
+  log_retention_days = var.api_services_config["billing-api"].log_retention_days
+  cpu                = var.api_services_config["billing-api"].cpu
+  memory             = var.api_services_config["billing-api"].memory
+  desired_count      = var.api_services_config["billing-api"].desired_count
+
+  # project environment context
+  project_prefix = local.env_context.resource_prefix
+}
+
+# Doctor Api
+module "ls_framework_doctor_api" {
+  # Source
+  source = "../../modules/ls_framework_core"
+  aws_region = "us-east-2"
+
+  # Service Name
+  service_name = var.service_names.doctor_api_name
+
+  # DNS Routing
+  ls_framework_route53_zone_id     = module.ls_framework_dns_routing.ls_framework_route53_zone_id
+  ls_framework_acm_certificate_arn = module.ls_framework_dns_routing.ls_framework_backend_cert_arn
+
+  # Network
+  ls_framework_vpc_id              = module.ls_framework_network.ls_framework_vpc_id
+  ls_framework_private_subnets = module.ls_framework_network.ls_framework_private_subnets
+  ls_framework_public_subnets  = module.ls_framework_network.ls_framework_public_subnets
+
+  # load balancer
+  alb_arn = aws_alb.ls_framework_internal_alb.arn
+
+  # Data
+  ls_framework_alb_logs = module.ls_framework_data.ls_framework_alb_logs
+
+  ### api services configurations
+  container_port     = var.api_services_config["doctor-api"].container_port
+  routing_port       = var.api_services_config["doctor-api"].routing_port
+  routing_test_port  = var.api_services_config["doctor-api"].routing_test_port
+  health_check_path  = var.api_services_config["doctor-api"].health_check_path
+  log_retention_days = var.api_services_config["doctor-api"].log_retention_days
+  cpu                = var.api_services_config["doctor-api"].cpu
+  memory             = var.api_services_config["doctor-api"].memory
+  desired_count      = var.api_services_config["doctor-api"].desired_count
+
+  # project environment context
+  project_prefix = local.env_context.resource_prefix
+}
+
+# File Service
+module "ls_framework_file_service" {
+  # Source
+  source = "../../modules/ls_framework_core"
+  aws_region = "us-east-2"
+
+  # Service Name
+  service_name = var.service_names.file_service_api_name
+
+  # DNS Routing
+  ls_framework_route53_zone_id     = module.ls_framework_dns_routing.ls_framework_route53_zone_id
+  ls_framework_acm_certificate_arn = module.ls_framework_dns_routing.ls_framework_backend_cert_arn
+
+  # Network
+  ls_framework_vpc_id              = module.ls_framework_network.ls_framework_vpc_id
+  ls_framework_private_subnets = module.ls_framework_network.ls_framework_private_subnets
+  ls_framework_public_subnets  = module.ls_framework_network.ls_framework_public_subnets
+
+  # load balancer
+  alb_arn = aws_alb.ls_framework_internal_alb.arn
+
+  # Data
+  ls_framework_alb_logs = module.ls_framework_data.ls_framework_alb_logs
+
+  ### api services configurations
+  container_port     = var.api_services_config["file-service"].container_port
+  routing_port       = var.api_services_config["file-service"].routing_port
+  routing_test_port  = var.api_services_config["file-service"].routing_test_port
+  health_check_path  = var.api_services_config["file-service"].health_check_path
+  log_retention_days = var.api_services_config["file-service"].log_retention_days
+  cpu                = var.api_services_config["file-service"].cpu
+  memory             = var.api_services_config["file-service"].memory
+  desired_count      = var.api_services_config["file-service"].desired_count
+
+  # project environment context
+  project_prefix = local.env_context.resource_prefix
+}
+
+# Notification Api
+module "ls_framework_notification_api" {
+  # Source
+  source = "../../modules/ls_framework_core"
+  aws_region = "us-east-2"
+  # Service Name
+  service_name = var.service_names.notification_api_name
+
+  # DNS Routing
+  ls_framework_route53_zone_id     = module.ls_framework_dns_routing.ls_framework_route53_zone_id
+  ls_framework_acm_certificate_arn = module.ls_framework_dns_routing.ls_framework_backend_cert_arn
+
+  # Network
+  ls_framework_vpc_id              = module.ls_framework_network.ls_framework_vpc_id
+  ls_framework_private_subnets = module.ls_framework_network.ls_framework_private_subnets
+  ls_framework_public_subnets  = module.ls_framework_network.ls_framework_public_subnets
+
+  # load balancer
+  alb_arn = aws_alb.ls_framework_internal_alb.arn
+
+  # Data
+  ls_framework_alb_logs = module.ls_framework_data.ls_framework_alb_logs
+
+  ### api services configurations
+  container_port     = var.api_services_config["notification-api"].container_port
+  routing_port       = var.api_services_config["notification-api"].routing_port
+  routing_test_port  = var.api_services_config["notification-api"].routing_test_port
+  health_check_path  = var.api_services_config["notification-api"].health_check_path
+  log_retention_days = var.api_services_config["notification-api"].log_retention_days
+  cpu                = var.api_services_config["notification-api"].cpu
+  memory             = var.api_services_config["notification-api"].memory
+  desired_count      = var.api_services_config["notification-api"].desired_count
+
+  # project environment context
+  project_prefix = local.env_context.resource_prefix
+}
+
+# Patient Api
+module "ls_framework_patient_api" {
+  # Source
+  source = "../../modules/ls_framework_core"
+  aws_region = "us-east-2"
+  # Service Name
+  service_name = var.service_names.patient_api_name
+
+  # DNS Routing
+  ls_framework_route53_zone_id     = module.ls_framework_dns_routing.ls_framework_route53_zone_id
+  ls_framework_acm_certificate_arn = module.ls_framework_dns_routing.ls_framework_backend_cert_arn
+
+  # Network
+  ls_framework_vpc_id              = module.ls_framework_network.ls_framework_vpc_id
+  ls_framework_private_subnets = module.ls_framework_network.ls_framework_private_subnets
+  ls_framework_public_subnets  = module.ls_framework_network.ls_framework_public_subnets
+
+  # load balancer
+  alb_arn = aws_alb.ls_framework_internal_alb.arn
+
+  # Data
+  ls_framework_alb_logs = module.ls_framework_data.ls_framework_alb_logs
+
+  ### api services configurations
+  container_port     = var.api_services_config["patient-api"].container_port
+  routing_port       = var.api_services_config["patient-api"].routing_port
+  routing_test_port  = var.api_services_config["patient-api"].routing_test_port
+  health_check_path  = var.api_services_config["patient-api"].health_check_path
+  log_retention_days = var.api_services_config["patient-api"].log_retention_days
+  cpu                = var.api_services_config["patient-api"].cpu
+  memory             = var.api_services_config["patient-api"].memory
+  desired_count      = var.api_services_config["patient-api"].desired_count
+
+  # project environment context
+  project_prefix = local.env_context.resource_prefix
+}
+
+# Worker Service
+module "ls_framework_worker_service" {
+  # Source
+  source = "../../modules/ls_framework_core"
+  aws_region = "us-east-2"
+  # Service Name
+  service_name = var.service_names.worker_service_api_name
+
+  # DNS Routing
+  ls_framework_route53_zone_id     = module.ls_framework_dns_routing.ls_framework_route53_zone_id
+  ls_framework_acm_certificate_arn = module.ls_framework_dns_routing.ls_framework_backend_cert_arn
+
+  # Network
+  ls_framework_vpc_id              = module.ls_framework_network.ls_framework_vpc_id
+  ls_framework_private_subnets = module.ls_framework_network.ls_framework_private_subnets
+  ls_framework_public_subnets  = module.ls_framework_network.ls_framework_public_subnets
+
+  # load balancer
+  alb_arn = aws_alb.ls_framework_internal_alb.arn
+
+  # Data
+  ls_framework_alb_logs = module.ls_framework_data.ls_framework_alb_logs
+
+  ### api services configurations
+  container_port     = var.api_services_config["worker-service"].container_port
+  routing_port       = var.api_services_config["worker-service"].routing_port
+  routing_test_port  = var.api_services_config["worker-service"].routing_test_port
+  health_check_path  = var.api_services_config["worker-service"].health_check_path
+  log_retention_days = var.api_services_config["worker-service"].log_retention_days
+  cpu                = var.api_services_config["worker-service"].cpu
+  memory             = var.api_services_config["worker-service"].memory
+  desired_count      = var.api_services_config["worker-service"].desired_count
+
+  # project environment context
+  project_prefix = local.env_context.resource_prefix
+}
+# module "ls_framework_auth" {
+#   source = "../../../modules/ecs_service"
+#   service_name = var.service_names.auth_user_api_name
+#   ls_framework_ecr_repository_url = module.ls_framework_ecr.ls_framework_ecr_repository_url
+#   log_retention_days = 30
+#   container_port = 4404
+#   cpu = "256"
+#   memory = "512"
+#   desired_count = 1
+#   ls_framework_vpc_id = module.ls_framework_network.ls_framework_vpc_id
+#   ls_framework_vpc_private_subnets = module.ls_framework_network.ls_framework_vpc_private_subnets
+#   ls_framework_vpc_cidr_block = module.ls_framework_network.ls_framework_vpc_cidr_block
+
+#   project_prefix = local.env_context.resource_prefix
+# }
+
+
+
+
+
+
+
+# Gateway Pipeline
+# module "ls_framework_gateway_ci_cd_pipelines" {
+#   # Source
+#   source = "../../modules/ci-cd-pipelines"
+
+#   # Service Name
+#   service_name = var.service_names.gateway_api_name
+
+#   # Cluster Name
+#   ls_framework_ecs_cluster_name = module.ls_framework_gateway.ls_framework_ecs_cluster_name
+
+#   # ECS Service Name
+#   ls_framework_ecs_service_name = module.ls_framework_gateway.ls_framework_ecs_service_name
+
+#   # Target Groups
+#   ls_framework_lb_blue_tg_name  = module.ls_framework_gateway.ls_framework_lb_blue_tg_name
+#   ls_framework_lb_green_tg_name = module.ls_framework_gateway.ls_framework_lb_green_tg_name
+
+#   # Listners
+#   ls_framework_lb_listner_production_arn = module.ls_framework_gateway.ls_framework_lb_listner_production_arn
+#   ls_framework_lb_listner_test_arn       = module.ls_framework_gateway.ls_framework_lb_listner_test_arn
+
+#   # pipeline artifacts bucket
+#   ls_framework_pipeline_artifacts_bucket     = module.ls_framework_data.ls_framework_pipeline_artifacts_bucket
+#   ls_framework_pipeline_artifacts_bucket_arn = module.ls_framework_data.ls_framework_pipeline_artifacts_bucket_arn
+
+#   # project environment context
+#   project_prefix = local.env_context.resource_prefix
+# }
+
+# module "ls_framework_auth_ci_cd_pipelines" {
+#   # Source
+#   source = "../../modules/ci-cd-pipelines"
+
+#   # Service Name
+#   service_name = var.service_names.audit_api_name
+
+#   # Cluster Name
+#   ls_framework_ecs_cluster_name = module.ls_framework_auth_api.ls_framework_ecs_cluster_name
+
+#   # ECS Service Name
+#   ls_framework_ecs_service_name = module.ls_framework_auth_api.ls_framework_ecs_service_name
+
+#   # Target Groups
+#   ls_framework_lb_blue_tg_name  = module.ls_framework_auth_api.ls_framework_lb_blue_tg_name
+#   ls_framework_lb_green_tg_name = module.ls_framework_auth_api.ls_framework_lb_green_tg_name
+
+#   # Listners
+#   ls_framework_lb_listner_production_arn = module.ls_framework_auth_api.ls_framework_lb_listner_production_arn
+#   ls_framework_lb_listner_test_arn       = module.ls_framework_auth_api.ls_framework_lb_listner_test_arn
+
+#   # pipeline artifacts bucket
+#   ls_framework_pipeline_artifacts_bucket     = module.ls_framework_data.ls_framework_pipeline_artifacts_bucket
+#   ls_framework_pipeline_artifacts_bucket_arn = module.ls_framework_data.ls_framework_pipeline_artifacts_bucket_arn
+
+#   # project environment context
+#   project_prefix = local.env_context.resource_prefix
+# }
+
+# module "ls_framework_tenant_api_ci_cd_pipelines" {
+#   # Source
+#   source = "../../modules/ci-cd-pipelines"
+
+#   # Service Name
+#   service_name = var.service_names.tenant_api_name
+
+#   # Cluster Name
+#   ls_framework_ecs_cluster_name = module.ls_framework_tenant_api.ls_framework_ecs_cluster_name
+
+#   # ECS Service Name
+#   ls_framework_ecs_service_name = module.ls_framework_tenant_api.ls_framework_ecs_service_name
+
+#   # Target Groups
+#   ls_framework_lb_blue_tg_name  = module.ls_framework_tenant_api.ls_framework_lb_blue_tg_name
+#   ls_framework_lb_green_tg_name = module.ls_framework_tenant_api.ls_framework_lb_green_tg_name
+
+#   # Listners
+#   ls_framework_lb_listner_production_arn = module.ls_framework_tenant_api.ls_framework_lb_listner_production_arn
+#   ls_framework_lb_listner_test_arn       = module.ls_framework_tenant_api.ls_framework_lb_listner_test_arn
+
+#   # pipeline artifacts bucket
+#   ls_framework_pipeline_artifacts_bucket     = module.ls_framework_data.ls_framework_pipeline_artifacts_bucket
+#   ls_framework_pipeline_artifacts_bucket_arn = module.ls_framework_data.ls_framework_pipeline_artifacts_bucket_arn
+
+#   # project environment context
+#   project_prefix = local.env_context.resource_prefix
+# }
+
+# module "ls_framework_appointment_api_ci_cd_pipelines" {
+#   # Source
+#   source = "../../modules/ci-cd-pipelines"
+
+#   # Service Name
+#   service_name = var.service_names.appointment_api_name
+
+#   # Cluster Name
+#   ls_framework_ecs_cluster_name = module.ls_framework_appointment_api.ls_framework_ecs_cluster_name
+
+#   # ECS Service Name
+#   ls_framework_ecs_service_name = module.ls_framework_appointment_api.ls_framework_ecs_service_name
+
+#   # Target Groups
+#   ls_framework_lb_blue_tg_name  = module.ls_framework_appointment_api.ls_framework_lb_blue_tg_name
+#   ls_framework_lb_green_tg_name = module.ls_framework_appointment_api.ls_framework_lb_green_tg_name
+
+#   # Listners
+#   ls_framework_lb_listner_production_arn = module.ls_framework_appointment_api.ls_framework_lb_listner_production_arn
+#   ls_framework_lb_listner_test_arn       = module.ls_framework_appointment_api.ls_framework_lb_listner_test_arn
+
+#   # pipeline artifacts bucket
+#   ls_framework_pipeline_artifacts_bucket     = module.ls_framework_data.ls_framework_pipeline_artifacts_bucket
+#   ls_framework_pipeline_artifacts_bucket_arn = module.ls_framework_data.ls_framework_pipeline_artifacts_bucket_arn
+
+#   # project environment context
+#   project_prefix = local.env_context.resource_prefix
+# }
+
+# module "ls_framework_audit_api_ci_cd_pipelines" {
+#   # Source
+#   source = "../../modules/ci-cd-pipelines"
+
+#   # Service Name
+#   service_name = var.service_names.audit_api_name
+
+#   # Cluster Name
+#   ls_framework_ecs_cluster_name = module.ls_framework_audit_api.ls_framework_ecs_cluster_name
+
+#   # ECS Service Name
+#   ls_framework_ecs_service_name = module.ls_framework_audit_api.ls_framework_ecs_service_name
+
+#   # Target Groups
+#   ls_framework_lb_blue_tg_name  = module.ls_framework_audit_api.ls_framework_lb_blue_tg_name
+#   ls_framework_lb_green_tg_name = module.ls_framework_audit_api.ls_framework_lb_green_tg_name
+
+#   # Listners
+#   ls_framework_lb_listner_production_arn = module.ls_framework_audit_api.ls_framework_lb_listner_production_arn
+#   ls_framework_lb_listner_test_arn       = module.ls_framework_audit_api.ls_framework_lb_listner_test_arn
+
+#   # pipeline artifacts bucket
+#   ls_framework_pipeline_artifacts_bucket     = module.ls_framework_data.ls_framework_pipeline_artifacts_bucket
+#   ls_framework_pipeline_artifacts_bucket_arn = module.ls_framework_data.ls_framework_pipeline_artifacts_bucket_arn
+
+#   # project environment context
+#   project_prefix = local.env_context.resource_prefix
+# }
+
+# module "ls_framework_billing_api_ci_cd_pipelines" {
+#   # Source
+#   source = "../../modules/ci-cd-pipelines"
+
+#   # Service Name
+#   service_name = var.service_names.billing_api_name
+
+#   # Cluster Name
+#   ls_framework_ecs_cluster_name = module.ls_framework_billing_api.ls_framework_ecs_cluster_name
+
+#   # ECS Service Name
+#   ls_framework_ecs_service_name = module.ls_framework_billing_api.ls_framework_ecs_service_name
+
+#   # Target Groups
+#   ls_framework_lb_blue_tg_name  = module.ls_framework_billing_api.ls_framework_lb_blue_tg_name
+#   ls_framework_lb_green_tg_name = module.ls_framework_billing_api.ls_framework_lb_green_tg_name
+
+#   # Listners
+#   ls_framework_lb_listner_production_arn = module.ls_framework_billing_api.ls_framework_lb_listner_production_arn
+#   ls_framework_lb_listner_test_arn       = module.ls_framework_billing_api.ls_framework_lb_listner_test_arn
+
+#   # pipeline artifacts bucket
+#   ls_framework_pipeline_artifacts_bucket     = module.ls_framework_data.ls_framework_pipeline_artifacts_bucket
+#   ls_framework_pipeline_artifacts_bucket_arn = module.ls_framework_data.ls_framework_pipeline_artifacts_bucket_arn
+
+#   # project environment context
+#   project_prefix = local.env_context.resource_prefix
+# }
+
+# module "ls_framework_doctor_api_ci_cd_pipelines" {
+#   # Source
+#   source = "../../modules/ci-cd-pipelines"
+
+#   # Service Name
+#   service_name = var.service_names.doctor_api_name
+
+#   # Cluster Name
+#   ls_framework_ecs_cluster_name = module.ls_framework_doctor_api.ls_framework_ecs_cluster_name
+
+#   # ECS Service Name
+#   ls_framework_ecs_service_name = module.ls_framework_doctor_api.ls_framework_ecs_service_name
+
+#   # Target Groups
+#   ls_framework_lb_blue_tg_name  = module.ls_framework_doctor_api.ls_framework_lb_blue_tg_name
+#   ls_framework_lb_green_tg_name = module.ls_framework_doctor_api.ls_framework_lb_green_tg_name
+
+#   # Listners
+#   ls_framework_lb_listner_production_arn = module.ls_framework_doctor_api.ls_framework_lb_listner_production_arn
+#   ls_framework_lb_listner_test_arn       = module.ls_framework_doctor_api.ls_framework_lb_listner_test_arn
+
+#   # pipeline artifacts bucket
+#   ls_framework_pipeline_artifacts_bucket     = module.ls_framework_data.ls_framework_pipeline_artifacts_bucket
+#   ls_framework_pipeline_artifacts_bucket_arn = module.ls_framework_data.ls_framework_pipeline_artifacts_bucket_arn
+
+#   # project environment context
+#   project_prefix = local.env_context.resource_prefix
+# }
+
+# module "ls_framework_file_service_ci_cd_pipelines" {
+#   # Source
+#   source = "../../modules/ci-cd-pipelines"
+
+#   # Service Name
+#   service_name = var.service_names.file_service_api_name
+
+#   # Cluster Name
+#   ls_framework_ecs_cluster_name = module.ls_framework_file_service
+
+#   # ECS Service Name
+#   ls_framework_ecs_service_name = module.ls_framework_file_service.ls_framework_ecs_service_name
+
+#   # Target Groups
+#   ls_framework_lb_blue_tg_name  = module.ls_framework_file_service.ls_framework_lb_blue_tg_name
+#   ls_framework_lb_green_tg_name = module.ls_framework_file_service.ls_framework_lb_green_tg_name
+
+#   # Listners
+#   ls_framework_lb_listner_production_arn = module.ls_framework_file_service.ls_framework_lb_listner_production_arn
+#   ls_framework_lb_listner_test_arn       = module.ls_framework_file_service.ls_framework_lb_listner_test_arn
+
+#   # pipeline artifacts bucket
+#   ls_framework_pipeline_artifacts_bucket     = module.ls_framework_data.ls_framework_pipeline_artifacts_bucket
+#   ls_framework_pipeline_artifacts_bucket_arn = module.ls_framework_data.ls_framework_pipeline_artifacts_bucket_arn
+
+#   # project environment context
+#   project_prefix = local.env_context.resource_prefix
+# }
+
+# module "ls_framework_notification_api_ci_cd_pipelines" {
+#   # Source
+#   source = "../../modules/ci-cd-pipelines"
+
+#   # Service Name
+#   service_name = var.service_names.notification_api_name
+
+#   # Cluster Name
+#   ls_framework_ecs_cluster_name = module.ls_framework_notification_api.ls_framework_ecs_cluster_name
+
+#   # ECS Service Name
+#   ls_framework_ecs_service_name = module.ls_framework_notification_api.ls_framework_ecs_service_name
+
+#   # Target Groups
+#   ls_framework_lb_blue_tg_name  = module.ls_framework_notification_api.ls_framework_lb_blue_tg_name
+#   ls_framework_lb_green_tg_name = module.ls_framework_notification_api.ls_framework_lb_green_tg_name
+
+#   # Listners
+#   ls_framework_lb_listner_production_arn = module.ls_framework_notification_api.ls_framework_lb_listner_production_arn
+#   ls_framework_lb_listner_test_arn       = module.ls_framework_notification_api.ls_framework_lb_listner_test_arn
+
+#   # pipeline artifacts bucket
+#   ls_framework_pipeline_artifacts_bucket     = module.ls_framework_data.ls_framework_pipeline_artifacts_bucket
+#   ls_framework_pipeline_artifacts_bucket_arn = module.ls_framework_data.ls_framework_pipeline_artifacts_bucket_arn
+
+#   # project environment context
+#   project_prefix = local.env_context.resource_prefix
+# }
+
+# module "ls_framework_patient_api_ci_cd_pipelines" {
+#   # Source
+#   source = "../../modules/ci-cd-pipelines"
+
+#   # Service Name
+#   service_name = var.service_names.patient_api_name
+
+#   # Cluster Name
+#   ls_framework_ecs_cluster_name = module.ls_framework_patient_api.ls_framework_ecs_cluster_name
+
+#   # ECS Service Name
+#   ls_framework_ecs_service_name = module.ls_framework_patient_api.ls_framework_ecs_service_name
+
+#   # Target Groups
+#   ls_framework_lb_blue_tg_name  = module.ls_framework_patient_api.ls_framework_lb_blue_tg_name
+#   ls_framework_lb_green_tg_name = module.ls_framework_patient_api.ls_framework_lb_green_tg_name
+
+#   # Listners
+#   ls_framework_lb_listner_production_arn = module.ls_framework_patient_api.ls_framework_lb_listner_production_arn
+#   ls_framework_lb_listner_test_arn       = module.ls_framework_patient_api.ls_framework_lb_listner_test_arn
+
+#   # pipeline artifacts bucket
+#   ls_framework_pipeline_artifacts_bucket     = module.ls_framework_data.ls_framework_pipeline_artifacts_bucket
+#   ls_framework_pipeline_artifacts_bucket_arn = module.ls_framework_data.ls_framework_pipeline_artifacts_bucket_arn
+
+#   # project environment context
+#   project_prefix = local.env_context.resource_prefix
+# }
+
+# module "ls_framework_worker_service_ci_cd_pipelines" {
+#   # Source
+#   source = "../../modules/ci-cd-pipelines"
+
+#   # Service Name
+#   service_name = var.service_names.worker_service_api_name
+
+#   # Cluster Name
+#   ls_framework_ecs_cluster_name = module.ls_framework_worker_service.ls_framework_ecs_cluster_name
+
+#   # ECS Service Name
+#   ls_framework_ecs_service_name = module.ls_framework_worker_service.ls_framework_ecs_service_name
+
+#   # Target Groups
+#   ls_framework_lb_blue_tg_name  = module.ls_framework_worker_service.ls_framework_lb_blue_tg_name
+#   ls_framework_lb_green_tg_name = module.ls_framework_worker_service.ls_framework_lb_green_tg_name
+
+#   # Listners
+#   ls_framework_lb_listner_production_arn = module.ls_framework_worker_service.ls_framework_lb_listner_production_arn
+#   ls_framework_lb_listner_test_arn       = module.ls_framework_worker_service.ls_framework_lb_listner_test_arn
+
+#   # pipeline artifacts bucket
+#   ls_framework_pipeline_artifacts_bucket     = module.ls_framework_data.ls_framework_pipeline_artifacts_bucket
+#   ls_framework_pipeline_artifacts_bucket_arn = module.ls_framework_data.ls_framework_pipeline_artifacts_bucket_arn
+
+#   # project environment context
+#   project_prefix = local.env_context.resource_prefix
+# }
+
+
+
+
+bucket = aws_s3_bucket.ls_framework_alb_logs.id
+    
+    policy = jsonencode({
+      Version = "2012-10-17"
+      Statement = [
+        # 1. ENFORCE TLS IN-TRANSIT (Deny insecure requests)
+        {
+          Sid       = "EnforceTLSRequestsOnly"
+          Effect    = "Deny"
+          Principal = "*"
+          Action    = "s3:*"
+          Resource = [
+            aws_s3_bucket.ls_framework_alb_logs.arn,
+            "${aws_s3_bucket.ls_framework_alb_logs.arn}/*"
+          ]
+          Condition = {
+            Bool = {
+              "aws:SecureTransport" = "false"
+            }
+          }
+        },
+        # 2. ALLOW ALB TO WRITE LOGS
+        {
+          Sid    = "AllowALBToWriteLogs"
+          Effect = "Allow"
+          Principal = {
+            Service = "logdelivery.elasticloadbalancing.amazonaws.com"
+          }
+          Action   = "s3:PutObject"
+           Resource = "${aws_s3_bucket.ls_framework_alb_logs.arn}/AWSLogs/${data.aws_caller_identity.current.account_id}/*"
+        },
+        {
+          Sid    = "AllowALBToReadBucketACL"
+          Effect = "Allow"
+
+          Principal = {
+            Service = "logdelivery.elasticloadbalancing.amazonaws.com"
+          }
+
+          Action = [
+            "s3:GetBucketAcl"
+          ]
+
+          Resource = aws_s3_bucket.ls_framework_alb_logs.arn
+        }
+      ]
+  })

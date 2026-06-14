@@ -1,0 +1,6 @@
+@LS.DoctorApi_HostAddress = http://localhost:5100
+
+GET {{LS.DoctorApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

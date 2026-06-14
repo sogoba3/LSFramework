@@ -1,0 +1,6 @@
+@LS.FileServiceApi_HostAddress = http://localhost:5270
+
+GET {{LS.FileServiceApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

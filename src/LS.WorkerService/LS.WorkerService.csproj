@@ -1,0 +1,64 @@
+<Project Sdk="Microsoft.NET.Sdk.Worker">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>dotnet-LS.WorkerService-af1c84fa-bf2c-4a20-acac-e850f3a18b80</UserSecretsId>
+
+    <ErrorOnDuplicatePublishOutputFiles>false</ErrorOnDuplicatePublishOutputFiles>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../LS.AppointmentApi/LS.AppointmentApi.csproj" />
+    <ProjectReference Include="../LS.AuditApi/LS.AuditApi.csproj" />
+    <ProjectReference Include="../LS.BillingApi/LS.BillingApi.csproj" />
+    <ProjectReference Include="../LS.DoctorApi/LS.DoctorApi.csproj" />
+    <ProjectReference Include="../LS.NotificationApi/LS.NotificationApi.csproj" />
+    <ProjectReference Include="../LS.PatientApi/LS.PatientApi.csproj" />
+    <ProjectReference Include="../LS.TenantApi/LS.TenantApi.csproj" />
+    <ProjectReference Include="..\LS.Shared\LS.Shared.csproj" />
+    <ProjectReference Include="..\LS.AuthUserApi\LS.AuthUserApi.csproj" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Content Remove="..\LS.AuthUserApi\appsettings.json" />
+    <Content Remove="..\LS.AuthUserApi\appsettings.Development.json" />
+
+    <Content Remove="..\LS.PatientApi\appsettings.json" />
+    <Content Remove="..\LS.PatientApi\appsettings.Development.json" />
+
+    <Content Remove="..\LS.BillingApi\appsettings.json" />
+    <Content Remove="..\LS.BillingApi\appsettings.Development.json" />
+
+    <Content Remove="..\LS.AppointmentApi\appsettings.json" />
+    <Content Remove="..\LS.AppointmentApi\appsettings.Development.json" />
+
+    <Content Remove="..\LS.AuditApi\appsettings.json" />
+    <Content Remove="..\LS.AuditApi\appsettings.Development.json" />
+
+    <Content Remove="..\LS.DoctorApi\appsettings.json" />
+    <Content Remove="..\LS.DoctorApi\appsettings.Development.json" />
+
+    <Content Remove="..\LS.NotificationApi\appsettings.json" />
+    <Content Remove="..\LS.NotificationApi\appsettings.Development.json" />
+
+    <Content Remove="..\LS.TenantApi\appsettings.json" />
+    <Content Remove="..\LS.TenantApi\appsettings.Development.json" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <Folder Include="Events/AuditLogEvents/Subscriber/" />
+    <Folder Include="EventsDto/AppointmentEventsDto/" />
+    <Folder Include="EventsDto/BillingEventsDto/" />
+    <Folder Include="EventsDto/DoctorEventsDto/" />
+    <Folder Include="EventsDto/NotificationEventsDto/" />
+    <Folder Include="EventsDto/PatientEventsDto/" />
+    <Folder Include="EventsDto/TenantEventsDto/" />
+  </ItemGroup>
+</Project>

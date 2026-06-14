@@ -1,0 +1,6 @@
+@LS.AuthUserApi_HostAddress = http://localhost:5104
+
+GET {{LS.AuthUserApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

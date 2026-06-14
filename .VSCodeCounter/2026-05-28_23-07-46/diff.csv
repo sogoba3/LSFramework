@@ -1,0 +1,257 @@
+"filename", "language", "C#", "YAML", "XML", "Docker", "Ignore", "Markdown", "TypeScript JSX", "JSON", "TypeScript", "JSON with Comments", "JavaScript", "PostCSS", "HTML", "comment", "blank", "total"
+"/Users/aboubacarsogoba/Desktop/LSFramework/.dockerignore", "Ignore", 0, 0, 0, 0, 25, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 26
+"/Users/aboubacarsogoba/Desktop/LSFramework/.github/workflows/ls-framework-appointment-api.yml", "YAML", 0, 73, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 11, 20, 104
+"/Users/aboubacarsogoba/Desktop/LSFramework/.github/workflows/ls-framework-audit-api.yml", "YAML", 0, 73, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 11, 20, 104
+"/Users/aboubacarsogoba/Desktop/LSFramework/.github/workflows/ls-framework-auth-api.yml", "YAML", 0, 73, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 11, 20, 104
+"/Users/aboubacarsogoba/Desktop/LSFramework/.github/workflows/ls-framework-billing-api.yml", "YAML", 0, 73, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 11, 20, 104
+"/Users/aboubacarsogoba/Desktop/LSFramework/.github/workflows/ls-framework-doctor-api.yml", "YAML", 0, 73, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 11, 20, 104
+"/Users/aboubacarsogoba/Desktop/LSFramework/.github/workflows/ls-framework-file-service.yml", "YAML", 0, 73, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 11, 20, 104
+"/Users/aboubacarsogoba/Desktop/LSFramework/.github/workflows/ls-framework-gateway-api.yml", "YAML", 0, 73, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 11, 20, 104
+"/Users/aboubacarsogoba/Desktop/LSFramework/.github/workflows/ls-framework-notification-api.yml", "YAML", 0, 73, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 11, 20, 104
+"/Users/aboubacarsogoba/Desktop/LSFramework/.github/workflows/ls-framework-patient-api.yml", "YAML", 0, 73, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 11, 20, 104
+"/Users/aboubacarsogoba/Desktop/LSFramework/.github/workflows/ls-framework-tenant-api.yml", "YAML", 0, 73, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 11, 20, 104
+"/Users/aboubacarsogoba/Desktop/LSFramework/.github/workflows/ls-framework-worker-service.yml", "YAML", 0, 73, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 11, 20, 104
+"/Users/aboubacarsogoba/Desktop/LSFramework/.github/workflows/ls_framework_frontend.yml", "YAML", 0, 69, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 13, 88
+"/Users/aboubacarsogoba/Desktop/LSFramework/.github/workflows/ls_framework_terraform_pipeline.yml", "YAML", 0, 69, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 14, 93
+"/Users/aboubacarsogoba/Desktop/LSFramework/LS.Docker/Appointment.Dockerfile", "Docker", 0, 0, 0, 20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 5, 26
+"/Users/aboubacarsogoba/Desktop/LSFramework/LS.Docker/Audit.Dockerfile", "Docker", 0, 0, 0, 20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 5, 26
+"/Users/aboubacarsogoba/Desktop/LSFramework/LS.Docker/Auth.Dockerfile", "Docker", 0, 0, 0, 20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 8, 29
+"/Users/aboubacarsogoba/Desktop/LSFramework/LS.Docker/Billing.Dockerfile", "Docker", 0, 0, 0, 20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 5, 26
+"/Users/aboubacarsogoba/Desktop/LSFramework/LS.Docker/Doctor.Dockerfile", "Docker", 0, 0, 0, 20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 5, 26
+"/Users/aboubacarsogoba/Desktop/LSFramework/LS.Docker/FileService.Dockerfile", "Docker", 0, 0, 0, 20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 5, 26
+"/Users/aboubacarsogoba/Desktop/LSFramework/LS.Docker/Gateway.Dockerfile", "Docker", 0, 0, 0, 19, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 5, 25
+"/Users/aboubacarsogoba/Desktop/LSFramework/LS.Docker/Notification.Dockerfile", "Docker", 0, 0, 0, 20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 5, 26
+"/Users/aboubacarsogoba/Desktop/LSFramework/LS.Docker/Patient.Dockerfile", "Docker", 0, 0, 0, 20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 5, 26
+"/Users/aboubacarsogoba/Desktop/LSFramework/LS.Docker/Tenant.Dockerfile", "Docker", 0, 0, 0, 20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 4, 25
+"/Users/aboubacarsogoba/Desktop/LSFramework/LS.Docker/WorkerService.Dockerfile", "Docker", 0, 0, 0, 17, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 4, 22
+"/Users/aboubacarsogoba/Desktop/LSFramework/README.md", "Markdown", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1
+"/Users/aboubacarsogoba/Desktop/LSFramework/docker-compose.yml", "YAML", 0, 73, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 10, 92
+"/Users/aboubacarsogoba/Desktop/LSFramework/ls-front-end/README.md", "Markdown", 0, 0, 0, 0, 0, 60, 0, 0, 0, 0, 0, 0, 0, 0, 14, 74
+"/Users/aboubacarsogoba/Desktop/LSFramework/ls-front-end/eslint.config.js", "JavaScript", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 22, 0, 0, 0, 2, 24
+"/Users/aboubacarsogoba/Desktop/LSFramework/ls-front-end/index.html", "HTML", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 13, 1, 1, 15
+"/Users/aboubacarsogoba/Desktop/LSFramework/ls-front-end/package-lock.json", "JSON", 0, 0, 0, 0, 0, 0, 0, 4743, 0, 0, 0, 0, 0, 0, 1, 4744
+"/Users/aboubacarsogoba/Desktop/LSFramework/ls-front-end/package.json", "JSON", 0, 0, 0, 0, 0, 0, 0, 46, 0, 0, 0, 0, 0, 0, 1, 47
+"/Users/aboubacarsogoba/Desktop/LSFramework/ls-front-end/public/vite.svg", "XML", 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1
+"/Users/aboubacarsogoba/Desktop/LSFramework/ls-front-end/src/App.css", "PostCSS", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1
+"/Users/aboubacarsogoba/Desktop/LSFramework/ls-front-end/src/App.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 14, 0, 0, 0, 0, 0, 0, 1, 5, 20
+"/Users/aboubacarsogoba/Desktop/LSFramework/ls-front-end/src/AuthLoader.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 13, 0, 0, 0, 0, 0, 0, 3, 4, 20
+"/Users/aboubacarsogoba/Desktop/LSFramework/ls-front-end/src/DoctorManagement/pages/DoctorPage.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 9, 0, 0, 0, 0, 0, 0, 0, 1, 10
+"/Users/aboubacarsogoba/Desktop/LSFramework/ls-front-end/src/LandingManagement/pages/AboutPage.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 9, 0, 0, 0, 0, 0, 0, 0, 1, 10
+"/Users/aboubacarsogoba/Desktop/LSFramework/ls-front-end/src/LandingManagement/pages/ContactPage.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 9, 0, 0, 0, 0, 0, 0, 0, 1, 10
+"/Users/aboubacarsogoba/Desktop/LSFramework/ls-front-end/src/LandingManagement/pages/FeaturesPage.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 9, 0, 0, 0, 0, 0, 0, 0, 1, 10
+"/Users/aboubacarsogoba/Desktop/LSFramework/ls-front-end/src/LandingManagement/pages/LandingNav.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 158, 0, 0, 0, 0, 0, 0, 6, 11, 175
+"/Users/aboubacarsogoba/Desktop/LSFramework/ls-front-end/src/LandingManagement/pages/LandingPage.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 9, 0, 0, 0, 0, 0, 0, 0, 1, 10
+"/Users/aboubacarsogoba/Desktop/LSFramework/ls-front-end/src/LandingManagement/pages/LandingRootLayout.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 1, 11
+"/Users/aboubacarsogoba/Desktop/LSFramework/ls-front-end/src/LandingManagement/pages/PricingPage.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 9, 0, 0, 0, 0, 0, 0, 0, 1, 10
+"/Users/aboubacarsogoba/Desktop/LSFramework/ls-front-end/src/LandingManagement/pages/RegistrationPage.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 219, 0, 0, 0, 0, 0, 0, 14, 23, 256
+"/Users/aboubacarsogoba/Desktop/LSFramework/ls-front-end/src/PublicLayout.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 12, 0, 0, 0, 0, 0, 0, 0, 1, 13
+"/Users/aboubacarsogoba/Desktop/LSFramework/ls-front-end/src/RootLayout.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 8, 0, 0, 0, 0, 0, 0, 0, 1, 9
+"/Users/aboubacarsogoba/Desktop/LSFramework/ls-front-end/src/TenantPublicLayout.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 5, 4, 19
+"/Users/aboubacarsogoba/Desktop/LSFramework/ls-front-end/src/appointmentManagement/pages/AppointmentPage.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 82, 0, 0, 0, 0, 0, 0, 6, 8, 96
+"/Users/aboubacarsogoba/Desktop/LSFramework/ls-front-end/src/auth/PrivateRoute.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 12, 0, 0, 0, 0, 0, 0, 4, 5, 21
+"/Users/aboubacarsogoba/Desktop/LSFramework/ls-front-end/src/auth/api/useAuthUserApi.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 38, 0, 0, 0, 0, 0, 0, 23, 16, 77
+"/Users/aboubacarsogoba/Desktop/LSFramework/ls-front-end/src/auth/hooks/AuthContext.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 66, 0, 0, 0, 0, 0, 0, 3, 11, 80
+"/Users/aboubacarsogoba/Desktop/LSFramework/ls-front-end/src/auth/hooks/LoginButton.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 17, 0, 0, 0, 0, 0, 0, 1, 2, 20
+"/Users/aboubacarsogoba/Desktop/LSFramework/ls-front-end/src/auth/hooks/LogoutButton.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 25, 0, 0, 0, 0, 0, 0, 9, 9, 43
+"/Users/aboubacarsogoba/Desktop/LSFramework/ls-front-end/src/auth/pages/AuthLayout.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 23, 0, 0, 0, 0, 0, 0, 0, 2, 25
+"/Users/aboubacarsogoba/Desktop/LSFramework/ls-front-end/src/auth/pages/LoginPage.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 98, 0, 0, 0, 0, 0, 0, 8, 17, 123
+"/Users/aboubacarsogoba/Desktop/LSFramework/ls-front-end/src/auth/pages/SignupPage.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 195, 0, 0, 0, 0, 0, 0, 6, 22, 223
+"/Users/aboubacarsogoba/Desktop/LSFramework/ls-front-end/src/billingManagement/pages/BillingPage.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 9, 0, 0, 0, 0, 0, 0, 0, 1, 10
+"/Users/aboubacarsogoba/Desktop/LSFramework/ls-front-end/src/commonApiConfig/apiClient.ts", "TypeScript", 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 1, 6
+"/Users/aboubacarsogoba/Desktop/LSFramework/ls-front-end/src/commonApiConfig/config.ts", "TypeScript", 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 2, 3
+"/Users/aboubacarsogoba/Desktop/LSFramework/ls-front-end/src/home/pages/DashboardPage.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 148, 0, 0, 0, 0, 0, 0, 11, 2, 161
+"/Users/aboubacarsogoba/Desktop/LSFramework/ls-front-end/src/home/pages/HomePage.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 148, 0, 0, 0, 0, 0, 0, 16, 8, 172
+"/Users/aboubacarsogoba/Desktop/LSFramework/ls-front-end/src/home/pages/UserProfile.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 222, 0, 0, 0, 0, 0, 0, 109, 37, 368
+"/Users/aboubacarsogoba/Desktop/LSFramework/ls-front-end/src/home/sidenav.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 553, 0, 0, 0, 0, 0, 0, 26, 30, 609
+"/Users/aboubacarsogoba/Desktop/LSFramework/ls-front-end/src/index.css", "PostCSS", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 3
+"/Users/aboubacarsogoba/Desktop/LSFramework/ls-front-end/src/main.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 15, 0, 0, 0, 0, 0, 0, 1, 2, 18
+"/Users/aboubacarsogoba/Desktop/LSFramework/ls-front-end/src/notificationManagement/pages/NotificationPage.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 9, 0, 0, 0, 0, 0, 0, 0, 1, 10
+"/Users/aboubacarsogoba/Desktop/LSFramework/ls-front-end/src/patientManagement/pages/PatientPage.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 9, 0, 0, 0, 0, 0, 0, 0, 1, 10
+"/Users/aboubacarsogoba/Desktop/LSFramework/ls-front-end/src/routes-manager/LafiyaSiraRouters.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 71, 0, 0, 0, 0, 0, 0, 13, 5, 89
+"/Users/aboubacarsogoba/Desktop/LSFramework/ls-front-end/src/tenantManagement/api/useTenantApi.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 30, 0, 0, 0, 0, 0, 0, 5, 10, 45
+"/Users/aboubacarsogoba/Desktop/LSFramework/ls-front-end/src/tenantManagement/pages/TenantPage.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 9, 0, 0, 0, 0, 0, 0, 0, 1, 10
+"/Users/aboubacarsogoba/Desktop/LSFramework/ls-front-end/src/theme/ThemeConfig.ts", "TypeScript", 0, 0, 0, 0, 0, 0, 0, 0, 115, 0, 0, 0, 0, 1, 5, 121
+"/Users/aboubacarsogoba/Desktop/LSFramework/ls-front-end/src/theme/ThemeContext.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 33, 0, 0, 0, 0, 0, 0, 1, 9, 43
+"/Users/aboubacarsogoba/Desktop/LSFramework/ls-front-end/src/theme/ThemeToggle.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 41, 0, 0, 0, 0, 0, 0, 0, 4, 45
+"/Users/aboubacarsogoba/Desktop/LSFramework/ls-front-end/src/userManagement/api/useAuthUserApi.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 13, 4, 17
+"/Users/aboubacarsogoba/Desktop/LSFramework/ls-front-end/src/userManagement/pages/UserPage.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 9, 0, 0, 0, 0, 0, 0, 0, 1, 10
+"/Users/aboubacarsogoba/Desktop/LSFramework/ls-front-end/src/vite-env.d.ts", "TypeScript", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 2
+"/Users/aboubacarsogoba/Desktop/LSFramework/ls-front-end/tsconfig.app.json", "JSON", 0, 0, 0, 0, 0, 0, 0, 24, 0, 0, 0, 0, 0, 2, 3, 29
+"/Users/aboubacarsogoba/Desktop/LSFramework/ls-front-end/tsconfig.json", "JSON with Comments", 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 1, 8
+"/Users/aboubacarsogoba/Desktop/LSFramework/ls-front-end/tsconfig.node.json", "JSON", 0, 0, 0, 0, 0, 0, 0, 22, 0, 0, 0, 0, 0, 2, 3, 27
+"/Users/aboubacarsogoba/Desktop/LSFramework/ls-front-end/vite.config.ts", "TypeScript", 0, 0, 0, 0, 0, 0, 0, 0, 9, 0, 0, 0, 0, 1, 2, 12
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.AppointmentApi/Controllers/AppointmentController.cs", "C#", 37, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 42
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.AppointmentApi/Controllers/Errors/AppointmentApiControllerError.cs", "C#", 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 9
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.AppointmentApi/Contstants/AppointmentConstant.cs", "C#", 17, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 5, 24
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.AppointmentApi/Data/AppointmentDBContext.cs", "C#", 15, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 21
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.AppointmentApi/LS.AppointmentApi.csproj", "XML", 0, 0, 34, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8, 42
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.AppointmentApi/Mapping/MappingConfig.cs", "C#", 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 15
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.AppointmentApi/Migrations/20251029030734_Initialization_LS.AppointmentApi.Designer.cs", "C#", 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 14, 64
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.AppointmentApi/Migrations/20251029030734_Initialization_LS.AppointmentApi.cs", "C#", 34, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 4, 41
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.AppointmentApi/Migrations/AppointmentDBContextModelSnapshot.cs", "C#", 46, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 14, 61
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.AppointmentApi/Model/Dtos/AppointmentDto.cs", "C#", 11, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 15
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.AppointmentApi/Model/Entities/Appointment.cs", "C#", 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 13, 61
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.AppointmentApi/Program.cs", "C#", 76, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 24, 21, 121
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.AppointmentApi/Properties/launchSettings.json", "JSON", 0, 0, 0, 0, 0, 0, 0, 41, 0, 0, 0, 0, 0, 0, 1, 42
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.AppointmentApi/Services/AppointmentRepository.cs", "C#", 20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 24
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.AppointmentApi/Services/IServices/IAppointmentRepository.cs", "C#", 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 11
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.AuditApi/Controllers/AuditLogController.cs", "C#", 81, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 18, 19, 118
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.AuditApi/Controllers/Errors/AuditLogApiControllerError.cs", "C#", 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 9
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.AuditApi/Data/AuditLogDbContext.cs", "C#", 16, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 22
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.AuditApi/Events/Publisher/AuditLogPublisher.cs", "C#", 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 9
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.AuditApi/Events/Publisher/IAuditLogPublisher.cs", "C#", 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 9
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.AuditApi/LS.AuditApi.csproj", "XML", 0, 0, 33, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 39
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.AuditApi/Model/Entities/AuditLog.cs", "C#", 38, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 42
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.AuditApi/Program.cs", "C#", 65, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 30, 20, 115
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.AuditApi/Properties/launchSettings.json", "JSON", 0, 0, 0, 0, 0, 0, 0, 41, 0, 0, 0, 0, 0, 0, 1, 42
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.AuditApi/Services/AuditLogRepository.cs", "C#", 28, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 33
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.AuditApi/Services/IServices/IAuditLogRepository.cs", "C#", 8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 11
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.AuthUserApi/Constants/AuthUserConstant.cs", "C#", 16, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 6, 25
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.AuthUserApi/Controllers/AuthUserController.cs", "C#", 245, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 26, 36, 307
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.AuthUserApi/Controllers/Errors/AuthUserApiControllerError.cs", "C#", 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 9
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.AuthUserApi/Data/AuthUserDbContext.cs", "C#", 16, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8, 24
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.AuthUserApi/Events/Publisher/AuthUserEventPublisher.cs", "C#", 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 9
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.AuthUserApi/LS.AuthUserApi.csproj", "XML", 0, 0, 31, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 36
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.AuthUserApi/Mapping/MappingConfig.cs", "C#", 13, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 4, 26
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.AuthUserApi/Migrations/20251029030332_Initialization_LS.AuthApi.Designer.cs", "C#", 109, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 34, 145
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.AuthUserApi/Migrations/20251029030332_Initialization_LS.AuthApi.cs", "C#", 63, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 6, 72
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.AuthUserApi/Migrations/AuthUserDbContextModelSnapshot.cs", "C#", 107, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 34, 142
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.AuthUserApi/Model/Dtos/LafiyaSiraGuestDto.cs", "C#", 11, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 14
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.AuthUserApi/Model/Dtos/LafiyaSiraStaffDto.cs", "C#", 8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 11
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.AuthUserApi/Model/Dtos/LafiyaSiraUserDto.cs", "C#", 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 3, 16
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.AuthUserApi/Model/Dtos/LafiyaSiraUserLoginDto.cs", "C#", 8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 11
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.AuthUserApi/Model/Dtos/LafiyaSiraUserSignupDto.cs", "C#", 14, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 17
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.AuthUserApi/Model/Entities/LafiyaSiraGuest.cs", "C#", 28, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 31
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.AuthUserApi/Model/Entities/LafiyaSiraUser.cs", "C#", 87, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 21, 109
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.AuthUserApi/Model/Interfaces/ILafiyaSiraUser.cs", "C#", 13, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 16
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.AuthUserApi/Program.cs", "C#", 95, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 35, 25, 155
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.AuthUserApi/Properties/launchSettings.json", "JSON", 0, 0, 0, 0, 0, 0, 0, 41, 0, 0, 0, 0, 0, 0, 1, 42
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.AuthUserApi/Services/AuthUserRepository.cs", "C#", 25, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 8, 42
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.AuthUserApi/Services/IServices/IAuthUserRepository.cs", "C#", 8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 11
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.BillingApi/Constant/BillingConstant.cs", "C#", 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 10
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.BillingApi/Controllers/BillingController.cs", "C#", 37, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 42
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.BillingApi/Controllers/Errors/BillingApiControllerError.cs", "C#", 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 9
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.BillingApi/Data/BillingDbContext.cs", "C#", 16, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 23
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.BillingApi/LS.BillingApi.csproj", "XML", 0, 0, 34, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 41
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.BillingApi/Mapping/MappingConfig.cs", "C#", 13, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 16
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.BillingApi/Migrations/20251029030825_Initialization_LS.BillingApi.Designer.cs", "C#", 77, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 25, 104
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.BillingApi/Migrations/20251029030825_Initialization_LS.BillingApi.cs", "C#", 60, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 7, 70
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.BillingApi/Migrations/BillingDbContextModelSnapshot.cs", "C#", 75, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 25, 101
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.BillingApi/Model/Dtos/BillDto.cs", "C#", 11, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 14
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.BillingApi/Model/Dtos/PaymentDto.cs", "C#", 11, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 14
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.BillingApi/Model/Entities/Bill.cs", "C#", 30, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 4, 37
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.BillingApi/Model/Entities/Payment.cs", "C#", 32, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 35
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.BillingApi/Program.cs", "C#", 76, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 25, 20, 121
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.BillingApi/Properties/launchSettings.json", "JSON", 0, 0, 0, 0, 0, 0, 0, 41, 0, 0, 0, 0, 0, 0, 1, 42
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.BillingApi/Services/BillingRepository.cs", "C#", 20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 24
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.BillingApi/Services/IServices/IBillingRepository.cs", "C#", 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 11
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.DoctorApi/Constants/DoctorConstant.cs", "C#", 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 9
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.DoctorApi/Controllers/DoctorController.cs", "C#", 37, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 43
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.DoctorApi/Controllers/Errors/DoctorApiControllerError.cs", "C#", 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 9
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.DoctorApi/Data/DoctorDbContext.cs", "C#", 15, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 22
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.DoctorApi/LS.DoctorApi.csproj", "XML", 0, 0, 34, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 41
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.DoctorApi/Mapping/MappingConfig.cs", "C#", 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 15
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.DoctorApi/Migrations/20251029030907_Initialization_LS.DoctorApi.Designer.cs", "C#", 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 14, 64
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.DoctorApi/Migrations/20251029030907_Initialization_LS.DoctorApi.cs", "C#", 33, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 4, 40
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.DoctorApi/Migrations/DoctorDbContextModelSnapshot.cs", "C#", 46, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 14, 61
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.DoctorApi/Model/Dtos/DoctorDto.cs", "C#", 11, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 14
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.DoctorApi/Model/Entities/Doctor.cs", "C#", 79, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 5, 87
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.DoctorApi/Program.cs", "C#", 76, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 25, 19, 120
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.DoctorApi/Properties/launchSettings.json", "JSON", 0, 0, 0, 0, 0, 0, 0, 41, 0, 0, 0, 0, 0, 0, 1, 42
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.DoctorApi/Services/DoctorRepository.cs", "C#", 20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 24
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.DoctorApi/Services/IServices/IDoctorRepository.cs", "C#", 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 11
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.FileServiceApi/Constants/FileConstant.cs", "C#", 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 9
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.FileServiceApi/Controllers/FileMetadataController.cs", "C#", 94, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 22, 132
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.FileServiceApi/Data/FileMetadataDbContext.cs", "C#", 15, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8, 23
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.FileServiceApi/LS.FileServiceApi.csproj", "XML", 0, 0, 36, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 42
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.FileServiceApi/Mapping/MappingConfig.cs", "C#", 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 15
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.FileServiceApi/Models/Dtos/FileMetadataDto.cs", "C#", 11, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 15
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.FileServiceApi/Models/Dtos/SaveFileMetadataDto.cs", "C#", 8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 11
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.FileServiceApi/Models/Entities/FileMetadata.cs", "C#", 20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 23
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.FileServiceApi/Program.cs", "C#", 79, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 26, 22, 127
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.FileServiceApi/Properties/launchSettings.json", "JSON", 0, 0, 0, 0, 0, 0, 0, 41, 0, 0, 0, 0, 0, 0, 1, 42
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.FileServiceApi/Services/FileMetadataRepository.cs", "C#", 19, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 25
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.FileServiceApi/Services/IServices/IFileMetadataRepository.cs", "C#", 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 11
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.Gateway/LS.Gateway.csproj", "XML", 0, 0, 13, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 18
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.Gateway/Program.cs", "C#", 16, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 14, 6, 36
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.Gateway/Properties/launchSettings.json", "JSON", 0, 0, 0, 0, 0, 0, 0, 41, 0, 0, 0, 0, 0, 0, 1, 42
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.NotificationApi/Constants/NotificationConstant.cs", "C#", 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 9
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.NotificationApi/Controllers/Errors/NotificationApiControllerError.cs", "C#", 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 9
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.NotificationApi/Controllers/NotificationController.cs", "C#", 37, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 42
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.NotificationApi/Data/NotificationDbContext.cs", "C#", 15, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 22
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.NotificationApi/LS.NotificationApi.csproj", "XML", 0, 0, 34, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 41
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.NotificationApi/Mapping/MappingConfig.cs", "C#", 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 15
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.NotificationApi/Migrations/20251029031014_Initialization_LS.NotificationApi.Designer.cs", "C#", 46, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 13, 61
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.NotificationApi/Migrations/20251029031014_Initialization_LS.NotificationApi.cs", "C#", 33, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 4, 40
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.NotificationApi/Migrations/NotificationDbContextModelSnapshot.cs", "C#", 44, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 13, 58
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.NotificationApi/Model/Dtos/NotificationDto.cs", "C#", 11, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 14
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.NotificationApi/Model/Entities/Notification.cs", "C#", 20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 23
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.NotificationApi/Program.cs", "C#", 76, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 24, 20, 120
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.NotificationApi/Properties/launchSettings.json", "JSON", 0, 0, 0, 0, 0, 0, 0, 41, 0, 0, 0, 0, 0, 0, 1, 42
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.NotificationApi/Services/IServices/INotificationRepository.cs", "C#", 8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 11
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.NotificationApi/Services/NotificationRepository.cs", "C#", 28, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 33
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.PatientApi/Controllers/Errors/PatientApiControllerError.cs", "C#", 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 9
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.PatientApi/Controllers/PatientController.cs", "C#", 37, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 6, 44
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.PatientApi/Contstants/PatientConstant.cs", "C#", 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 9
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.PatientApi/Data/PatientDbContext.cs", "C#", 19, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 26
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.PatientApi/LS.PatientApi.csproj", "XML", 0, 0, 34, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 41
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.PatientApi/Mapping/MappingConfig.cs", "C#", 16, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 19
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.PatientApi/Migrations/20251029031106_Initialization_LS.PatientApi.Designer.cs", "C#", 213, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 82, 297
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.PatientApi/Migrations/20251029031106_Initialization_LS.PatientApi.cs", "C#", 170, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 17, 190
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.PatientApi/Migrations/PatientDbContextModelSnapshot.cs", "C#", 211, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 82, 294
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.PatientApi/Model/Dtos/ContactInformationDto.cs", "C#", 11, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 15
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.PatientApi/Model/Dtos/LabResultDto.cs", "C#", 11, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 16
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.PatientApi/Model/Dtos/MedicalRecordDto.cs", "C#", 11, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 15
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.PatientApi/Model/Dtos/PasswordGeneratorDto.cs", "C#", 42, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 11, 56
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.PatientApi/Model/Dtos/PatientDto.cs", "C#", 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 16
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.PatientApi/Model/Dtos/PrescriptionDto.cs", "C#", 11, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 14
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.PatientApi/Model/Entities/ContactInformation.cs", "C#", 26, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 7, 35
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.PatientApi/Model/Entities/LabResult.cs", "C#", 20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 4, 25
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.PatientApi/Model/Entities/MedicalRecord.cs", "C#", 21, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 3, 25
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.PatientApi/Model/Entities/Patient.cs", "C#", 39, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 7, 50
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.PatientApi/Model/Entities/Prescription.cs", "C#", 17, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 21
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.PatientApi/Program.cs", "C#", 76, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 25, 20, 121
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.PatientApi/Properties/launchSettings.json", "JSON", 0, 0, 0, 0, 0, 0, 0, 41, 0, 0, 0, 0, 0, 0, 1, 42
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.PatientApi/Services/IServices/IPatientRepository.cs", "C#", 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 11
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.PatientApi/Services/PatientRepository.cs", "C#", 20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 24
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.Shared/CommonContstant.cs", "C#", 26, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 29
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.Shared/CommonRepository/BaseRepository.cs", "C#", 69, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 19, 93
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.Shared/CommonRepository/IBaseRepository.cs", "C#", 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 8, 25
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.Shared/Configuration/AwsSettings.cs", "C#", 24, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 8, 33
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.Shared/Events/AuditLogPublisher.cs", "C#", 44, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 7, 55
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.Shared/Interfaces/IAuditLogPublisher.cs", "C#", 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 10
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.Shared/Interfaces/ITenantProvider.cs", "C#", 8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 11
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.Shared/LS.Shared.csproj", "XML", 0, 0, 14, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 18
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.Shared/Middleware/TenantMiddleware.cs", "C#", 46, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 26, 15, 87
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.Shared/Model/Dtos/AuditLogEventDto.cs", "C#", 18, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 21
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.Shared/Model/Dtos/PasswordGeneratorDto.cs", "C#", 42, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 11, 56
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.Shared/Model/Dtos/TenantDto.cs", "C#", 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 13
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.Shared/Model/Entities/MultiTenantEntity.cs", "C#", 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 9
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.Shared/ResultDto.cs", "C#", 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 16
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.Shared/Services/TenantProvider.cs", "C#", 46, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 11, 57
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.Shared/Services/WorkerTenantProvider.cs", "C#", 16, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 9, 29
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.TenantApi/Constants/TenantConstant.cs", "C#", 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 9
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.TenantApi/Controllers/Errors/TenantApiControllerError.cs", "C#", 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 9
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.TenantApi/Controllers/TenantController.cs", "C#", 146, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 27, 193
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.TenantApi/Data/TenantDbContext.cs", "C#", 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 13
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.TenantApi/Events/Publisher/TenantEventPublisher.cs", "C#", 37, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 6, 45
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.TenantApi/LS.TenantApi.csproj", "XML", 0, 0, 30, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 35
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.TenantApi/Mapping/MappingConfig.cs", "C#", 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 15
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.TenantApi/Migrations/20251029031154_Initialization_LS.TenantApi.Designer.cs", "C#", 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 13, 63
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.TenantApi/Migrations/20251029031154_Initialization_LS.TenantApi.cs", "C#", 33, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 4, 40
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.TenantApi/Migrations/TenantDbContextModelSnapshot.cs", "C#", 46, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 13, 60
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.TenantApi/Model/Dtos/TenantAdminSignupDto.cs", "C#", 14, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 17
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.TenantApi/Model/Dtos/TenantDto.cs", "C#", 11, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 14
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.TenantApi/Model/Entities/Tenant.cs", "C#", 18, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 22
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.TenantApi/Program.cs", "C#", 78, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 24, 20, 122
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.TenantApi/Properties/launchSettings.json", "JSON", 0, 0, 0, 0, 0, 0, 0, 41, 0, 0, 0, 0, 0, 0, 1, 42
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.TenantApi/Services/IServices/ITenantRepository.cs", "C#", 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 16
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.TenantApi/Services/TenantRepository.cs", "C#", 49, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 9, 59
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.WorkerService/Events/TenantSubscriber.cs", "C#", 112, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 11, 20, 143
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.WorkerService/EventsDto/AuditLogEventsDto/AuditLogEventDto.cs", "C#", 18, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 21
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.WorkerService/EventsDto/AuthEventsDto/TenantAdminSignUpEventDto.cs", "C#", 15, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 18
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.WorkerService/LS.WorkerService.csproj", "XML", 0, 0, 50, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 15, 65
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.WorkerService/Program.cs", "C#", 68, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 19, 94
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.WorkerService/Properties/launchSettings.json", "JSON", 0, 0, 0, 0, 0, 0, 0, 12, 0, 0, 0, 0, 0, 0, 1, 13
+"/Users/aboubacarsogoba/Desktop/LSFramework/src/LS.WorkerService/Worker.cs", "C#", 20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 24
+"Total", "-", 5166, 1014, 378, 216, 25, 60, 2360, 5257, 130, 7, 22, 3, 13, 935, 2034, 17620

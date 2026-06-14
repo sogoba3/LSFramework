@@ -1,0 +1,31 @@
+version: 0.2
+
+phases:
+  pre_build:
+    commands:
+      - echo "Installing dependencies"
+      - cd ls-front-end
+      - node --version
+      - npm --version
+      #--no-audit speeds up builds
+      - npm ci --no-audit
+
+  build:
+    commands:
+      - echo "Building ls-front-end"
+      - npm run build
+
+  post_build:
+    commands:
+      - echo "Uploading to S3"
+      - aws s3 sync dist/ s3://$LS_FRAMEWORK_FRONTEND_BUCKET --delete
+
+      - echo "CloudFront Distribution ID $CLOUDFRONT_DISTRIBUTION_ID"
+      - env | grep CLOUDFRONT
+      - echo "Creating CloudFront invalidation"
+      - aws cloudfront create-invalidation --distribution-id $CLOUDFRONT_DISTRIBUTION_ID --paths "/*"
+
+# artifacts:
+#   files:
+#     - '**/*'
+#   base-directory: dist

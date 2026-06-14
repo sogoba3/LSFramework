@@ -1,0 +1,22 @@
+name: Audit API
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'src/LS.AuditApi/**'
+      - 'deploy/audit-api/**'
+
+jobs:
+
+  # BUILD AND DEPLOY (CD)
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Deploy Audit API
+        run: |
+          aws codepipeline start-pipeline-execution \
+            --name audit-api-pipeline

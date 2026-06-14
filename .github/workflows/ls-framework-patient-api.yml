@@ -1,0 +1,22 @@
+name: Patient API
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'src/LS.PatientApi/**'
+      - 'deploy/patient-api/**'
+
+jobs:
+
+  # BUILD AND DEPLOY (CD)
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Deploy Patient API
+        run: |
+          aws codepipeline start-pipeline-execution \
+            --name patient-api-pipeline

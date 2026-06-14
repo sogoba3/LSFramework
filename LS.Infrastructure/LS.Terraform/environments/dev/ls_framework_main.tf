@@ -159,20 +159,20 @@ module "ls_framework_gateway_api_service" {
 }
 ##########################################################################################
 # Api's modules
-# module "ls_framework_services" {
-#   for_each = {
-#     for key, value in var.api_services_config : key => value
-#     if key != "gateway-api"
-#   }
-#   source = "../../modules/ls_framework_core/rolling_service"
+module "ls_framework_services" {
+  for_each = {
+    for key, value in var.api_services_config : key => value
+    if key != "gateway-api"
+  }
+  source = "../../modules/ls_framework_core/rolling_service"
 
-#   service_name                     = each.key
-#   ls_framework_ecs_service_sg_id   = module.ls_framework_core_shared_ressources[each.key].ls_framework_ecs_service_sg_id
-#   ls_framework_task_definition_arn = module.ls_framework_core_shared_ressources[each.key].ls_framework_ecs_task_definition_arn
-#   desired_count                    = each.value.desired_count
-#   ls_framework_ecs_cluster_id      = module.ls_framework_ecs_cluster.ls_framework_ecs_cluster_id
-#   ls_framework_private_subnets     = module.ls_framework_network.ls_framework_private_subnets
-# }
+  service_name                     = each.key
+  ls_framework_ecs_service_sg_id   = module.ls_framework_core_shared_ressources[each.key].ls_framework_ecs_service_sg_id
+  ls_framework_task_definition_arn = module.ls_framework_core_shared_ressources[each.key].ls_framework_ecs_task_definition_arn
+  desired_count                    = each.value.desired_count
+  ls_framework_ecs_cluster_id      = module.ls_framework_ecs_cluster.ls_framework_ecs_cluster_id
+  ls_framework_private_subnets     = module.ls_framework_network.ls_framework_private_subnets
+}
 module "ls_framework_worker_service" {
   source                          = "../../modules/worker_service"
   log_retention_days              = 30
@@ -197,30 +197,30 @@ module "ls_framework_worker_service" {
 ##########################################################################################
 ### AWS CI/CD Pipelines
 # Terraform State Pipeline
-# module "ls_framework_terraform_state_pipeline" {
-#   source            = "../../modules/terraform-state-pipeline"
-#   github_connection = "terraform-state-github-connect"
+module "ls_framework_terraform_state_pipeline" {
+  source            = "../../modules/terraform-state-pipeline"
+  github_connection = "terraform-state-github-connect"
 
-#   service_name                               = "lsf-terraform-state"
-#   ls_framework_pipeline_artifacts_bucket     = module.ls_framework_data.ls_framework_pipeline_artifacts_bucket
-#   ls_framework_pipeline_artifacts_bucket_arn = module.ls_framework_data.ls_framework_pipeline_artifacts_bucket_arn
-#   ls_framework_terraform_state_bucket_arn    = data.aws_s3_bucket.ls_framework_terraform_state_bucket.arn
+  service_name                               = "lsf-terraform-state"
+  ls_framework_pipeline_artifacts_bucket     = module.ls_framework_data.ls_framework_pipeline_artifacts_bucket
+  ls_framework_pipeline_artifacts_bucket_arn = module.ls_framework_data.ls_framework_pipeline_artifacts_bucket_arn
+  ls_framework_terraform_state_bucket_arn    = data.aws_s3_bucket.ls_framework_terraform_state_bucket.arn
 
-#   project_prefix = local.env_context.resource_prefix
-# }
+  project_prefix = local.env_context.resource_prefix
+}
 # Front End pipeline
-# module "ls_framework_frontend_pipeline" {
-#   source = "../../modules/frontend-pipeline"
+module "ls_framework_frontend_pipeline" {
+  source = "../../modules/frontend-pipeline"
 
-#   service_name                               = "ls-framework-frontend"
-#   ls_framework_cloudfront_distribution_id    = module.ls_framework_edge.ls_framework_cloudfront_distribution_id
-#   ls_framework_frontend_bucket_arn           = module.ls_framework_data.ls_framework_frontend_bucket_arn
-#   ls_framework_frontend_bucket_name          = module.ls_framework_data.ls_framework_frontend_bucket_name
-#   ls_framework_pipeline_artifacts_bucket     = module.ls_framework_data.ls_framework_pipeline_artifacts_bucket
-#   ls_framework_pipeline_artifacts_bucket_arn = module.ls_framework_data.ls_framework_pipeline_artifacts_bucket_arn
+  service_name                               = "ls-framework-frontend"
+  ls_framework_cloudfront_distribution_id    = module.ls_framework_edge.ls_framework_cloudfront_distribution_id
+  ls_framework_frontend_bucket_arn           = module.ls_framework_data.ls_framework_frontend_bucket_arn
+  ls_framework_frontend_bucket_name          = module.ls_framework_data.ls_framework_frontend_bucket_name
+  ls_framework_pipeline_artifacts_bucket     = module.ls_framework_data.ls_framework_pipeline_artifacts_bucket
+  ls_framework_pipeline_artifacts_bucket_arn = module.ls_framework_data.ls_framework_pipeline_artifacts_bucket_arn
 
-#   project_prefix = local.env_context.resource_prefix
-# }
+  project_prefix = local.env_context.resource_prefix
+}
 
 # Worker Service pipeline
 module "ls_framework_worker_service_pipeline" {
@@ -240,35 +240,35 @@ module "ls_framework_worker_service_pipeline" {
   project_prefix = local.env_context.resource_prefix
 }
 # Api services pipelines
-# module "ls_framework_internal_services_pipelines" {
-#   for_each = {
-#     for key, value in var.api_services_config : key => value
-#     if key != "gateway-api"
-#   }
-#   #Source
-#   source = "../../modules/internal-apis-pipeline"
+module "ls_framework_internal_services_pipelines" {
+  for_each = {
+    for key, value in var.api_services_config : key => value
+    if key != "gateway-api"
+  }
+  #Source
+  source = "../../modules/internal-apis-pipeline"
 
-#   #service name
-#   service_name = each.key
+  #service name
+  service_name = each.key
 
-#   github_connection = "${each.key}-github-connect"
-#   buildspec_path    = each.value.buildspec
-#   dockerfile_path   = each.value.dockerfile
+  github_connection = "${each.key}-github-connect"
+  buildspec_path    = each.value.buildspec
+  dockerfile_path   = each.value.dockerfile
 
-#   # Cluster Name
-#   ls_framework_ecs_cluster_name = module.ls_framework_ecs_cluster.ls_framework_ecs_cluster_name
+  # Cluster Name
+  ls_framework_ecs_cluster_name = module.ls_framework_ecs_cluster.ls_framework_ecs_cluster_name
 
-#   ls_framework_ecs_task_execution_role_arn = module.ls_framework_core_shared_ressources[each.key].ls_framework_ecs_task_execution_role_arn
-#   ls_framework_ecs_task_role_arn           = module.ls_framework_core_shared_ressources[each.key].ls_framework_ecs_task_role_arn
+  ls_framework_ecs_task_execution_role_arn = module.ls_framework_core_shared_ressources[each.key].ls_framework_ecs_task_execution_role_arn
+  ls_framework_ecs_task_role_arn           = module.ls_framework_core_shared_ressources[each.key].ls_framework_ecs_task_role_arn
 
-#   # pipeline artifacts bucket
-#   ls_framework_pipeline_artifacts_bucket     = module.ls_framework_data.ls_framework_pipeline_artifacts_bucket
-#   ls_framework_pipeline_artifacts_bucket_arn = module.ls_framework_data.ls_framework_pipeline_artifacts_bucket_arn
+  # pipeline artifacts bucket
+  ls_framework_pipeline_artifacts_bucket     = module.ls_framework_data.ls_framework_pipeline_artifacts_bucket
+  ls_framework_pipeline_artifacts_bucket_arn = module.ls_framework_data.ls_framework_pipeline_artifacts_bucket_arn
 
-#   # project environment context
-#   project_prefix = local.env_context.resource_prefix
+  # project environment context
+  project_prefix = local.env_context.resource_prefix
 
-# }
+}
 
 # Gateway api service pipeline
 module "ls_framework_gateway_api_service_pipeline" {

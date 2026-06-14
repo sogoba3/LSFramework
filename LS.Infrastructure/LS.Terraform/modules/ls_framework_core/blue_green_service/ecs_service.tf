@@ -33,7 +33,7 @@ resource "aws_ecs_service" "ls_framework_ecs_service_name" {
   enable_execute_command = true
 
   lifecycle {
-    ignore_changes = [ task_definition ]
+    ignore_changes = [ task_definition, load_balancer ]
   }
   tags = {
     Name = "gateway-api-service"

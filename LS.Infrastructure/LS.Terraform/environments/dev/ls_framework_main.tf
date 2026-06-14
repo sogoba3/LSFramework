@@ -24,6 +24,7 @@ module "ls_framework_network" {
     for k, v in module.ls_framework_core_shared_ressources :
     k => v.ls_framework_ecs_service_sg_id
   }
+  ls_framework_worker_sg_id = module.ls_framework_worker_service.ls_framework_worker_sg_id
 
   project_prefix = local.env_context.resource_prefix
 }
@@ -291,7 +292,7 @@ module "ls_framework_gateway_api_service_pipeline" {
   ls_framework_pipeline_artifacts_bucket_arn = module.ls_framework_data.ls_framework_pipeline_artifacts_bucket_arn
 
   # ECS Service Name
-  ls_framework_ecs_service_name = module.ls_framework_gateway_api_service.ls_framework_ecs_service_name
+  ls_framework_ecs_service_name     = module.ls_framework_gateway_api_service.ls_framework_ecs_service_name
   ls_framework_sqlserver_secret_arn = module.ls_framework_data.ls_framework_sqlserver_secret_arn
   # Target Groups
   ls_framework_lb_blue_tg_name  = module.ls_framework_gateway_api_service.ls_framework_lb_blue_tg_name

@@ -26,4 +26,8 @@ variable "ls_framework_ecs_service_sg_id" {
   type = map(string)
 }
 
+variable "ls_framework_worker_sg_id" {
+  type = string
+}
+
 

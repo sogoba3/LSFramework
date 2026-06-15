@@ -5,12 +5,14 @@ resource "aws_lb_listener" "ls_framework_lb_listner_production" {
     port = 80
     protocol = "HTTP"
     default_action {
-      type = "fixed-response"
-      fixed_response {
-        content_type = "text/plain"
-        message_body = "No matching route"
-        status_code  = "404"
-      }
+      type = "forward"
+      target_group_arn = var.gateway_blue_target_group_arn
+      # type = "fixed-response"
+      # fixed_response {
+      #   content_type = "text/plain"
+      #   message_body = "No matching route"
+      #   status_code  = "404"
+      # }
     }
 }
 
@@ -23,11 +25,13 @@ resource "aws_lb_listener" "ls_framework_lb_listner_test" {
   protocol = "HTTP"
 
   default_action {
-    type = "fixed-response"
-    fixed_response {
-      content_type = "text/plain"
-      message_body = "No matching route"
-      status_code  = "404"
-    }
+    type = "forward"
+    target_group_arn = var.gateway_green_target_group_arn
+    # type = "fixed-response"
+    # fixed_response {
+    #   content_type = "text/plain"
+    #   message_body = "No matching route"
+    #   status_code  = "404"
+    # }
   }
 }

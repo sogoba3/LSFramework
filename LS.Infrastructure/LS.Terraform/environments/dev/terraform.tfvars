@@ -23,6 +23,36 @@ ls_framework_sqlserver_username = "admin"
 ls_framework_sqlserver_password = "Test123$"
 ### api services configuration
 
+services = {
+  tenant = {
+    name = "tenant-api"
+  }
+  patient = {
+    name = "patient-api"
+  }
+  doctor = {
+    name = "doctor-api"
+  }
+  billing = {
+    name = "billing-api"
+  }
+  auth = {
+    name = "auth-api"
+  }
+  appointment = {
+    name = "appointment-api"
+  }
+  notification = {
+    name = "notification-api"
+  }
+  audit = {
+    name = "audit-api"
+  }
+  file = {
+    name = "file-service"
+  }
+  # worker = "worker-service"
+}
 api_services_config = {
   gateway-api = {
     cpu                = "1024"

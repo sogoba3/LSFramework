@@ -12,6 +12,7 @@ created multiple ci/cd pipelines for internal services, gateway-api service, fro
 no connection was established between codepipeline and my github
 A common improvement is to add path filtering. and only trigger the relevant pipeline. avoiding many unnecessary builds.
 one nat gateway for each subnets
+circular dependencies
 
 # Gateway Api
 # module "ls_framework_gateway" {

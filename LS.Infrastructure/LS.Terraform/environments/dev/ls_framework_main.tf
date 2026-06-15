@@ -87,6 +87,7 @@ module "ls_framework_edge" {
     aws          = aws
     aws.virginia = aws.virginia
   }
+  ls_framework_alb_dns_name = module.ls_framework_alb.ls_framework_alb_dns_name
   # ls_framework_domain_name                          = var.ls_framework_domain_name
   # ls_framework_frontend_bucket_id                   = module.ls_framework_data.ls_framework_frontend_bucket_id
   ls_framework_frontend_bucket_regional_domain_name = module.ls_framework_data.ls_framework_frontend_bucket_regional_domain_name
@@ -120,6 +121,11 @@ module "ls_framework_alb" {
 
   project_prefix = local.env_context.resource_prefix
 }
+module "ls_framework_service_discovery" {
+  source              = "../../global/service_discovery"
+  services            = var.services
+  ls_framework_vpc_id = module.ls_framework_network.ls_framework_vpc_id
+}
 ##########################################################################################
 ### Shared LS framework Core ressources
 module "ls_framework_core_shared_ressources" {
@@ -138,6 +144,7 @@ module "ls_framework_core_shared_ressources" {
   ls_framework_sqlserver_endpoint   = module.ls_framework_rds_sql_server.ls_framework_sqlserver_db_instance_endpoint
   ls_framework_sqlserver_secret_arn = module.ls_framework_data.ls_framework_sqlserver_secret_arn
   ls_framework_vpc_id               = module.ls_framework_network.ls_framework_vpc_id
+  # ls_framework_internal_alb_dns_name = module.ls_framework_alb.ls_framework_internal_alb_name
 
   project_prefix = local.env_context.resource_prefix
 }
@@ -154,6 +161,8 @@ module "ls_framework_gateway_api_service" {
   ls_framework_private_subnets     = module.ls_framework_network.ls_framework_private_subnets
   ls_framework_vpc_id              = module.ls_framework_network.ls_framework_vpc_id
   ls_framework_ecs_cluster_id      = module.ls_framework_ecs_cluster.ls_framework_ecs_cluster_id
+
+  ls_framework_service_discovery_arn = ""
 
   project_prefix = local.env_context.resource_prefix
 }
@@ -172,6 +181,8 @@ module "ls_framework_services" {
   desired_count                    = each.value.desired_count
   ls_framework_ecs_cluster_id      = module.ls_framework_ecs_cluster.ls_framework_ecs_cluster_id
   ls_framework_private_subnets     = module.ls_framework_network.ls_framework_private_subnets
+
+  ls_framework_service_discovery_arn = module.ls_framework_service_discovery.ls_framework_discovery_services_arns[replace(replace(each.key, "-service", ""), "-api", "")]
 }
 module "ls_framework_worker_service" {
   source                          = "../../modules/worker_service"
@@ -188,6 +199,8 @@ module "ls_framework_worker_service" {
 
   ls_framework_sqlserver_secret_arn = module.ls_framework_data.ls_framework_sqlserver_secret_arn
   ls_framework_sqlserver_endpoint   = module.ls_framework_rds_sql_server.ls_framework_sqlserver_db_instance_endpoint
+
+  # ls_framework_service_discovery_arn = module.ls_framework_service_discovery.ls_framework_discovery_services_arns["worker"]
 
   project_prefix = local.env_context.resource_prefix
 }

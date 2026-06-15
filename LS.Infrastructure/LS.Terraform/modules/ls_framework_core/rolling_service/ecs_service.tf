@@ -15,7 +15,9 @@ resource "aws_ecs_service" "ls_framework_ecs_service_name" {
   #   enable = true
   #   rollback = true
   # }
-
+  service_registries {
+    registry_arn = var.ls_framework_service_discovery_arn
+  }
   # ECS NETWORKING
   network_configuration {
     assign_public_ip = false

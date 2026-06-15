@@ -21,3 +21,6 @@ variable "enable_dns" {
 variable "enable_cloudfront_custom_domain" {
   default = false
 }
+variable "ls_framework_alb_dns_name" {
+  type = string
+}

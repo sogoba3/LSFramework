@@ -20,6 +20,11 @@ variable "service_names" {
   })
   description = ""
 }
+variable "services" {
+  type = map(object({
+    name = string
+  }))
+}
 variable "api_services_config" {
   type = map(object({
     cpu                = string

@@ -22,6 +22,9 @@ resource "aws_ecs_service" "ls_framework_worker_ecs_service" {
   deployment_maximum_percent = 200
   enable_execute_command = true
 
+  # service_registries {
+  #   registry_arn = var.ls_framework_service_discovery_arn
+  # }
   lifecycle {
     ignore_changes = [ task_definition ]
   }

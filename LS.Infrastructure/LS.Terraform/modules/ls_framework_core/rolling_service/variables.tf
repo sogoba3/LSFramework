@@ -18,3 +18,6 @@ variable "ls_framework_ecs_service_sg_id" {
 variable "ls_framework_task_definition_arn" {
   type = string
 }
+variable "ls_framework_service_discovery_arn" {
+  type = string
+}

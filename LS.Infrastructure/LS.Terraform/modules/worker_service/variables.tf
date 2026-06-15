@@ -39,3 +39,6 @@ variable "ls_framework_sqlserver_secret_arn" {
 variable "ls_framework_sqlserver_endpoint" {
   type = string
 }
+# variable "ls_framework_service_discovery_arn" {
+#   type = string
+# }

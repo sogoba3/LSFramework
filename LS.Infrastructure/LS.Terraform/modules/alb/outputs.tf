@@ -1,6 +1,9 @@
 output "ls_framework_alb_dns_name" {
   value = aws_alb.ls_framework_external_alb.dns_name
 }
+# output "ls_framework_internal_alb_dns_name" {
+#   value = aws_alb.ls_framework_internal_alb.dns_name
+# }
 output "ls_framework_alb_zone_id" {
   value = aws_alb.ls_framework_external_alb.zone_id
 }

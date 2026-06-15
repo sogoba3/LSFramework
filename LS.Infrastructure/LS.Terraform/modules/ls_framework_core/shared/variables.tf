@@ -35,6 +35,9 @@ variable "ls_framework_sqlserver_secret_arn" {
 variable "ls_framework_sqlserver_endpoint" {
   type = string
 }
+# variable "ls_framework_internal_alb_dns_name" {
+#   type = string
+# }
 
 # variable "desired_count" {
 #   type = number

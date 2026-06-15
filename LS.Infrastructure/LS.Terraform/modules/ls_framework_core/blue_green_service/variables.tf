@@ -33,6 +33,9 @@ variable "container_port" {
 variable "health_check_path" {
   type = string
 }
+variable "ls_framework_service_discovery_arn" {
+  type = string
+}
 
 # variable "ls_framework_lb_blue_tg_arn" {
 #   type = string

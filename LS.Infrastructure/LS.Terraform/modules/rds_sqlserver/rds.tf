@@ -18,6 +18,7 @@ resource "aws_db_instance" "ls_framework_sqlserver_db_instance" {
     password                    = jsondecode(var.ls_framework_sqlserver_secret_value_string)["password"]
 
     port = 1433
+    # for testing set to true
     publicly_accessible = false
     vpc_security_group_ids = [aws_security_group.ls_framework_sqlserver_sg.id]
     deletion_protection = false

@@ -37,6 +37,10 @@ resource "aws_ecs_task_definition" "ls_framework_ecs_task_definition" {
                 name = "Database__Name"
                 value = "LSFrameworkDb"
             }
+            # {
+            #     name  = "InternalAlbDns"
+            #     value = var.ls_framework_internal_alb_dns_name
+            # }
         ]
         secrets = [
             {

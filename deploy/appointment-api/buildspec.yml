@@ -3,18 +3,6 @@ version: 0.2
 phases:
   pre_build:
     commands:
-
-      - CHANGED=$(git diff --name-only HEAD~1 HEAD)
-      - "$CHANGED"
-      - |
-        if echo "$CHANGED" | grep -q "src/LS.AppointmentApi/"; then 
-          echo "Change detected in appointment api"
-        else
-          echo "No change detected - skipping"
-          exit 0
-        fi
-
-
       - echo "Logging into ECR..."
       - AWS_ACCOUNT_ID=$(aws sts get-caller-identity --query Account --output text)
       - AWS_DEFAULT_REGION=us-east-2

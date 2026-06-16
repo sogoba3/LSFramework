@@ -187,6 +187,7 @@ resource "aws_s3_bucket_public_access_block" "ls_framework_alb_logs_access_block
 resource "aws_s3_bucket" "ls_framework_frontend_bucket" {
   bucket = "${var.project_prefix}-frontend-bucket"
 
+  force_destroy = true
   tags = {
     Name = "${var.project_prefix}-frontend-bucket"
   }

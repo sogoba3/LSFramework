@@ -2,7 +2,7 @@
 # Start of LS Framework ECR Repositories
 resource "aws_ecr_repository" "ls_framework_ecr_repository" {
   name = "lsf-dev-${var.service_name}-repo"
-  # force_delete = true
+  force_delete = true
   encryption_configuration {
     encryption_type = "KMS"
     kms_key = var.ls_framework_ecr_db_key_arn

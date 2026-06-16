@@ -268,6 +268,8 @@ module "ls_framework_internal_services_pipelines" {
   buildspec_path    = each.value.buildspec
   dockerfile_path   = each.value.dockerfile
 
+  ls_framework_source_path_filter = each.value.source_folder
+
   # Cluster Name
   ls_framework_ecs_cluster_name = module.ls_framework_ecs_cluster.ls_framework_ecs_cluster_name
 

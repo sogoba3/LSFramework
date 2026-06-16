@@ -29,6 +29,9 @@ variable "github_connection" {
 variable "ls_framework_pipeline_artifacts_bucket" {
   type = string
 }
+variable "ls_framework_source_path_filter" {
+  type = string
+}
 
 
 # variable "repo" {}

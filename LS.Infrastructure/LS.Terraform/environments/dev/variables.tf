@@ -38,8 +38,9 @@ variable "api_services_config" {
     log_retention_days = number
     desired_count      = number
 
-    buildspec  = string
-    dockerfile = string
+    buildspec     = string
+    dockerfile    = string
+    source_folder = optional(string)
   }))
 }
 

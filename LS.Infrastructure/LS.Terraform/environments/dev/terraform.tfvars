@@ -80,8 +80,9 @@ api_services_config = {
     log_retention_days = 30
     desired_count      = 1
 
-    buildspec  = "deploy/auth-api/buildspec.yml"
-    dockerfile = "deploy/auth-api/Auth.Dockerfile"
+    buildspec     = "deploy/auth-api/buildspec.yml"
+    dockerfile    = "deploy/auth-api/Auth.Dockerfile"
+    source_folder = "src/LS.AuthUserApi"
   }
   tenant-api = {
     cpu                = "1024"
@@ -94,8 +95,9 @@ api_services_config = {
     log_retention_days = 30
     desired_count      = 1
 
-    buildspec  = "deploy/tenant-api/buildspec.yml"
-    dockerfile = "deploy/tenant-api/Tenant.Dockerfile"
+    buildspec     = "deploy/tenant-api/buildspec.yml"
+    dockerfile    = "deploy/tenant-api/Tenant.Dockerfile"
+    source_folder = "src/LS.TenantApi"
   }
   appointment-api = {
     cpu                = "1024"
@@ -108,8 +110,9 @@ api_services_config = {
     log_retention_days = 30
     desired_count      = 1
 
-    buildspec  = "deploy/appointment-api/buildspec.yml"
-    dockerfile = "deploy/appointment-api/Appointment.Dockerfile"
+    buildspec     = "deploy/appointment-api/buildspec.yml"
+    dockerfile    = "deploy/appointment-api/Appointment.Dockerfile"
+    source_folder = "src/LS.AppointmentApi"
   }
   audit-api = {
     cpu                = "1024"
@@ -122,8 +125,9 @@ api_services_config = {
     log_retention_days = 30
     desired_count      = 1
 
-    buildspec  = "deploy/audit-api/buildspec.yml"
-    dockerfile = "deploy/audit-api/Audit.Dockerfile"
+    buildspec     = "deploy/audit-api/buildspec.yml"
+    dockerfile    = "deploy/audit-api/Audit.Dockerfile"
+    source_folder = "src/LS.AuditApi"
   }
   billing-api = {
     cpu                = "1024"
@@ -136,8 +140,9 @@ api_services_config = {
     log_retention_days = 30
     desired_count      = 1
 
-    buildspec  = "deploy/billing-api/buildspec.yml"
-    dockerfile = "deploy/billing-api/Billing.Dockerfile"
+    buildspec     = "deploy/billing-api/buildspec.yml"
+    dockerfile    = "deploy/billing-api/Billing.Dockerfile"
+    source_folder = "src/LS.BillingApi"
   }
   doctor-api = {
     cpu                = "1024"
@@ -150,8 +155,9 @@ api_services_config = {
     log_retention_days = 30
     desired_count      = 1
 
-    buildspec  = "deploy/doctor-api/buildspec.yml"
-    dockerfile = "deploy/doctor-api/Doctor.Dockerfile"
+    buildspec     = "deploy/doctor-api/buildspec.yml"
+    dockerfile    = "deploy/doctor-api/Doctor.Dockerfile"
+    source_folder = "src/LS.DoctorApi"
   }
   file-service = {
     cpu                = "1024"
@@ -164,8 +170,9 @@ api_services_config = {
     log_retention_days = 30
     desired_count      = 1
 
-    buildspec  = "deploy/file-service/buildspec.yml"
-    dockerfile = "deploy/file-service/FileService.Dockerfile"
+    buildspec     = "deploy/file-service/buildspec.yml"
+    dockerfile    = "deploy/file-service/FileService.Dockerfile"
+    source_folder = "src/LS.FileServiceApi"
   }
   notification-api = {
     cpu                = "1024"
@@ -178,8 +185,9 @@ api_services_config = {
     log_retention_days = 30
     desired_count      = 1
 
-    buildspec  = "deploy/notification-api/buildspec.yml"
-    dockerfile = "deploy/notification-api/Notification.Dockerfile"
+    buildspec     = "deploy/notification-api/buildspec.yml"
+    dockerfile    = "deploy/notification-api/Notification.Dockerfile"
+    source_folder = "src/LS.NotificationApi"
   }
   patient-api = {
     cpu                = "1024"
@@ -192,8 +200,9 @@ api_services_config = {
     log_retention_days = 30
     desired_count      = 1
 
-    buildspec  = "deploy/patient-api/buildspec.yml"
-    dockerfile = "deploy/patient-api/Patient.Dockerfile"
+    buildspec     = "deploy/patient-api/buildspec.yml"
+    dockerfile    = "deploy/patient-api/Patient.Dockerfile"
+    source_folder = "src/LS.PatientApi"
   }
   # worker-service = {
   #   cpu                = "256"

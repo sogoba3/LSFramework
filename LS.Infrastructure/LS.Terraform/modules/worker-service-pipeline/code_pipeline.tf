@@ -2,6 +2,20 @@ resource "aws_codepipeline" "ls_framework_codepipeline" {
     name     = "${var.service_name}-ecs-rolling"
     role_arn = aws_iam_role.ls_framework_worker_service_codepipeline_role.arn
 
+    trigger {
+        provider_type = "CodeStarSourceConnection"
+      git_configuration {
+        source_action_name = "Source"
+        push {
+            branches {
+              includes = [ "main" ]
+            }
+          file_paths {
+            includes = [ "src/LS.WorkerService/**", "src/LS.Shared/**" ]
+          }
+        }
+      }
+    }
     artifact_store {
         location = var.ls_framework_pipeline_artifacts_bucket
         type     = "S3"

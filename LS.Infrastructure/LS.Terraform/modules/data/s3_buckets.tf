@@ -71,7 +71,7 @@ resource "aws_s3_bucket_public_access_block" "ls_framework_fb_access_block" {
 ### ALB Access Logs Bucket
 resource "aws_s3_bucket" "ls_framework_alb_logs" {
   bucket = "${var.project_prefix}-alb-logs"
-
+  force_destroy = true
   tags = {
     Name = "${var.project_prefix}-alb-logs"
   }
@@ -282,7 +282,7 @@ resource "aws_s3_bucket_public_access_block" "ls_framework_frontend_access_block
 ### CI/CD pipeline artifacts
 resource "aws_s3_bucket" "ls_framework_pipeline_artifacts_bucket" {
   bucket = "${var.project_prefix}-pipeline-artifacts-bucket"
-
+  force_destroy = true
   tags = {
     Name = "${var.project_prefix}-pipeline-artifacts-bucket"
   }

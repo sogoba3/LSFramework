@@ -10,7 +10,8 @@ resource "aws_service_discovery_service" "ls_framework_discovery_services" {
     }
     routing_policy = "MULTIVALUE"
   }
-  health_check_config {
-    failure_threshold = 1
-  }
+  # health_check_config {
+  #   type = "HTTP"
+  #   failure_threshold = 1
+  # }
 }

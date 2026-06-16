@@ -2,20 +2,20 @@ resource "aws_codepipeline" "ls_framework_codepipeline" {
     name     = "${var.service_name}-blue-green"
     role_arn = aws_iam_role.ls_framework_gateway_api_service_codepipeline_role.arn
 
-    trigger {
-        provider_type = "CodeStarSourceConnection"
-      git_configuration {
-        source_action_name = "Source"
-        push {
-            branches {
-              includes = [ "main" ]
-            }
-          file_paths {
-            includes = [ "src/LS.Gateway/**", "src/LS.Shared/**" ]
-          }
-        }
-      }
-    }
+    # trigger {
+    #     provider_type = "CodeStarSourceConnection"
+    #   git_configuration {
+    #     source_action_name = "Source"
+    #     push {
+    #         branches {
+    #           includes = [ "main" ]
+    #         }
+    #       file_paths {
+    #         includes = [ "src/LS.Gateway/**", "src/LS.Shared/**" ]
+    #       }
+    #     }
+    #   }
+    # }
     
     artifact_store {
         location = var.ls_framework_pipeline_artifacts_bucket

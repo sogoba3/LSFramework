@@ -86,4 +86,9 @@ export const router = createBrowserRouter([
     //         {path: 'appointmentManagement', element: <AppointmentPage />}
     //     ],
     // },
-]);
+],
+{
+    basename: "/"
+}
+
+);

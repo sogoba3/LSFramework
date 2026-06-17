@@ -1,7 +1,7 @@
 ### LS FRAMEWORK SECRETS MANAGER SECRET
 resource "aws_secretsmanager_secret" "ls_framework_sqlserver_secret" {
   #name = "${var.project_prefix}/sqlserver"
-  name = "${var.project_prefix}/sqlserver19"
+  name = "${var.project_prefix}/sqlserver20"
   description             = "Master credentials for the LS Framework SQL Server DB"
   kms_key_id = var.ls_framework_sqlserver_db_key_arn
   tags = {

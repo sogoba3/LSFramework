@@ -38,15 +38,15 @@ resource "aws_ecs_task_definition" "ls_framework_ecs_task_definition" {
             },
             {
                 name = "AwsSettings__SNS__AuditLogArn"
-                valueFrom = var.ls_framework_Audit_Log_Arn
+                value = var.ls_framework_Audit_Log_Arn
             },
             {
                 name = "AwsSettings__SNS__TenantAdminSignedUpTopicArn"
-                valueFrom = var.ls_framework_Tenant_Admin_Signed_Up_Topic_Arn
+                value = var.ls_framework_Tenant_Admin_Signed_Up_Topic_Arn
             },
             {
                 name = "AwsSettings__SQS__TenantAdminSignedUpQueueUrl"
-                valueFrom = var.ls_framework_Tenant_Admin_Signed_Up_Queue_Url
+                value = var.ls_framework_Tenant_Admin_Signed_Up_Queue_Url
             }
         ]
         secrets = [

@@ -1,4 +1,3 @@
-
 # LS FRAMEWORK ECS Task Definition
 resource "aws_ecs_task_definition" "ls_framework_ecs_task_definition" {
     family = "${var.service_name}-task-def"
@@ -36,16 +35,32 @@ resource "aws_ecs_task_definition" "ls_framework_ecs_task_definition" {
             {
                 name = "Database__Name"
                 value = "LSFrameworkDb"
+            },
+            {
+                name = "AwsSettings__SNS__AuditLogArn"
+                valueFrom = var.ls_framework_Audit_Log_Arn
+            },
+            {
+                name = "AwsSettings__SNS__TenantAdminSignedUpTopicArn"
+                valueFrom = var.ls_framework_Tenant_Admin_Signed_Up_Topic_Arn
+            },
+            {
+                name = "AwsSettings__SQS__TenantAdminSignedUpQueueUrl"
+                valueFrom = var.ls_framework_Tenant_Admin_Signed_Up_Queue_Url
             }
-            # {
-            #     name  = "InternalAlbDns"
-            #     value = var.ls_framework_internal_alb_dns_name
-            # }
         ]
         secrets = [
             {
                 name = "ConnectionStrings__DefaultConnection"
                 valueFrom = var.ls_framework_sqlserver_secret_arn
+            },
+            {
+                name = "AwsSettings__UserPoolId"
+                valueFrom = "${var.ls_framework_cognito_secret_arn}:UserPoolId::"
+            },
+            {
+                name = "AwsSettings__ClientId"
+                valueFrom = "${var.ls_framework_cognito_secret_arn}:ClientId::"
             }
         ]
         logConfiguration = {

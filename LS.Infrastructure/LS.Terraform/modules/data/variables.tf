@@ -36,3 +36,9 @@ variable "ls_framework_sqlserver_db_key_arn" {
 variable "ls_framework_frontend_s3_distribution_arn" {
   type = string
 }
+variable "ls_framework_cognito_UserPoolId" {
+  type = string
+}
+variable "ls_framework_cognito_ClientId" {
+  type = string
+}

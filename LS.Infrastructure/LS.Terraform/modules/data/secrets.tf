@@ -1,7 +1,7 @@
 ### LS FRAMEWORK SECRETS MANAGER SECRET
 resource "aws_secretsmanager_secret" "ls_framework_sqlserver_secret" {
   #name = "${var.project_prefix}/sqlserver"
-  name = "${var.project_prefix}/sqlserver24"
+  name = "${var.project_prefix}/sqlserver25"
   description             = "Master credentials for the LS Framework SQL Server DB"
   kms_key_id = var.ls_framework_sqlserver_db_key_arn
   tags = {
@@ -21,3 +21,22 @@ resource "aws_secretsmanager_secret_version" "ls_framework_sqlserver_secret_valu
     #port = 1433
   })
 }
+
+######################################################################################
+resource "aws_secretsmanager_secret" "ls_framework_cognito_secret" {
+  name = "${var.project_prefix}/cognito1"
+  description             = "Cognito secrets"
+  tags = {
+    Name = "${var.project_prefix}-cognito-secret"
+  }
+}
+resource "aws_secretsmanager_secret_version" "ls_framework_cognito_secret_value" {
+  secret_id = aws_secretsmanager_secret.ls_framework_cognito_secret.id
+
+  secret_string = jsonencode({
+    UserPoolId = var.ls_framework_cognito_UserPoolId
+    ClientId = var.ls_framework_cognito_ClientId
+  })
+}
+
+

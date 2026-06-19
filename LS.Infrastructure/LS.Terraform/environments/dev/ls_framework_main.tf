@@ -68,6 +68,9 @@ module "ls_framework_data" {
 
   ls_framework_frontend_s3_distribution_arn = module.ls_framework_edge.ls_framework_frontend_s3_distribution_arn
 
+  ls_framework_cognito_UserPoolId = var.ls_framework_cognito_UserPoolId
+  ls_framework_cognito_ClientId   = var.ls_framework_cognito_ClientId
+
   ls_framework_sqlserver_password = var.ls_framework_sqlserver_password
   ls_framework_sqlserver_username = var.ls_framework_sqlserver_username
 
@@ -127,6 +130,15 @@ module "ls_framework_service_discovery" {
   ls_framework_vpc_id = module.ls_framework_network.ls_framework_vpc_id
 }
 ##########################################################################################
+data "aws_sns_topic" "admin_sign_up_topic" {
+  name = "TenantAdminSignedUpTopic"
+}
+data "aws_sns_topic" "audit_log" {
+  name = "AuditLogTopic"
+}
+data "aws_sqs_queue" "admin_signed_up_queue" {
+  name = "TenantAdminSignedUpQueue"
+}
 ### Shared LS framework Core ressources
 module "ls_framework_core_shared_ressources" {
   for_each = var.api_services_config
@@ -145,6 +157,11 @@ module "ls_framework_core_shared_ressources" {
   ls_framework_sqlserver_secret_arn = module.ls_framework_data.ls_framework_sqlserver_secret_arn
   ls_framework_vpc_id               = module.ls_framework_network.ls_framework_vpc_id
   # ls_framework_internal_alb_dns_name = module.ls_framework_alb.ls_framework_internal_alb_name
+
+  ls_framework_Audit_Log_Arn                    = data.aws_sns_topic.audit_log.arn
+  ls_framework_cognito_secret_arn               = module.ls_framework_data.ls_framework_cognito_secret_arn
+  ls_framework_Tenant_Admin_Signed_Up_Queue_Url = data.aws_sqs_queue.admin_signed_up_queue.url
+  ls_framework_Tenant_Admin_Signed_Up_Topic_Arn = data.aws_sns_topic.admin_sign_up_topic.arn
 
   project_prefix = local.env_context.resource_prefix
 }
@@ -201,6 +218,11 @@ module "ls_framework_worker_service" {
   ls_framework_sqlserver_endpoint   = module.ls_framework_rds_sql_server.ls_framework_sqlserver_db_instance_endpoint
 
   # ls_framework_service_discovery_arn = module.ls_framework_service_discovery.ls_framework_discovery_services_arns["worker"]
+
+  ls_framework_Audit_Log_Arn                    = data.aws_sns_topic.audit_log.arn
+  ls_framework_cognito_secret_arn               = module.ls_framework_data.ls_framework_cognito_secret_arn
+  ls_framework_Tenant_Admin_Signed_Up_Queue_Url = data.aws_sqs_queue.admin_signed_up_queue.url
+  ls_framework_Tenant_Admin_Signed_Up_Topic_Arn = data.aws_sns_topic.admin_sign_up_topic.arn
 
   project_prefix = local.env_context.resource_prefix
 }

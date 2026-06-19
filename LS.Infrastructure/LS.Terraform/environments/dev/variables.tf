@@ -75,6 +75,13 @@ variable "ls_framework_domain_name" {
   type = string
 }
 
+variable "ls_framework_cognito_UserPoolId" {
+  type = string
+}
+variable "ls_framework_cognito_ClientId" {
+  type = string
+}
+
 # variable "deployment_type" {
 #   type = string
 #   # "BLUE_GREEN" | "ECS_ROLLING"

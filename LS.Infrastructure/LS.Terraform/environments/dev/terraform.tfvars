@@ -226,4 +226,7 @@ private_db_subnet_cidrs = ["10.0.11.0/24", "10.0.12.0/24", "10.0.13.0/24"]
 ### dns routing
 ls_framework_domain_name = "lsframework.com"
 
+ls_framework_cognito_UserPoolId = "us-east-2_lXZhLnJRw"
+ls_framework_cognito_ClientId   = "70q2ap1l18gl8eno8ask5415r8"
+
 

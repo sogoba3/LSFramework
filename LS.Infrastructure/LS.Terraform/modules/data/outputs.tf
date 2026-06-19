@@ -4,6 +4,23 @@ output "ls_framework_sqlserver_secret_value_string" {
 output "ls_framework_sqlserver_secret_arn" {
   value = aws_secretsmanager_secret.ls_framework_sqlserver_secret.arn
 }
+# output "ls_framework_cognito_secret_value_string" {
+#   value = aws_secretsmanager_secret_version.ls_framework_cognito_secret_value.secret_string
+# }
+output "ls_framework_cognito_secret_arn" {
+  value = aws_secretsmanager_secret.ls_framework_cognito_secret.arn
+}
+# output "ls_framework_cognito_secret_value_string" {
+#   value = aws_secretsmanager_secret_version.ls_framework_cognito_secret_value.secret_string
+# }
+# output "ls_framework_sns_secret_value_string" {
+#   value = aws_secretsmanager_secret_version.ls_framework_sns_secret_value.secret_string
+# }
+# output "ls_framework_sqs_secret_value_string" {
+#   value = aws_secretsmanager_secret_version.ls_framework_sqs_secret_value.secret_string
+# }
+
+
 output "ls_framework_files_bucket_name" {
   value = aws_s3_bucket.ls_framework_files_bucket.bucket
 }

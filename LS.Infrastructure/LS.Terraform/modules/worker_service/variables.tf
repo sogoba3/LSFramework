@@ -39,6 +39,19 @@ variable "ls_framework_sqlserver_secret_arn" {
 variable "ls_framework_sqlserver_endpoint" {
   type = string
 }
+
+variable "ls_framework_cognito_secret_arn" {
+  type = string
+}
+variable "ls_framework_Audit_Log_Arn" {
+  type = string
+}
+variable "ls_framework_Tenant_Admin_Signed_Up_Topic_Arn" {
+  type = string
+}
+variable "ls_framework_Tenant_Admin_Signed_Up_Queue_Url" {
+  type = string
+}
 # variable "ls_framework_service_discovery_arn" {
 #   type = string
 # }

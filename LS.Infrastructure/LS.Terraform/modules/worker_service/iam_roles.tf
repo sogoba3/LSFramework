@@ -69,7 +69,7 @@ resource "aws_iam_role" "ls_framework_ecs_task_role" {
   })
   
 }
-resource "aws_iam_role_policy" "ls_framework_sqlserver_secret_access" {
+resource "aws_iam_role_policy" "ls_framework_task_role_policies" {
 
   name = "${var.service_name}-sql-secret"
 
@@ -82,6 +82,27 @@ resource "aws_iam_role_policy" "ls_framework_sqlserver_secret_access" {
         Effect = "Allow"
         Action = [ "secretsmanager:GetSecretValue" ]
         Resource = [ var.ls_framework_sqlserver_secret_arn ]
+      },
+      {
+        Effect = "Allow"
+        Action = [ 
+          "sqs:ReceiveMessage",
+          "sqs:DeleteMessage",
+          "sqs:GetQueueAttributes",
+          "sqs:GetQueueUrl",
+          "sqs:ChangeMessageVisibility"
+        ]
+        Resource = [ var.ls_framework_Tenant_Admin_Signed_Up_Queue_Arn ]
+      },
+      {
+        Effect = "Allow"
+        Action = [
+          "sns:Publish"
+        ]
+        Resource = [
+          var.ls_framework_Audit_Log_Arn,
+          var.ls_framework_Tenant_Admin_Signed_Up_Topic_Arn
+        ]
       }
     ]
   })

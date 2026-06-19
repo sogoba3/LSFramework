@@ -48,6 +48,9 @@ variable "ls_framework_Tenant_Admin_Signed_Up_Topic_Arn" {
 variable "ls_framework_Tenant_Admin_Signed_Up_Queue_Url" {
   type = string
 }
+variable "ls_framework_Tenant_Admin_Signed_Up_Queue_Arn" {
+  type = string
+}
 
 
 

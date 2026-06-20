@@ -24,7 +24,7 @@ resource "aws_secretsmanager_secret_version" "ls_framework_sqlserver_secret_valu
 
 ######################################################################################
 resource "aws_secretsmanager_secret" "ls_framework_cognito_secret" {
-  name = "${var.project_prefix}/cognito5"
+  name = "${var.project_prefix}/cognito6"
   description             = "Cognito secrets"
   tags = {
     Name = "${var.project_prefix}-cognito-secret"

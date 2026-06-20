@@ -46,12 +46,14 @@ builder.Services.AddCors(options =>
 });
 
 //Using aws cognito for sign in / sign up objectives
-var clientId = "70q2ap1l18gl8eno8ask5415r8";
+// var clientId = "70q2ap1l18gl8eno8ask5415r8";
+var awsSettings = builder.Configuration.GetSection("AwsSettings").Get<AwsSettings>() ?? throw new Exception("AwsSettings missing");
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
   .AddJwtBearer(options =>
   {
-    options.Authority = "https://cognito-idp.us-east-2.amazonaws.com/us-east-2_lXZhLnJRw";
-    options.Audience = clientId;
+    options.Authority = "https://cognito-idp.{awsSettings.Region}.amazonaws.com/{awsSettings.UserPoolId}";
+    options.Audience = awsSettings.ClientId;
+    // clientId;
     options.TokenValidationParameters = new TokenValidationParameters
     {
       ValidateIssuer = true,

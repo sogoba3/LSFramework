@@ -47,6 +47,10 @@ resource "aws_ecs_task_definition" "ls_framework_ecs_task_definition" {
             {
                 name = "AwsSettings__SQS__TenantAdminSignedUpQueueUrl"
                 value = var.ls_framework_Tenant_Admin_Signed_Up_Queue_Url
+            },
+            {
+                name  = "Services__TenantApiBaseUrl"
+                value = var.ls_framework_tenant_api_base_url
             }
         ]
         secrets = [

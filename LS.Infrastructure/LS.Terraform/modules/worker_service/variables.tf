@@ -55,6 +55,9 @@ variable "ls_framework_Tenant_Admin_Signed_Up_Queue_Url" {
 variable "ls_framework_Tenant_Admin_Signed_Up_Queue_Arn" {
   type = string
 }
+# variable "ls_framework_tenant_api_base_url" {
+#   type = string
+# }
 # variable "ls_framework_service_discovery_arn" {
 #   type = string
 # }

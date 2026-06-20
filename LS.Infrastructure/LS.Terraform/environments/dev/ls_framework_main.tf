@@ -163,6 +163,7 @@ module "ls_framework_core_shared_ressources" {
   ls_framework_Tenant_Admin_Signed_Up_Queue_Url = data.aws_sqs_queue.admin_signed_up_queue.url
   ls_framework_Tenant_Admin_Signed_Up_Queue_Arn =  data.aws_sqs_queue.admin_signed_up_queue.arn
   ls_framework_Tenant_Admin_Signed_Up_Topic_Arn = data.aws_sns_topic.admin_sign_up_topic.arn
+  ls_framework_tenant_api_base_url = module.ls_framework_service_discovery.ls_framework_discovery_services_arns["tenant"]
 
   project_prefix = local.env_context.resource_prefix
 }
@@ -217,8 +218,6 @@ module "ls_framework_worker_service" {
 
   ls_framework_sqlserver_secret_arn = module.ls_framework_data.ls_framework_sqlserver_secret_arn
   ls_framework_sqlserver_endpoint   = module.ls_framework_rds_sql_server.ls_framework_sqlserver_db_instance_endpoint
-
-  # ls_framework_service_discovery_arn = module.ls_framework_service_discovery.ls_framework_discovery_services_arns["worker"]
 
   ls_framework_Audit_Log_Arn                    = data.aws_sns_topic.audit_log.arn
   ls_framework_cognito_secret_arn               = module.ls_framework_data.ls_framework_cognito_secret_arn

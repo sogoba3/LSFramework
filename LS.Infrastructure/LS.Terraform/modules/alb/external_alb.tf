@@ -52,6 +52,16 @@ resource "aws_vpc_security_group_ingress_rule" "ls_framework_ext_ingress_rule_ht
 
   description = "Allow HTTPs"
 }
+resource "aws_vpc_security_group_ingress_rule" "ls_framework_ext_ingress_rule_8443" {
+  security_group_id = aws_security_group.ls_framework_external_alb_sg.id
+
+  cidr_ipv4   = "0.0.0.0/0"
+  from_port   = 8443
+  to_port     = 8443
+  ip_protocol = "tcp"
+
+  description = "Allow ALB HTTPS custom port"
+}
 
 # Outbound traffic
 resource "aws_vpc_security_group_egress_rule" "ls_framework_ext_egress_rule" {

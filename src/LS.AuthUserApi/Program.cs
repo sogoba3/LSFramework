@@ -127,6 +127,12 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddAuthorization();
 builder.Services.AddControllers();
 
+Console.WriteLine($"UserPoolId={builder.Configuration["AwsSettings:UserPoolId"]}");
+
+Console.WriteLine($"ClientId={builder.Configuration["AwsSettings:ClientId"]}");
+
+Console.WriteLine($"TenantApiBaseUrl={builder.Configuration["Services:TenantApiBaseUrl"]}");
+
 var app = builder.Build();
 
 // Use CORS

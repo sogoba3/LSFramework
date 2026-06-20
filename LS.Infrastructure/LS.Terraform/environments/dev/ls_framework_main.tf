@@ -163,7 +163,7 @@ module "ls_framework_core_shared_ressources" {
   ls_framework_Tenant_Admin_Signed_Up_Queue_Url = data.aws_sqs_queue.admin_signed_up_queue.url
   ls_framework_Tenant_Admin_Signed_Up_Queue_Arn =  data.aws_sqs_queue.admin_signed_up_queue.arn
   ls_framework_Tenant_Admin_Signed_Up_Topic_Arn = data.aws_sns_topic.admin_sign_up_topic.arn
-  ls_framework_tenant_api_base_url = module.ls_framework_service_discovery.ls_framework_discovery_services_arns["tenant"]
+  ls_framework_tenant_api_base_url = module.ls_framework_service_discovery.ls_framework_discovery_service_dns["tenant"]
 
   project_prefix = local.env_context.resource_prefix
 }

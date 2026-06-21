@@ -20,10 +20,15 @@ module "ls_framework_network" {
   private_subnet_cidrs    = var.private_subnet_cidrs
   private_db_subnet_cidrs = var.private_db_subnet_cidrs
 
-  ls_framework_ecs_service_sg_id = {
-    for k, v in module.ls_framework_services :
-    k => v.ls_framework_ecs_service_sg_id
-  }
+  ls_framework_ecs_service_sg_id = merge(
+    {
+      gateway = module.ls_framework_gateway_api_service.ls_framework_gateway_service_sg_id
+    },
+    {
+      for k, v in module.ls_framework_services :
+      k => v.ls_framework_ecs_service_sg_id
+    }
+  )
   ls_framework_worker_sg_id = module.ls_framework_worker_service.ls_framework_worker_sg_id
 
   project_prefix = local.env_context.resource_prefix

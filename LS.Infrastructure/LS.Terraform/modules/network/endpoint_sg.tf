@@ -10,7 +10,6 @@ resource "aws_security_group" "ls_framework_vpc_endpoint_sg" {
   }
 }
 
-# Inbound rule for LS Framework Application Traffic from aws services
 resource "aws_vpc_security_group_ingress_rule" "ls_framework_vpc-endpoint_allow_inbound" {
   for_each = var.ls_framework_ecs_service_sg_id
 
@@ -30,8 +29,8 @@ resource "aws_vpc_security_group_ingress_rule" "vpce_https_from_worker" {
 }
 
 # Outbound traffic
-# resource "aws_vpc_security_group_egress_rule" "ls_framework_vpc-endpoint_allow_all_outbound_ipv4" {
-#   security_group_id = aws_security_group.ls_framework_vpc_endpoint_sg.id
-#   cidr_ipv4         = "0.0.0.0/0"
-#   ip_protocol       = "-1"
-# }
+resource "aws_vpc_security_group_egress_rule" "ls_framework_vpc-endpoint_allow_all_outbound_ipv4" {
+  security_group_id = aws_security_group.ls_framework_vpc_endpoint_sg.id
+  cidr_ipv4         = "0.0.0.0/0"
+  ip_protocol       = "-1"
+}

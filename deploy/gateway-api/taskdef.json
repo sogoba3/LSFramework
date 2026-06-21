@@ -10,6 +10,8 @@
     {
       "name": "gateway-api",
       "image": "<IMAGE1_NAME>",
+      "cpu":"1024",
+      "memory":"2048",
       "essential": true,
       "portMappings": [
         {
@@ -23,7 +25,15 @@
           "name": "ConnectionStrings__DefaultConnection",
           "valueFrom": "<SQLSERVER_SECRET_ARN>"
         }
-      ]
+      ], 
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/ls-dev/gateway-api",
+          "awslogs-region": "us-east-2",
+          "awslogs-stream-prefix": "ecs"
+        }
+      }
     }
   ]
 }

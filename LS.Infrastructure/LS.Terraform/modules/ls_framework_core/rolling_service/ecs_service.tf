@@ -17,6 +17,7 @@ resource "aws_ecs_service" "ls_framework_ecs_service_name" {
   # }
   service_registries {
     registry_arn = var.ls_framework_service_discovery_arn
+    container_name = var.service_name
   }
   # ECS NETWORKING
   network_configuration {
@@ -24,7 +25,7 @@ resource "aws_ecs_service" "ls_framework_ecs_service_name" {
     subnets = var.ls_framework_private_subnets
 
     security_groups = [
-        var.ls_framework_ecs_service_sg_id
+        aws_security_group.ls_framework_ecs_service_sg.id
         #aws_security_group.ls_framework_ecs_service_sg.id
     ]
   }

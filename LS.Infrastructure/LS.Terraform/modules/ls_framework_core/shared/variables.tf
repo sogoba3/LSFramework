@@ -22,10 +22,7 @@ variable "memory" {
 variable "log_retention_days" {
   type = number
 }
-variable "ls_framework_vpc_id" {
-  type        = string
-  description = "The VPC ID passed down from the network module"
-}
+
 variable "ls_framework_ecr_repository_url" {
   type = string
 }

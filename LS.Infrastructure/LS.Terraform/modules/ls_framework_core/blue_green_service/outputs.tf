@@ -14,3 +14,6 @@ output "ls_framework_lb_blue_tg_name" {
 output "ls_framework_lb_green_tg_name" {
   value = aws_lb_target_group.ls_framework_lb_green_tg.name
 }
+output "ls_framework_gateway_service_sg_id" {
+  value = aws_security_group.ls_framework_gateway_service_sg.id
+}

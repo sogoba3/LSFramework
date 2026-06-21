@@ -20,9 +20,9 @@ variable "ls_framework_vpc_id" {
   type        = string
   description = "The VPC ID passed down from the network module"
 }
-variable "ls_framework_ecs_service_sg_id" {
-  type = string
-}
+# variable "ls_framework_ecs_service_sg_id" {
+#   type = string
+# }
 variable "container_port" {
   type = number
   validation {
@@ -35,6 +35,10 @@ variable "health_check_path" {
 }
 variable "ls_framework_service_discovery_arn" {
   type = string
+}
+variable "ls_framework_external_alb_sg_id" {
+  type        = string
+  description = "The ID of the external ALB security group passed from the root environment"
 }
 
 # variable "ls_framework_lb_blue_tg_arn" {

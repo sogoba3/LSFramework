@@ -21,7 +21,7 @@ module "ls_framework_network" {
   private_db_subnet_cidrs = var.private_db_subnet_cidrs
 
   ls_framework_ecs_service_sg_id = {
-    for k, v in module.ls_framework_core_shared_ressources :
+    for k, v in module.ls_framework_services :
     k => v.ls_framework_ecs_service_sg_id
   }
   ls_framework_worker_sg_id = module.ls_framework_worker_service.ls_framework_worker_sg_id
@@ -115,7 +115,7 @@ module "ls_framework_alb" {
   gateway_blue_target_group_arn  = module.ls_framework_gateway_api_service.ls_framework_lb_blue_tg_arn
   gateway_green_target_group_arn = module.ls_framework_gateway_api_service.ls_framework_lb_green_tg_arn
   ls_framework_alb_logs          = module.ls_framework_data.ls_framework_alb_logs
-  ls_framework_ecs_service_sg_id = module.ls_framework_core_shared_ressources["gateway-api"].ls_framework_ecs_service_sg_id
+  ls_framework_ecs_service_sg_id = module.ls_framework_gateway_api_service.ls_framework_gateway_service_sg_id
   routing_port                   = var.api_services_config["gateway-api"].routing_port
   routing_test_port              = var.api_services_config["gateway-api"].routing_test_port
   ls_framework_vpc_id            = module.ls_framework_network.ls_framework_vpc_id
@@ -152,18 +152,16 @@ module "ls_framework_core_shared_ressources" {
   cpu                               = each.value.cpu
   log_retention_days                = each.value.log_retention_days
   ls_framework_ecr_repository_url   = module.ls_framework_ecr[each.key].ls_framework_ecr_repository_url
-  ls_framework_external_alb_sg_id   = module.ls_framework_alb.ls_framework_external_alb_sg_id
   ls_framework_sqlserver_endpoint   = module.ls_framework_rds_sql_server.ls_framework_sqlserver_db_instance_endpoint
   ls_framework_sqlserver_secret_arn = module.ls_framework_data.ls_framework_sqlserver_secret_arn
-  ls_framework_vpc_id               = module.ls_framework_network.ls_framework_vpc_id
   # ls_framework_internal_alb_dns_name = module.ls_framework_alb.ls_framework_internal_alb_name
 
   ls_framework_Audit_Log_Arn                    = data.aws_sns_topic.audit_log.arn
   ls_framework_cognito_secret_arn               = module.ls_framework_data.ls_framework_cognito_secret_arn
   ls_framework_Tenant_Admin_Signed_Up_Queue_Url = data.aws_sqs_queue.admin_signed_up_queue.url
-  ls_framework_Tenant_Admin_Signed_Up_Queue_Arn =  data.aws_sqs_queue.admin_signed_up_queue.arn
+  ls_framework_Tenant_Admin_Signed_Up_Queue_Arn = data.aws_sqs_queue.admin_signed_up_queue.arn
   ls_framework_Tenant_Admin_Signed_Up_Topic_Arn = data.aws_sns_topic.admin_sign_up_topic.arn
-  ls_framework_tenant_api_base_url = module.ls_framework_service_discovery.ls_framework_discovery_service_dns["tenant"]
+  ls_framework_tenant_api_base_url              = module.ls_framework_service_discovery.ls_framework_discovery_service_dns["tenant"]
 
   project_prefix = local.env_context.resource_prefix
 }
@@ -172,7 +170,6 @@ module "ls_framework_gateway_api_service" {
   source = "../../modules/ls_framework_core/blue_green_service"
 
   service_name                     = var.service_names.gateway_api_name
-  ls_framework_ecs_service_sg_id   = module.ls_framework_core_shared_ressources["gateway-api"].ls_framework_ecs_service_sg_id
   ls_framework_task_definition_arn = module.ls_framework_core_shared_ressources["gateway-api"].ls_framework_ecs_task_definition_arn
   container_port                   = var.api_services_config["gateway-api"].container_port
   desired_count                    = var.api_services_config["gateway-api"].desired_count
@@ -180,6 +177,7 @@ module "ls_framework_gateway_api_service" {
   ls_framework_private_subnets     = module.ls_framework_network.ls_framework_private_subnets
   ls_framework_vpc_id              = module.ls_framework_network.ls_framework_vpc_id
   ls_framework_ecs_cluster_id      = module.ls_framework_ecs_cluster.ls_framework_ecs_cluster_id
+  ls_framework_external_alb_sg_id  = module.ls_framework_alb.ls_framework_external_alb_sg_id
 
   ls_framework_service_discovery_arn = ""
 
@@ -194,14 +192,19 @@ module "ls_framework_services" {
   }
   source = "../../modules/ls_framework_core/rolling_service"
 
-  service_name                     = each.key
-  ls_framework_ecs_service_sg_id   = module.ls_framework_core_shared_ressources[each.key].ls_framework_ecs_service_sg_id
+  service_name                       = each.key
+  container_port                     = each.value.container_port
+  ls_framework_vpc_id                = module.ls_framework_network.ls_framework_vpc_id
+  ls_framework_gateway_service_sg_id = module.ls_framework_gateway_api_service.ls_framework_gateway_service_sg_id
+  # ls_framework_ecs_service_sg_id   = module.ls_framework_core_shared_ressources[each.key].ls_framework_ecs_service_sg_id
   ls_framework_task_definition_arn = module.ls_framework_core_shared_ressources[each.key].ls_framework_ecs_task_definition_arn
   desired_count                    = each.value.desired_count
   ls_framework_ecs_cluster_id      = module.ls_framework_ecs_cluster.ls_framework_ecs_cluster_id
   ls_framework_private_subnets     = module.ls_framework_network.ls_framework_private_subnets
 
   ls_framework_service_discovery_arn = module.ls_framework_service_discovery.ls_framework_discovery_services_arns[replace(replace(each.key, "-service", ""), "-api", "")]
+
+  project_prefix = local.env_context.resource_prefix
 }
 module "ls_framework_worker_service" {
   source                          = "../../modules/worker_service"
@@ -222,7 +225,7 @@ module "ls_framework_worker_service" {
   ls_framework_Audit_Log_Arn                    = data.aws_sns_topic.audit_log.arn
   ls_framework_cognito_secret_arn               = module.ls_framework_data.ls_framework_cognito_secret_arn
   ls_framework_Tenant_Admin_Signed_Up_Queue_Url = data.aws_sqs_queue.admin_signed_up_queue.url
-  ls_framework_Tenant_Admin_Signed_Up_Queue_Arn =  data.aws_sqs_queue.admin_signed_up_queue.arn
+  ls_framework_Tenant_Admin_Signed_Up_Queue_Arn = data.aws_sqs_queue.admin_signed_up_queue.arn
   ls_framework_Tenant_Admin_Signed_Up_Topic_Arn = data.aws_sns_topic.admin_sign_up_topic.arn
 
   project_prefix = local.env_context.resource_prefix

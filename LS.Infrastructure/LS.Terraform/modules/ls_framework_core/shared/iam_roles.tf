@@ -102,6 +102,18 @@ resource "aws_iam_role_policy" "ls_framework_task_role_policies" {
           var.ls_framework_Audit_Log_Arn,
           var.ls_framework_Tenant_Admin_Signed_Up_Topic_Arn
         ]
+      },
+      {
+        Effect = "Allow"
+        Action = [
+          "cognito-idp:SignUp",
+          "cognito-idp:AdminConfirmSignUp",
+          "cognito-idp:AdminAddUserToGroup"
+        ]
+        Resource = [
+          var.ls_framework_Audit_Log_Arn,
+          var.ls_framework_Tenant_Admin_Signed_Up_Topic_Arn
+        ]
       }
     ]
   })

@@ -102,7 +102,11 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddAuthorization();
 builder.Services.AddControllers();
 
+builder.Services.AddHealthChecks();
+
 var app = builder.Build();
+
+app.MapHealthChecks("/health");
 
 // Use CORS
 // app.UseCors("AllowFrontend");
@@ -116,7 +120,7 @@ if (!app.Environment.IsProduction())
 }
 if (!app.Environment.IsDevelopment())
 {
-  app.UseHttpsRedirection();
+//   app.UseHttpsRedirection();
 }
 
 app.UseAuthentication();

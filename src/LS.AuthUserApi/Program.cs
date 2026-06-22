@@ -133,8 +133,11 @@ Console.WriteLine($"ClientId={builder.Configuration["AwsSettings:ClientId"]}");
 
 Console.WriteLine($"TenantApiBaseUrl={builder.Configuration["Services:TenantApiBaseUrl"]}");
 
+builder.Services.AddHealthChecks();
+
 var app = builder.Build();
 
+app.MapHealthChecks("/health");
 // Use CORS
 // app.UseCors("AllowFrontend");
 app.UseCors("AllowAll");
@@ -157,7 +160,7 @@ if (!app.Environment.IsProduction())
 }
 if (!app.Environment.IsDevelopment())
 {
-  app.UseHttpsRedirection();
+  // app.UseHttpsRedirection();
 }
 
 

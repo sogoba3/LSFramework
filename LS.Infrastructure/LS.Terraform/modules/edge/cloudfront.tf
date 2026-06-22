@@ -25,7 +25,7 @@ resource "aws_cloudfront_distribution" "ls_framework_frontend_s3_distribution" {
     custom_origin_config {
       http_port              = 80
       https_port             = 443
-      origin_protocol_policy = "https-only"
+      origin_protocol_policy = "http-only"
 
       origin_ssl_protocols = [
         "TLSv1.2"
@@ -71,7 +71,8 @@ resource "aws_cloudfront_distribution" "ls_framework_frontend_s3_distribution" {
     viewer_protocol_policy = "redirect-to-https"
     forwarded_values {
       query_string = true
-      headers = [ "Authorization", "Content-Type", "Origin" ]
+      headers = ["*"]
+      # [ "Authorization", "Content-Type", "Origin" ]
       cookies { forward = "all" }
     }
 
@@ -80,17 +81,21 @@ resource "aws_cloudfront_distribution" "ls_framework_frontend_s3_distribution" {
     max_ttl     = 0
   }
 
-  ### REACT SPA ROUTING
-  custom_error_response {
-    error_code = 403
-    response_code = 200
-    response_page_path = "/index.html"
-  }
-  custom_error_response {
-      error_code = 404
-      response_code = 200
-      response_page_path = "/index.html"
-  }
+  # ### REACT SPA ROUTING
+  # custom_error_response {
+  #   error_code = 403
+  #   response_code = 200
+  #   response_page_path = "/index.html"
+
+  #   error_caching_min_ttl = 0
+  # }
+  # custom_error_response {
+  #     error_code = 404
+  #     response_code = 200
+  #     response_page_path = "/index.html"
+
+  #     error_caching_min_ttl = 0
+  # }
 
   ### PRICE CLASS CHEAPEST OPTION
   price_class = "PriceClass_100"

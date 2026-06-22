@@ -50,10 +50,22 @@ app.Use(async (context, next) =>
         context.Response.StatusCode);
 });
 
-app.MapHealthChecks("/health");
+// 🔥 IMPORTANT: strip /api prefix
+app.Use(async (context, next) =>
+{
+    if (context.Request.Path.StartsWithSegments("/api", out var remaining))
+    {
+        context.Request.Path = remaining;
+    }
+
+    await next();
+});
+
 // Use CORS
 // app.UseCors("AllowFrontend");
 app.UseCors("AllowAll");
+
+app.MapHealthChecks("/health");
 
 app.MapReverseProxy();
 

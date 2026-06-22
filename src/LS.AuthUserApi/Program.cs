@@ -137,7 +137,8 @@ builder.Services.AddHealthChecks();
 
 var app = builder.Build();
 
-app.MapHealthChecks("/health");
+app.MapGroup("/auth")
+   .MapHealthChecks("/health");
 // Use CORS
 // app.UseCors("AllowFrontend");
 app.UseCors("AllowAll");

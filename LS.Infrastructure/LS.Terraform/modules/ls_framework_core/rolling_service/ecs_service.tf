@@ -18,7 +18,7 @@ resource "aws_ecs_service" "ls_framework_ecs_service_name" {
   service_registries {
     registry_arn = var.ls_framework_service_discovery_arn
     container_name = var.service_name
-    container_port = var.container_port
+    # container_port = var.container_port
   }
   # ECS NETWORKING
   network_configuration {

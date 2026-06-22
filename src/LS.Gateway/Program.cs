@@ -50,16 +50,6 @@ app.Use(async (context, next) =>
         context.Response.StatusCode);
 });
 
-// 🔥 IMPORTANT: strip /api prefix
-app.Use(async (context, next) =>
-{
-    if (context.Request.Path.StartsWithSegments("/api", out var remaining))
-    {
-        context.Request.Path = remaining;
-    }
-
-    await next();
-});
 
 // Use CORS
 // app.UseCors("AllowFrontend");

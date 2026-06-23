@@ -29,7 +29,7 @@ namespace LS.TenantApi.Controllers
         private readonly string _clientId;
         private IMapper _mapper;
         private readonly TenantEventPublisher _tenantEventPublisher;
-        private readonly IAuditLogPublisher _auditLogPublisher;
+        // private readonly IAuditLogPublisher _auditLogPublisher;
 
 
         public TenantController(ITenantRepository tenantRepository, IAmazonCognitoIdentityProvider cognitoClient, IMapper mapper, IOptions<AwsSettings> awsSettings, TenantEventPublisher tenantEventPublisher, IAuditLogPublisher auditLogPublisher)
@@ -46,7 +46,7 @@ namespace LS.TenantApi.Controllers
             _userPoolId = awsSettings.Value.UserPoolId;
             _clientId = awsSettings.Value.ClientId;
             _tenantEventPublisher = tenantEventPublisher;
-            _auditLogPublisher = auditLogPublisher;
+            // _auditLogPublisher = auditLogPublisher;
         }
 
         [HttpGet("get-tenant-subdomain/{subdomain}")]

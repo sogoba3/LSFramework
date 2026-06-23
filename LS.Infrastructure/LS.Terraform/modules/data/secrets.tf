@@ -14,7 +14,7 @@ resource "aws_secretsmanager_secret_version" "ls_framework_sqlserver_secret_valu
   secret_id = aws_secretsmanager_secret.ls_framework_sqlserver_secret.id
 
   secret_string = jsonencode({
-    connectionString = "Server=${var.ls_framework_sqlserver_endpoint};Database=LSFrameworkDb;User Id=${var.ls_framework_sqlserver_username};Password=${var.ls_framework_sqlserver_password};TrustServerCertificate=True;"
+    # connectionString = "Server=${var.ls_framework_sqlserver_endpoint};Database=LSFrameworkDb;User Id=${var.ls_framework_sqlserver_username};Password=${var.ls_framework_sqlserver_password};TrustServerCertificate=True;"
     username = var.ls_framework_sqlserver_username
     password = var.ls_framework_sqlserver_password
   })

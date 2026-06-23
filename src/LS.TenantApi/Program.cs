@@ -16,10 +16,28 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Read ECS injected values
+var dbHost = builder.Configuration["Database:Host"];
+var dbName = builder.Configuration["Database:Name"];
+var username = builder.Configuration["Db:Username"];
+var password = builder.Configuration["Db:Password"];
+
+// Build connection string HERE
 builder.Services.AddDbContext<TenantDbContext>(option =>
 {
-    option.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+    var dbHost = builder.Configuration["Database:Host"];
+    var dbName = builder.Configuration["Database:Name"];
+    var username = builder.Configuration["Db:Username"];
+    var password = builder.Configuration["Db:Password"];
+    var conn = $"Server={dbHost};Database={dbName};User Id={username};Password={password};TrustServerCertificate=True;";
+
+    option.UseSqlServer(conn);
 });
+
+// builder.Services.AddDbContext<TenantDbContext>(option =>
+// {
+//     option.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+// });
 
 // Add CORS services
 // builder.Services.AddCors(options =>

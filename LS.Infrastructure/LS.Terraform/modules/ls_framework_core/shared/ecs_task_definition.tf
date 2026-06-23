@@ -56,7 +56,7 @@ resource "aws_ecs_task_definition" "ls_framework_ecs_task_definition" {
         secrets = [
             {
                 name = "ConnectionStrings__DefaultConnection"
-                valueFrom = var.ls_framework_sqlserver_secret_arn
+                valueFrom = "${var.ls_framework_sqlserver_secret_arn}:connectionString::"
             },
             {
                 name = "AwsSettings__UserPoolId"

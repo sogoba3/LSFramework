@@ -42,3 +42,7 @@ variable "ls_framework_cognito_UserPoolId" {
 variable "ls_framework_cognito_ClientId" {
   type = string
 }
+
+variable "ls_framework_sqlserver_endpoint" {
+  type = string
+}

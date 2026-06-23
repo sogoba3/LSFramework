@@ -79,7 +79,7 @@ module "ls_framework_data" {
   ls_framework_sqlserver_password = var.ls_framework_sqlserver_password
   ls_framework_sqlserver_username = var.ls_framework_sqlserver_username
 
-  # ls_framework_sqlserver_endpoint = module.ls_framework_rds_sql_server.ls_framework_sqlserver_db_instance_endpoint
+  ls_framework_sqlserver_endpoint = module.ls_framework_rds_sql_server.ls_framework_sqlserver_db_instance_endpoint
 
   # ls_framework_ecs_service_sg_id    = module.ls_framework_gateway_api_service.ls_framework_ecs_service_sg_id
   ls_framework_sqlserver_db_key_arn = module.ls_framework_security.ls_framework_sqlserver_db_key_arn

@@ -16,11 +16,11 @@ using Microsoft.Extensions.Options;
 
 namespace LS.TenantApi.Controllers
 {
-    [Route(PATH_TENANT)]
+    [Route("api/tenant")]
     [ApiController]
     public class TenantController : ControllerBase
     {
-        private const string PATH_TENANT = "tenant";
+        // private const string PATH_TENANT = "api/tenant";
         //private readonly TenantDbContext _tenantDbContext;
         private ITenantRepository _tenantRepository;
         private ResultDto _result;

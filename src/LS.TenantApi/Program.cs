@@ -106,8 +106,7 @@ builder.Services.AddHealthChecks();
 
 var app = builder.Build();
 
-app.MapGroup("/tenant")
-   .MapHealthChecks("/health");
+app.MapHealthChecks("api/tenant/health");
 
 // Use CORS
 // app.UseCors("AllowFrontend");

@@ -33,6 +33,11 @@ builder.Services.AddCors(options =>
 builder.Services.AddHealthChecks();
 var app = builder.Build();
 
+var proxyConfig = app.Services.GetRequiredService<
+    Yarp.ReverseProxy.Configuration.IProxyConfigProvider>();
+
+app.Logger.LogInformation("YARP Config Loaded");
+
 // Request Logging Middleware
 app.Use(async (context, next) =>
 {

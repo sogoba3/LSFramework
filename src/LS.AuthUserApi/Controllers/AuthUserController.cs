@@ -16,11 +16,11 @@ using Microsoft.Extensions.Options;
 
 namespace LS.AuthUserApi.Controllers
 {
-    [Route(PATH_AUTH_USER)]
+    [Route("api/auth-user")]
     [ApiController]
     public class AuthUserController : ControllerBase
     {
-        private const string PATH_AUTH_USER = "auth-user";
+        // private const string PATH_AUTH_USER = "api/auth-user";
         private const string PATH_GET_USERS = "get-users";
         private ResultDto _result;
         private IAuthUserRepository _authUserRepository;

@@ -4,7 +4,6 @@ using AutoMapper;
 using LS.Shared;
 using LS.Shared.Configuration;
 using LS.Shared.Interfaces;
-using LS.Shared.Model.Dtos;
 using LS.TenantApi.Data;
 using LS.TenantApi.Events.Publisher;
 using LS.TenantApi.Model.Dtos;
@@ -32,7 +31,7 @@ namespace LS.TenantApi.Controllers
         // private readonly IAuditLogPublisher _auditLogPublisher;
 
 
-        public TenantController(ITenantRepository tenantRepository, IAmazonCognitoIdentityProvider cognitoClient, IMapper mapper, IOptions<AwsSettings> awsSettings, TenantEventPublisher tenantEventPublisher, IAuditLogPublisher auditLogPublisher)
+        public TenantController(ITenantRepository tenantRepository, IAmazonCognitoIdentityProvider cognitoClient, IMapper mapper, IOptions<AwsSettings> awsSettings, TenantEventPublisher tenantEventPublisher)
         {
             _tenantRepository = tenantRepository;
              _result = new ResultDto();

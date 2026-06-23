@@ -54,6 +54,23 @@ yarn-error.log*
 # Exclude secrets
 appsettings.json
 appsettings.Development.json
+
+# Ignore appsettings for internal microservices
+src/LS.AppointmentApi/appsettings*.json
+src/LS.AuditApi/appsettings*.json
+src/LS.AuthUserApi/appsettings*.json
+src/LS.BillingApi/appsettings*.json
+src/LS.DoctorApi/appsettings*.json
+src/LS.FileServiceApi/appsettings*.json
+src/LS.NotificationApi/appsettings*.json
+src/LS.TenantApi/appsettings*.json
+src/LS.WorkerService/appsettings*.json
+src/LS.PatientApi/appsettings*.json
+
+# Keep Gateway YARP configuration in source control
+!src/LS.Gateway/appsettings.json
+!src/LS.Gateway/appsettings.Development.json
+
 *.secret.json
 *.local.json
 

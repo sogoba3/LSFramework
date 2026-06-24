@@ -147,7 +147,7 @@ builder.Services.AddHealthChecks();
 
 var app = builder.Build();
 
-app.MapHealthChecks("api/auth-user/health");
+app.MapHealthChecks("/api/auth-user/health");
 // Use CORS
 // app.UseCors("AllowFrontend");
 app.UseCors("AllowAll");

@@ -82,20 +82,20 @@ resource "aws_cloudfront_distribution" "ls_framework_frontend_s3_distribution" {
   }
 
   # ### REACT SPA ROUTING
-  # custom_error_response {
-  #   error_code = 403
-  #   response_code = 200
-  #   response_page_path = "/index.html"
+  custom_error_response {
+    error_code = 403
+    response_code = 200
+    response_page_path = "/index.html"
 
-  #   error_caching_min_ttl = 0
-  # }
-  # custom_error_response {
-  #     error_code = 404
-  #     response_code = 200
-  #     response_page_path = "/index.html"
+    error_caching_min_ttl = 0
+  }
+  custom_error_response {
+      error_code = 404
+      response_code = 200
+      response_page_path = "/index.html"
 
-  #     error_caching_min_ttl = 0
-  # }
+      error_caching_min_ttl = 0
+  }
 
   ### PRICE CLASS CHEAPEST OPTION
   price_class = "PriceClass_100"

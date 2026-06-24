@@ -51,6 +51,9 @@ variable "ls_framework_Tenant_Admin_Signed_Up_Queue_Arn" {
 variable "ls_framework_tenant_api_base_url" {
   type = string
 }
+variable "ls_framework_cognito_user_pool_arn" {
+  type = string
+}
 
 
 # variable "ls_framework_internal_alb_dns_name" {

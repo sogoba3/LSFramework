@@ -159,6 +159,7 @@ module "ls_framework_core_shared_ressources" {
   ls_framework_sqlserver_secret_arn = module.ls_framework_data.ls_framework_sqlserver_secret_arn
   # ls_framework_internal_alb_dns_name = module.ls_framework_alb.ls_framework_internal_alb_name
 
+  ls_framework_cognito_user_pool_arn = var.ls_framework_cognito_user_pool_arn
   ls_framework_Audit_Log_Arn                    = data.aws_sns_topic.audit_log.arn
   ls_framework_cognito_secret_arn               = module.ls_framework_data.ls_framework_cognito_secret_arn
   ls_framework_Tenant_Admin_Signed_Up_Queue_Url = data.aws_sqs_queue.admin_signed_up_queue.url

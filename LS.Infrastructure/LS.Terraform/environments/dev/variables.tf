@@ -81,6 +81,9 @@ variable "ls_framework_cognito_UserPoolId" {
 variable "ls_framework_cognito_ClientId" {
   type = string
 }
+variable "ls_framework_cognito_user_pool_arn" {
+  type = string
+}
 
 # variable "deployment_type" {
 #   type = string

@@ -228,5 +228,6 @@ ls_framework_domain_name = "lsframework.com"
 
 ls_framework_cognito_UserPoolId = "us-east-2_lXZhLnJRw"
 ls_framework_cognito_ClientId   = "70q2ap1l18gl8eno8ask5415r8"
+ls_framework_cognito_user_pool_arn = "arn:aws:cognito-idp:us-east-2:968715863111:userpool/us-east-2_lXZhLnJRw"
 
 

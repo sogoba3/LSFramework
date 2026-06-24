@@ -111,8 +111,7 @@ resource "aws_iam_role_policy" "ls_framework_task_role_policies" {
           "cognito-idp:AdminAddUserToGroup"
         ]
         Resource = [
-          var.ls_framework_Audit_Log_Arn,
-          var.ls_framework_Tenant_Admin_Signed_Up_Topic_Arn
+          var.ls_framework_cognito_user_pool_arn
         ]
       }
     ]

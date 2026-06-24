@@ -61,7 +61,7 @@ var awsSettings = builder.Configuration.GetSection("AwsSettings").Get<AwsSetting
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
   .AddJwtBearer(options =>
   {
-    options.Authority = "https://cognito-idp.{awsSettings.Region}.amazonaws.com/{awsSettings.UserPoolId}";
+    options.Authority = $"https://cognito-idp.{awsSettings.Region}.amazonaws.com/{awsSettings.UserPoolId}";
     options.Audience = awsSettings.ClientId;
     // clientId;
     options.TokenValidationParameters = new TokenValidationParameters

@@ -32,3 +32,7 @@ output "ls_framework_private_db_subnets" {
 output "ls_framework_db_subnet_group_name" {
   value = aws_db_subnet_group.ls_framework_sqlserver_db_subnet_group.name
 }
+
+output "ls_framework_internal_services_sg_id" {
+  value = aws_security_group.ls_framework_internal_services_sg.id
+}

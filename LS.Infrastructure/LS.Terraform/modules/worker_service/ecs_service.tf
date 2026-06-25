@@ -15,7 +15,7 @@ resource "aws_ecs_service" "ls_framework_worker_ecs_service" {
   network_configuration {
     assign_public_ip = false
     subnets         = var.ls_framework_private_subnets
-    security_groups = [aws_security_group.worker_sg.id]
+    security_groups = [aws_security_group.worker_sg.id, var.ls_framework_internal_services_sg_id]
   }
 
   deployment_minimum_healthy_percent = 50

@@ -36,3 +36,6 @@ variable "container_port" {
     error_message = "The container_port must be 0 (for non-web services) or between 1 and 65535."
   }
 }
+variable "ls_framework_internal_services_sg_id" {
+  type = string
+}

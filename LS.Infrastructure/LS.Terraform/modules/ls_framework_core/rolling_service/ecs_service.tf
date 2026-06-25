@@ -25,8 +25,8 @@ resource "aws_ecs_service" "ls_framework_ecs_service_name" {
     subnets = var.ls_framework_private_subnets
 
     security_groups = [
-        aws_security_group.ls_framework_ecs_service_sg.id
-        #aws_security_group.ls_framework_ecs_service_sg.id
+        aws_security_group.ls_framework_ecs_service_sg.id,
+        var.ls_framework_internal_services_sg_id
     ]
   }
 

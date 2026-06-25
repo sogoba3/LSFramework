@@ -159,7 +159,7 @@ module "ls_framework_core_shared_ressources" {
   ls_framework_sqlserver_secret_arn = module.ls_framework_data.ls_framework_sqlserver_secret_arn
   # ls_framework_internal_alb_dns_name = module.ls_framework_alb.ls_framework_internal_alb_name
 
-  ls_framework_cognito_user_pool_arn = var.ls_framework_cognito_user_pool_arn
+  ls_framework_cognito_user_pool_arn            = var.ls_framework_cognito_user_pool_arn
   ls_framework_Audit_Log_Arn                    = data.aws_sns_topic.audit_log.arn
   ls_framework_cognito_secret_arn               = module.ls_framework_data.ls_framework_cognito_secret_arn
   ls_framework_Tenant_Admin_Signed_Up_Queue_Url = data.aws_sqs_queue.admin_signed_up_queue.url
@@ -187,12 +187,36 @@ module "ls_framework_gateway_api_service" {
 
   project_prefix = local.env_context.resource_prefix
 }
+### tenant-api service module
+module "ls_framework_tenant_api_service" {
+  source = "../../modules/ls_framework_core/tenant_rolling_service"
+
+  service_name                       = var.service_names.tenant_api_name
+  container_port                     = var.api_services_config["tenant-api"].container_port
+  ls_framework_vpc_id                = module.ls_framework_network.ls_framework_vpc_id
+  ls_framework_gateway_service_sg_id = module.ls_framework_gateway_api_service.ls_framework_gateway_service_sg_id
+
+  ls_framework_ecs_service_sg_ids = {
+    for k, v in module.ls_framework_services :
+    k => v.ls_framework_ecs_service_sg_id
+  }
+  # module.ls_framework_services.ls_framework_ecs_service_sg_id
+
+  ls_framework_task_definition_arn = module.ls_framework_core_shared_ressources["tenant-api"].ls_framework_ecs_task_definition_arn
+  desired_count                    = var.api_services_config["tenant-api"].desired_count
+  ls_framework_ecs_cluster_id      = module.ls_framework_ecs_cluster.ls_framework_ecs_cluster_id
+  ls_framework_private_subnets     = module.ls_framework_network.ls_framework_private_subnets
+
+  ls_framework_service_discovery_arn = module.ls_framework_service_discovery.ls_framework_discovery_services_arns["tenant"]
+
+  project_prefix = local.env_context.resource_prefix
+}
 ##########################################################################################
 # Api's modules
 module "ls_framework_services" {
   for_each = {
     for key, value in var.api_services_config : key => value
-    if key != "gateway-api"
+    if key != "gateway-api" && key != "tenant-api"
   }
   source = "../../modules/ls_framework_core/rolling_service"
 

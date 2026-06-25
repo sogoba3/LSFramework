@@ -25,7 +25,7 @@ resource "aws_cloudfront_distribution" "ls_framework_frontend_s3_distribution" {
     custom_origin_config {
       http_port              = 80
       https_port             = 443
-      origin_protocol_policy = "http-only"
+      origin_protocol_policy = "https-only"
 
       origin_ssl_protocols = [
         "TLSv1.2"
@@ -46,12 +46,13 @@ resource "aws_cloudfront_distribution" "ls_framework_frontend_s3_distribution" {
       cached_methods   = ["GET", "HEAD"]
       target_origin_id = "LSFrameworkS3Origin"#local.s3_origin_id
 
-      forwarded_values {
-          query_string = false
-          cookies {
-              forward = "none"
-          }
-      }
+      cache_policy_id = data.aws_cloudfront_cache_policy.optimized.id
+      # forwarded_values {
+      #     query_string = false
+      #     cookies {
+      #         forward = "none"
+      #     }
+      # }
 
       viewer_protocol_policy = "redirect-to-https"
       min_ttl                = 0
@@ -69,12 +70,14 @@ resource "aws_cloudfront_distribution" "ls_framework_frontend_s3_distribution" {
     cached_methods = [ "GET", "HEAD" ]
 
     viewer_protocol_policy = "redirect-to-https"
-    forwarded_values {
-      query_string = true
-      headers = ["*"]
-      # [ "Authorization", "Content-Type", "Origin" ]
-      cookies { forward = "all" }
-    }
+    cache_policy_id = data.aws_cloudfront_cache_policy.caching_disabled.id
+    origin_request_policy_id = data.aws_cloudfront_cache_policy.caching_disabled.id
+    # forwarded_values {
+    #   query_string = true
+    #   headers = ["*"]
+    #   # [ "Authorization", "Content-Type", "Origin" ]
+    #   cookies { forward = "all" }
+    # }
 
     min_ttl     = 0
     default_ttl = 0
@@ -121,4 +124,15 @@ resource "aws_cloudfront_distribution" "ls_framework_frontend_s3_distribution" {
     Name = "${var.project_prefix}-frontend-s3-distribution"
   }
 
+}
+
+data "aws_cloudfront_cache_policy" "caching_disabled" {
+  name = "Managed-CachingDisabled"
+}
+
+data "aws_cloudfront_origin_request_policy" "all_viewer" {
+  name = "Managed-AllViewer"
+}
+data "aws_cloudfront_cache_policy" "optimized" {
+  name = "Managed-CachingOptimized"
 }

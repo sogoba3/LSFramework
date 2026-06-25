@@ -1,7 +1,8 @@
 
 resource "aws_codedeploy_deployment_group" "ls_framework_blue_green_deployment_group" {
   app_name               = aws_codedeploy_app.ls_framework_blue_green_codedeploy_app.name
-  deployment_config_name = "CodeDeployDefault.ECSAllAtOnce"
+  deployment_config_name = "CodeDeployDefault.ECSLinear10PercentEvery1Minutes"
+  #ECSAllAtOnce ECSCanary10Percent5Minutes
   deployment_group_name  = "${var.service_name}-deployment-group"
   service_role_arn       = aws_iam_role.ls_framework_blue_green_codedeploy_role.arn
 

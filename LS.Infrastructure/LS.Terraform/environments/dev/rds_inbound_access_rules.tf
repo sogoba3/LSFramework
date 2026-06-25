@@ -2,7 +2,7 @@ resource "aws_vpc_security_group_ingress_rule" "internal_services_to_rds" {
   # for_each = var.api_services_config
   for_each = {
     for key, value in var.api_services_config : key => value
-    if key != "gateway-api"
+    if key != "gateway-api" && key != "tenant-api"
   }
 
   security_group_id = module.ls_framework_rds_sql_server.ls_framework_sqlserver_sg_id
@@ -14,6 +14,17 @@ resource "aws_vpc_security_group_ingress_rule" "internal_services_to_rds" {
   ip_protocol = "tcp"
 
   description = "${each.key} to SQL Server"
+}
+resource "aws_vpc_security_group_ingress_rule" "tenant_service_to_rds" {
+  security_group_id = module.ls_framework_rds_sql_server.ls_framework_sqlserver_sg_id
+
+  referenced_security_group_id = module.ls_framework_tenant_api_service.ls_framework_tenant_ecs_service_sg_id
+
+  from_port   = 1433
+  to_port     = 1433
+  ip_protocol = "tcp"
+
+  description = "tenant-api to SQL Server"
 }
 
 resource "aws_vpc_security_group_ingress_rule" "worker_to_rds" {

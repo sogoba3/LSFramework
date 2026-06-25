@@ -210,6 +210,12 @@ module "ls_framework_tenant_api_service" {
   ls_framework_service_discovery_arn = module.ls_framework_service_discovery.ls_framework_discovery_services_arns["tenant"]
 
   project_prefix = local.env_context.resource_prefix
+
+  depends_on = [
+  module.ls_framework_network,
+  module.ls_framework_ecs_cluster,
+  module.ls_framework_core_shared_ressources
+]
 }
 ##########################################################################################
 # Api's modules

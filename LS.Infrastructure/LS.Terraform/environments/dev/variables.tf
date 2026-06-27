@@ -9,13 +9,13 @@ variable "service_names" {
     gateway_api_name        = string
     auth_user_api_name      = string
     tenant_api_name         = string
-    appointment_api_name    = string
-    audit_api_name          = string
-    billing_api_name        = string
-    doctor_api_name         = string
-    file_service_api_name   = string
-    notification_api_name   = string
-    patient_api_name        = string
+    # appointment_api_name    = string
+    # audit_api_name          = string
+    # billing_api_name        = string
+    # doctor_api_name         = string
+    # file_service_api_name   = string
+    # notification_api_name   = string
+    # patient_api_name        = string
     worker_service_api_name = string
   })
   description = ""

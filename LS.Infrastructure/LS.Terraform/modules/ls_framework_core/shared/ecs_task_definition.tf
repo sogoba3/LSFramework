@@ -50,7 +50,7 @@ resource "aws_ecs_task_definition" "ls_framework_ecs_task_definition" {
             },
             {
                 name  = "Services__TenantApiBaseUrl"
-                value = "${var.ls_framework_tenant_api_base_url}"
+                value = "${var.ls_framework_tenant_api_base_url}:4482/"
             }
         ]
         secrets = [

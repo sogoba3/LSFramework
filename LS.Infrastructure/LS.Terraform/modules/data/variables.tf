@@ -24,10 +24,11 @@ variable "ls_framework_sqlserver_username" {
 # }
 
 ### db
-variable "ls_framework_sqlserver_db_key_arn" {
-  type = string
-  description = ""
-}
+ #needs to be added when deploying for production
+# variable "ls_framework_sqlserver_db_key_arn" {
+#   type = string
+#   description = ""
+# }
 
 # variable "ls_framework_db_subnet_group_name" {
 #   type = string

@@ -9,7 +9,8 @@ resource "aws_db_instance" "ls_framework_sqlserver_db_instance" {
     identifier                  = "lsf-sqlserver-db-instance"
     instance_class              = "db.t3.micro" #"db.m5.large"
     storage_type = "gp3"
-    kms_key_id                  = var.ls_framework_sqlserver_db_key_arn
+    #needs to be added when deploying for production
+    # kms_key_id                  = var.ls_framework_sqlserver_db_key_arn
     # this is should be set to true later for high availability
     multi_az                    = false
     storage_encrypted           = true

@@ -4,17 +4,17 @@ environment  = "dev"
 managed_by   = "terraform"
 
 service_names = {
-  ecr_repo_name           = "ls_framework_ecr_repository"
-  gateway_api_name        = "gateway-api"
-  auth_user_api_name      = "auth-user-api"
-  tenant_api_name         = "tenant-api"
-  appointment_api_name    = "appointment-api"
-  audit_api_name          = "audit-api"
-  billing_api_name        = "billing-api"
-  doctor_api_name         = "doctor-api"
-  file_service_api_name   = "file-service-api"
-  notification_api_name   = "notification-api"
-  patient_api_name        = "patient-api"
+  ecr_repo_name      = "ls_framework_ecr_repository"
+  gateway_api_name   = "gateway-api"
+  auth_user_api_name = "auth-user-api"
+  tenant_api_name    = "tenant-api"
+  # appointment_api_name    = "appointment-api"
+  # audit_api_name          = "audit-api"
+  # billing_api_name        = "billing-api"
+  # doctor_api_name         = "doctor-api"
+  # file_service_api_name   = "file-service-api"
+  # notification_api_name   = "notification-api"
+  # patient_api_name        = "patient-api"
   worker_service_api_name = "worker-service-api"
 }
 
@@ -27,31 +27,30 @@ services = {
   tenant = {
     name = "tenant-api"
   }
-  patient = {
-    name = "patient-api"
-  }
-  doctor = {
-    name = "doctor-api"
-  }
-  billing = {
-    name = "billing-api"
-  }
+  # patient = {
+  #   name = "patient-api"
+  # }
+  # doctor = {
+  #   name = "doctor-api"
+  # }
+  # billing = {
+  #   name = "billing-api"
+  # }
   auth = {
     name = "auth-api"
   }
-  appointment = {
-    name = "appointment-api"
-  }
-  notification = {
-    name = "notification-api"
-  }
-  audit = {
-    name = "audit-api"
-  }
-  file = {
-    name = "file-service"
-  }
-  # worker = "worker-service"
+  # appointment = {
+  #   name = "appointment-api"
+  # }
+  # notification = {
+  #   name = "notification-api"
+  # }
+  # audit = {
+  #   name = "audit-api"
+  # }
+  # file = {
+  #   name = "file-service"
+  # }
 }
 api_services_config = {
   gateway-api = {
@@ -99,122 +98,112 @@ api_services_config = {
     dockerfile    = "deploy/tenant-api/Tenant.Dockerfile"
     source_folder = "src/LS.TenantApi"
   }
-  appointment-api = {
-    cpu                = "1024"
-    memory             = "2048"
-    container_port     = 4466
-    is_web_service     = false
-    routing_port       = 443
-    routing_test_port  = 8443
-    health_check_path  = "/health"
-    log_retention_days = 30
-    desired_count      = 1
-
-    buildspec     = "deploy/appointment-api/buildspec.yml"
-    dockerfile    = "deploy/appointment-api/Appointment.Dockerfile"
-    source_folder = "src/LS.AppointmentApi"
-  }
-  audit-api = {
-    cpu                = "1024"
-    memory             = "2048"
-    container_port     = 4488
-    is_web_service     = false
-    routing_port       = 443
-    routing_test_port  = 8443
-    health_check_path  = "/health"
-    log_retention_days = 30
-    desired_count      = 1
-
-    buildspec     = "deploy/audit-api/buildspec.yml"
-    dockerfile    = "deploy/audit-api/Audit.Dockerfile"
-    source_folder = "src/LS.AuditApi"
-  }
-  billing-api = {
-    cpu                = "1024"
-    memory             = "2048"
-    container_port     = 4408
-    is_web_service     = false
-    routing_port       = 443
-    routing_test_port  = 8443
-    health_check_path  = "/health"
-    log_retention_days = 30
-    desired_count      = 1
-
-    buildspec     = "deploy/billing-api/buildspec.yml"
-    dockerfile    = "deploy/billing-api/Billing.Dockerfile"
-    source_folder = "src/LS.BillingApi"
-  }
-  doctor-api = {
-    cpu                = "1024"
-    memory             = "2048"
-    container_port     = 4440
-    is_web_service     = false
-    routing_port       = 443
-    routing_test_port  = 8443
-    health_check_path  = "/health"
-    log_retention_days = 30
-    desired_count      = 1
-
-    buildspec     = "deploy/doctor-api/buildspec.yml"
-    dockerfile    = "deploy/doctor-api/Doctor.Dockerfile"
-    source_folder = "src/LS.DoctorApi"
-  }
-  file-service = {
-    cpu                = "1024"
-    memory             = "2048"
-    container_port     = 4420
-    is_web_service     = false
-    routing_port       = 443
-    routing_test_port  = 8443
-    health_check_path  = "/health"
-    log_retention_days = 30
-    desired_count      = 1
-
-    buildspec     = "deploy/file-service/buildspec.yml"
-    dockerfile    = "deploy/file-service/FileService.Dockerfile"
-    source_folder = "src/LS.FileServiceApi"
-  }
-  notification-api = {
-    cpu                = "1024"
-    memory             = "2048"
-    container_port     = 4428
-    is_web_service     = false
-    routing_port       = 443
-    routing_test_port  = 8443
-    health_check_path  = "/health"
-    log_retention_days = 30
-    desired_count      = 1
-
-    buildspec     = "deploy/notification-api/buildspec.yml"
-    dockerfile    = "deploy/notification-api/Notification.Dockerfile"
-    source_folder = "src/LS.NotificationApi"
-  }
-  patient-api = {
-    cpu                = "1024"
-    memory             = "2048"
-    container_port     = 4442
-    is_web_service     = false
-    routing_port       = 443
-    routing_test_port  = 8443
-    health_check_path  = "/health"
-    log_retention_days = 30
-    desired_count      = 1
-
-    buildspec     = "deploy/patient-api/buildspec.yml"
-    dockerfile    = "deploy/patient-api/Patient.Dockerfile"
-    source_folder = "src/LS.PatientApi"
-  }
-  # worker-service = {
-  #   cpu                = "256"
-  #   memory             = "512"
-  #   container_port     = 0
+  # appointment-api = {
+  #   cpu                = "1024"
+  #   memory             = "2048"
+  #   container_port     = 4466
   #   is_web_service     = false
   #   routing_port       = 443
   #   routing_test_port  = 8443
   #   health_check_path  = "/health"
   #   log_retention_days = 30
   #   desired_count      = 1
+
+  #   buildspec     = "deploy/appointment-api/buildspec.yml"
+  #   dockerfile    = "deploy/appointment-api/Appointment.Dockerfile"
+  #   source_folder = "src/LS.AppointmentApi"
   # }
+  # audit-api = {
+  #   cpu                = "1024"
+  #   memory             = "2048"
+  #   container_port     = 4488
+  #   is_web_service     = false
+  #   routing_port       = 443
+  #   routing_test_port  = 8443
+  #   health_check_path  = "/health"
+  #   log_retention_days = 30
+  #   desired_count      = 1
+
+  #   buildspec     = "deploy/audit-api/buildspec.yml"
+  #   dockerfile    = "deploy/audit-api/Audit.Dockerfile"
+  #   source_folder = "src/LS.AuditApi"
+  # }
+  # billing-api = {
+  #   cpu                = "1024"
+  #   memory             = "2048"
+  #   container_port     = 4408
+  #   is_web_service     = false
+  #   routing_port       = 443
+  #   routing_test_port  = 8443
+  #   health_check_path  = "/health"
+  #   log_retention_days = 30
+  #   desired_count      = 1
+
+  #   buildspec     = "deploy/billing-api/buildspec.yml"
+  #   dockerfile    = "deploy/billing-api/Billing.Dockerfile"
+  #   source_folder = "src/LS.BillingApi"
+  # }
+  # doctor-api = {
+  #   cpu                = "1024"
+  #   memory             = "2048"
+  #   container_port     = 4440
+  #   is_web_service     = false
+  #   routing_port       = 443
+  #   routing_test_port  = 8443
+  #   health_check_path  = "/health"
+  #   log_retention_days = 30
+  #   desired_count      = 1
+
+  #   buildspec     = "deploy/doctor-api/buildspec.yml"
+  #   dockerfile    = "deploy/doctor-api/Doctor.Dockerfile"
+  #   source_folder = "src/LS.DoctorApi"
+  # }
+  # file-service = {
+  #   cpu                = "1024"
+  #   memory             = "2048"
+  #   container_port     = 4420
+  #   is_web_service     = false
+  #   routing_port       = 443
+  #   routing_test_port  = 8443
+  #   health_check_path  = "/health"
+  #   log_retention_days = 30
+  #   desired_count      = 1
+
+  #   buildspec     = "deploy/file-service/buildspec.yml"
+  #   dockerfile    = "deploy/file-service/FileService.Dockerfile"
+  #   source_folder = "src/LS.FileServiceApi"
+  # }
+  # notification-api = {
+  #   cpu                = "1024"
+  #   memory             = "2048"
+  #   container_port     = 4428
+  #   is_web_service     = false
+  #   routing_port       = 443
+  #   routing_test_port  = 8443
+  #   health_check_path  = "/health"
+  #   log_retention_days = 30
+  #   desired_count      = 1
+
+  #   buildspec     = "deploy/notification-api/buildspec.yml"
+  #   dockerfile    = "deploy/notification-api/Notification.Dockerfile"
+  #   source_folder = "src/LS.NotificationApi"
+  # }
+  # patient-api = {
+  #   cpu                = "1024"
+  #   memory             = "2048"
+  #   container_port     = 4442
+  #   is_web_service     = false
+  #   routing_port       = 443
+  #   routing_test_port  = 8443
+  #   health_check_path  = "/health"
+  #   log_retention_days = 30
+  #   desired_count      = 1
+
+  #   buildspec     = "deploy/patient-api/buildspec.yml"
+  #   dockerfile    = "deploy/patient-api/Patient.Dockerfile"
+  #   source_folder = "src/LS.PatientApi"
+  # }
+
 }
 
 ### Network module

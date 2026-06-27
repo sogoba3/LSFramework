@@ -60,9 +60,10 @@ module "ls_framework_ecs_cluster" {
 ##########################################################################################
 ### LS Framework data
 module "ls_framework_rds_sql_server" {
-  source                                     = "../../modules/rds_sqlserver"
-  ls_framework_db_subnet_group_name          = module.ls_framework_network.ls_framework_db_subnet_group_name
-  ls_framework_sqlserver_db_key_arn          = module.ls_framework_security.ls_framework_sqlserver_db_key_arn
+  source                            = "../../modules/rds_sqlserver"
+  ls_framework_db_subnet_group_name = module.ls_framework_network.ls_framework_db_subnet_group_name
+  #needs to be added when deploying for production
+  # ls_framework_sqlserver_db_key_arn          = module.ls_framework_security.ls_framework_sqlserver_db_key_arn
   ls_framework_vpc_id                        = module.ls_framework_network.ls_framework_vpc_id
   ls_framework_sqlserver_secret_value_string = module.ls_framework_data.ls_framework_sqlserver_secret_value_string
 
@@ -79,8 +80,8 @@ module "ls_framework_data" {
   ls_framework_sqlserver_password = var.ls_framework_sqlserver_password
   ls_framework_sqlserver_username = var.ls_framework_sqlserver_username
 
-  # ls_framework_ecs_service_sg_id    = module.ls_framework_gateway_api_service.ls_framework_ecs_service_sg_id
-  ls_framework_sqlserver_db_key_arn = module.ls_framework_security.ls_framework_sqlserver_db_key_arn
+  #needs to be added when deploying for production
+  # ls_framework_sqlserver_db_key_arn = module.ls_framework_security.ls_framework_sqlserver_db_key_arn
 
   project_prefix = local.env_context.resource_prefix
 }
@@ -159,7 +160,7 @@ module "ls_framework_core_shared_ressources" {
   ls_framework_sqlserver_secret_arn = module.ls_framework_data.ls_framework_sqlserver_secret_arn
   # ls_framework_internal_alb_dns_name = module.ls_framework_alb.ls_framework_internal_alb_name
 
-  ls_framework_cognito_user_pool_arn = var.ls_framework_cognito_user_pool_arn
+  ls_framework_cognito_user_pool_arn            = var.ls_framework_cognito_user_pool_arn
   ls_framework_Audit_Log_Arn                    = data.aws_sns_topic.audit_log.arn
   ls_framework_cognito_secret_arn               = module.ls_framework_data.ls_framework_cognito_secret_arn
   ls_framework_Tenant_Admin_Signed_Up_Queue_Url = data.aws_sqs_queue.admin_signed_up_queue.url
@@ -173,15 +174,16 @@ module "ls_framework_core_shared_ressources" {
 module "ls_framework_gateway_api_service" {
   source = "../../modules/ls_framework_core/blue_green_service"
 
-  service_name                     = var.service_names.gateway_api_name
-  ls_framework_task_definition_arn = module.ls_framework_core_shared_ressources["gateway-api"].ls_framework_ecs_task_definition_arn
-  container_port                   = var.api_services_config["gateway-api"].container_port
-  desired_count                    = var.api_services_config["gateway-api"].desired_count
-  health_check_path                = var.api_services_config["gateway-api"].health_check_path
-  ls_framework_private_subnets     = module.ls_framework_network.ls_framework_private_subnets
-  ls_framework_vpc_id              = module.ls_framework_network.ls_framework_vpc_id
-  ls_framework_ecs_cluster_id      = module.ls_framework_ecs_cluster.ls_framework_ecs_cluster_id
-  ls_framework_external_alb_sg_id  = module.ls_framework_alb.ls_framework_external_alb_sg_id
+  service_name                         = var.service_names.gateway_api_name
+  ls_framework_task_definition_arn     = module.ls_framework_core_shared_ressources["gateway-api"].ls_framework_ecs_task_definition_arn
+  container_port                       = var.api_services_config["gateway-api"].container_port
+  desired_count                        = var.api_services_config["gateway-api"].desired_count
+  health_check_path                    = var.api_services_config["gateway-api"].health_check_path
+  ls_framework_private_subnets         = module.ls_framework_network.ls_framework_private_subnets
+  ls_framework_vpc_id                  = module.ls_framework_network.ls_framework_vpc_id
+  ls_framework_ecs_cluster_id          = module.ls_framework_ecs_cluster.ls_framework_ecs_cluster_id
+  ls_framework_external_alb_sg_id      = module.ls_framework_alb.ls_framework_external_alb_sg_id
+  ls_framework_internal_services_sg_id = module.ls_framework_network.ls_framework_internal_services_sg_id
 
   ls_framework_service_discovery_arn = ""
 
@@ -206,7 +208,7 @@ module "ls_framework_services" {
   ls_framework_ecs_cluster_id      = module.ls_framework_ecs_cluster.ls_framework_ecs_cluster_id
   ls_framework_private_subnets     = module.ls_framework_network.ls_framework_private_subnets
 
-  ls_framework_service_discovery_arn = module.ls_framework_service_discovery.ls_framework_discovery_services_arns[replace(replace(each.key, "-service", ""), "-api", "")]
+  ls_framework_service_discovery_arn   = module.ls_framework_service_discovery.ls_framework_discovery_services_arns[replace(replace(each.key, "-service", ""), "-api", "")]
   ls_framework_internal_services_sg_id = module.ls_framework_network.ls_framework_internal_services_sg_id
 
   project_prefix = local.env_context.resource_prefix
@@ -232,7 +234,7 @@ module "ls_framework_worker_service" {
   ls_framework_Tenant_Admin_Signed_Up_Queue_Url = data.aws_sqs_queue.admin_signed_up_queue.url
   ls_framework_Tenant_Admin_Signed_Up_Queue_Arn = data.aws_sqs_queue.admin_signed_up_queue.arn
   ls_framework_Tenant_Admin_Signed_Up_Topic_Arn = data.aws_sns_topic.admin_sign_up_topic.arn
-  ls_framework_internal_services_sg_id = module.ls_framework_network.ls_framework_internal_services_sg_id
+  ls_framework_internal_services_sg_id          = module.ls_framework_network.ls_framework_internal_services_sg_id
 
   project_prefix = local.env_context.resource_prefix
 }

@@ -40,6 +40,9 @@ variable "ls_framework_external_alb_sg_id" {
   type        = string
   description = "The ID of the external ALB security group passed from the root environment"
 }
+variable "ls_framework_internal_services_sg_id" {
+  type = string
+}
 
 # variable "ls_framework_lb_blue_tg_arn" {
 #   type = string

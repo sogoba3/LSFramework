@@ -15,10 +15,21 @@ public class TenantMiddleware
 
     public async Task Invoke(HttpContext context, ITenantProvider tenantProvider)
     {
+         //
+        // Bootstrap endpoints.
+        // These MUST NOT resolve a tenant.
+        //
+        if (context.Request.Path.StartsWithSegments("/api/tenant/admin-signup") ||
+            context.Request.Path.StartsWithSegments("/api/tenant/get-tenant-subdomain"))
+        {
+            await _next(context);
+            return;
+        }
+
         // Resolve your scoped service from the current request scope
         //var tenantRepo = serviceProvider.GetRequiredService<ITenantRepo>();
         int? tenantId = null;
-        // 1 Try to get tenant from authenticated user claims
+        // 1 Try to get tenant from authenticated user claims JWT
         if (context.User.Identity?.IsAuthenticated == true)
         {
             var tenantIdClaim = context.User.FindFirst("custom:tenant_id");
@@ -48,29 +59,7 @@ public class TenantMiddleware
                     tenantId = await tenantProvider.ResolveTenantIdBySubdomainAsync(subdomain);
                 }
             }
-            
-
-            // if (parts.Length > 2)
-            // {
-            //     var subdomain = parts[0]; // "clinic"
-
-            //     using (var scope = _scopeFactory.CreateScope())
-            //     {
-            //         var tenantRepo = scope.ServiceProvider.GetRequiredService<ITenantRepo>();
-            //         var tenant = await tenantRepo.GetTenantBySubdomain(subdomain);
-
-            //         if (tenant != null)
-            //         {
-            //             tenantId = tenant.TenantID;
-            //         }
-
-            //         var logger = scope.ServiceProvider.GetRequiredService<ILogger<TenantMiddleware>>();
-            //         if (!tenantId.HasValue)
-            //         {
-            //             logger.LogWarning("No tenant ID could be resolved for request {Path}", context.Request.Path);
-            //         }
-            //     }
-            // }
+        
         }
 
         // 3️ Store tenantId in HttpContext.Items

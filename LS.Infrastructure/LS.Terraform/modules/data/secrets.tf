@@ -1,7 +1,7 @@
 ### LS FRAMEWORK SECRETS MANAGER SECRET
 resource "aws_secretsmanager_secret" "ls_framework_sqlserver_secret" {
   #name = "${var.project_prefix}/sqlserver"
-  name = "${var.project_prefix}/sqlserver44"
+  name = "${var.project_prefix}/sqlserver45"
   description             = "Master credentials for the LS Framework SQL Server DB"
    #needs to be added when deploying for production
   # kms_key_id = var.ls_framework_sqlserver_db_key_arn
@@ -22,7 +22,7 @@ resource "aws_secretsmanager_secret_version" "ls_framework_sqlserver_secret_valu
 
 ######################################################################################
 resource "aws_secretsmanager_secret" "ls_framework_cognito_secret" {
-  name = "${var.project_prefix}/cognito21"
+  name = "${var.project_prefix}/cognito22"
   description             = "Cognito secrets"
   tags = {
     Name = "${var.project_prefix}-cognito-secret"

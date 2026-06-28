@@ -3,6 +3,7 @@ using System.Net.Http.Json;
 using LS.Shared.Interfaces;
 using LS.Shared.Model.Dtos;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Logging;
 
 namespace LS.Shared.Services;
 
@@ -10,13 +11,15 @@ public class TenantProvider : ITenantProvider
 {
     private readonly IHttpContextAccessor _contextAccessor;
     private readonly HttpClient _httpClient;
+    private readonly ILogger<TenantProvider> _logger;
     private int? _tenantId;
 
 
-    public TenantProvider(IHttpContextAccessor contextAccessor, IHttpClientFactory httpClientFactory)
+    public TenantProvider(IHttpContextAccessor contextAccessor, IHttpClientFactory httpClientFactory, ILogger<TenantProvider> logger)
     {
         _contextAccessor = contextAccessor;
         _httpClient = httpClientFactory.CreateClient("LS.TenantApi");
+        _logger = logger;
     }
 
     public int GetTenantId()
@@ -43,13 +46,23 @@ public class TenantProvider : ITenantProvider
         {
             var response = await _httpClient.GetAsync($"/tenant/get-tenant-subdomain/{subdomain}");
             if (!response.IsSuccessStatusCode)
+            {
+                _logger.LogWarning(
+                "Tenant lookup failed for {Subdomain}. Status={Status}",
+                subdomain,
+                response.StatusCode);
                 return null;
+            }
+                
 
             var tenant = await response.Content.ReadFromJsonAsync<TenantDto>();
             return tenant?.TenantID;
         }
-        catch
+        catch(Exception ex)
         {
+            _logger.LogError(ex,
+            "Unable to resolve tenant {Subdomain}",
+            subdomain);
             return null;
         }
     }

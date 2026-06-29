@@ -39,7 +39,7 @@ export default function LoginPage() {
 
     try {
           const userLoginData = new FormData();
-          userLoginData.append("Username", userLoginForm.TenantCode);
+          userLoginData.append("TenantCode", userLoginForm.TenantCode);
           userLoginData.append("Username", userLoginForm.Username);
           userLoginData.append("Password", userLoginForm.Password);
 

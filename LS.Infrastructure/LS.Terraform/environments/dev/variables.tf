@@ -5,10 +5,10 @@ variable "environment" { type = string }
 variable "managed_by" { type = string }
 variable "service_names" {
   type = object({
-    ecr_repo_name           = string
-    gateway_api_name        = string
-    auth_user_api_name      = string
-    tenant_api_name         = string
+    ecr_repo_name      = string
+    gateway_api_name   = string
+    auth_user_api_name = string
+    tenant_api_name    = string
     # appointment_api_name    = string
     # audit_api_name          = string
     # billing_api_name        = string

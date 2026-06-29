@@ -44,7 +44,7 @@ public class TenantProvider : ITenantProvider
     {
         try
         {
-            var response = await _httpClient.GetAsync($"/tenant/get-tenant-subdomain/{tenantCode}");
+            var response = await _httpClient.GetAsync($"/api/tenant/get-tenant-subdomain/{tenantCode}");
             if (!response.IsSuccessStatusCode)
             {
                 _logger.LogWarning(

@@ -4,6 +4,8 @@ namespace LS.AuthUserApi.Model.Dtos;
 
 public class LafiyaSiraUserSignupDto
 {
+    // this is tenant subdomain
+    public string TenantCode { get; set; } = string.Empty;
     public string Username { get; set; } = string.Empty;
     public string FirstName { get; set; } = string.Empty;
     public string LastName { get; set; } = string.Empty;
@@ -12,5 +14,5 @@ public class LafiyaSiraUserSignupDto
     public string Gender { get; set; } = string.Empty;
     public string Password { get; set; } = string.Empty;
     public string ConfirmPassword { get; set; } = string.Empty;
-    public string Subdomain { get; set; } = string.Empty;
+    // public string Subdomain { get; set; } = string.Empty;
 }

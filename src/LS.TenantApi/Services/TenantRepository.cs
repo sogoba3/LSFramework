@@ -45,14 +45,14 @@ public class TenantRepository : ITenantRepository
         await _tenantDbContext.SaveChangesAsync();
     }
         
-    public async Task<Tenant?> GetTenantBySubdomain(string subdomain)
+    public async Task<Tenant?> GetTenantBySubdomain(string tenantCode)
     {
-        if (string.IsNullOrWhiteSpace(subdomain))
+        if (string.IsNullOrWhiteSpace(tenantCode))
             return null;
 
         // 
         return await _tenantDbContext.Tenants
             .AsNoTracking()
-            .FirstOrDefaultAsync(t => t.Subdomain.ToLower() == subdomain.ToLower());
+            .FirstOrDefaultAsync(t => t.Subdomain.ToLower() == tenantCode.ToLower());
     }
 }

@@ -62,7 +62,7 @@ namespace LS.AuthUserApi.Controllers
             try
             {
                  // Step 1: Resolve tenant ID from subdomain (sent from frontend)
-                var tenantId = await _tenantProvider.ResolveTenantIdBySubdomainAsync(lafiyaSiraUserLoginDto.TenantSubdomain);
+                var tenantId = await _tenantProvider.ResolveTenantIdBySubdomainAsync(lafiyaSiraUserLoginDto.TenantCode);
                 if (tenantId == null)
                 {
                     _result.HasError = true;
@@ -123,7 +123,7 @@ namespace LS.AuthUserApi.Controllers
             if (tenantId <= 0)
             {
                 // optionally resolve from subdomain if not already set
-                tenantId = (await _tenantProvider.ResolveTenantIdBySubdomainAsync(lafiyaSiraUserSignupDto.Subdomain)) ?? -1;
+                tenantId = (await _tenantProvider.ResolveTenantIdBySubdomainAsync(lafiyaSiraUserSignupDto.TenantCode)) ?? -1;
                 if (tenantId > 0)
                     _tenantProvider.SetTenantId(tenantId);
             }

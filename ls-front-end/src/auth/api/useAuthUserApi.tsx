@@ -13,24 +13,9 @@ export default function useAuthUserApi(){
     async function loginUser(userLoginData: FormData) {
         try {
             // Append subdomain
-            const host = window.location.hostname; // e.g. "golden.localhost"
-            const subdomain = host.split('.')[0];   // "golden"
-            userLoginData.append("TenantSubdomain", subdomain);
-
-            // In dev mode (like localhost), you might not have a subdomain
-            // let subdomain = "";
-            // if (parts.length > 2) {
-            //     // e.g. golden.lafiyasira.com → "golden"
-            //     subdomain = parts[0];
-            // } else if (parts.length === 2 && parts[0] !== "localhost") {
-            //     // e.g. golden.localhost → "golden"
-            //     subdomain = parts[0];
-            // }
-
-            // // Append subdomain if available
-            // if (subdomain) {
-            //     userLoginData.append("Subdomain", subdomain);
-            // }
+            // const host = window.location.hostname; // e.g. "golden.localhost"
+            // const subdomain = host.split('.')[0];   // "golden"
+            // userLoginData.append("TenantSubdomain", subdomain);
             
             const response = await apiClient.post(`${loginUserEndpoint}`, userLoginData, {
                 headers: {
@@ -53,9 +38,9 @@ export default function useAuthUserApi(){
     async function createUser(userRegistrationData: FormData) {
         try {
             // Append subdomain
-            const host = window.location.hostname; // e.g. "golden.localhost"
-            const subdomain = host.split('.')[0];   // "golden"
-            userRegistrationData.append("Subdomain", subdomain);
+            // const host = window.location.hostname; // e.g. "golden.localhost"
+            // const subdomain = host.split('.')[0];   // "golden"
+            // userRegistrationData.append("Subdomain", subdomain);
 
             const response = await apiClient.post(`${createUserEndpoint}`, userRegistrationData, {
                 headers: {

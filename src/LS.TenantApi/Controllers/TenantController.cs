@@ -48,10 +48,10 @@ namespace LS.TenantApi.Controllers
             // _auditLogPublisher = auditLogPublisher;
         }
 
-        [HttpGet("get-tenant-subdomain/{subdomain}")]
-        public async Task<IActionResult> GetTenantBySubdomain(string subdomain)
+        [HttpGet("get-tenant-code/{tenantCode}")]
+        public async Task<IActionResult> GetTenantBySubdomain(string tenantCode)
         {
-            var tenant = await _tenantRepository.GetTenantBySubdomain(subdomain);
+            var tenant = await _tenantRepository.GetTenantBySubdomain(tenantCode);
 
             if (tenant == null)
                 return NotFound();

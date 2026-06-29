@@ -40,16 +40,16 @@ public class TenantProvider : ITenantProvider
         _contextAccessor.HttpContext!.Items["TenantID"] = tenantId;
     }
 
-    public async Task<int?> ResolveTenantIdBySubdomainAsync(string subdomain)
+    public async Task<int?> ResolveTenantIdBySubdomainAsync(string tenantCode)
     {
         try
         {
-            var response = await _httpClient.GetAsync($"/tenant/get-tenant-subdomain/{subdomain}");
+            var response = await _httpClient.GetAsync($"/tenant/get-tenant-subdomain/{tenantCode}");
             if (!response.IsSuccessStatusCode)
             {
                 _logger.LogWarning(
                 "Tenant lookup failed for {Subdomain}. Status={Status}",
-                subdomain,
+                tenantCode,
                 response.StatusCode);
                 return null;
             }
@@ -62,7 +62,7 @@ public class TenantProvider : ITenantProvider
         {
             _logger.LogError(ex,
             "Unable to resolve tenant {Subdomain}",
-            subdomain);
+            tenantCode);
             return null;
         }
     }

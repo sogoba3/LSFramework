@@ -4,20 +4,22 @@ import AuthLayout from "./AuthLayout";
 import useAuthUserApi from "../api/useAuthUserApi";
 
 interface UserRegistrationForm {
-  Username: string;
-  FirstName: string;
-  LastName: string;
-  PhoneNumber: string;
-  Email: string | null
-  Gender: string;
-  Password: string;
-  ConfirmPassword: string;
+    TenantCode: string;
+    Username: string;
+    FirstName: string;
+    LastName: string;
+    PhoneNumber: string;
+    Email: string | null
+    Gender: string;
+    Password: string;
+    ConfirmPassword: string;
   
 }
 
 export default function SignupPage() {
     const { createUser } = useAuthUserApi();
     const [userRegistrationForm, setUserRegistrationForm] = useState<UserRegistrationForm>({
+        TenantCode: "",
         Username: "",
         FirstName: "",
         LastName: "",
@@ -46,6 +48,7 @@ export default function SignupPage() {
         // Include tenant info, admin name, etc.
         try {
             const userRegistrationData = new FormData();
+            userRegistrationData.append("TenantCode", userRegistrationForm.TenantCode);
             userRegistrationData.append("UserName", userRegistrationForm.Username);
             userRegistrationData.append("FirstName", userRegistrationForm.FirstName);
             userRegistrationData.append("LastName", userRegistrationForm.LastName);
@@ -104,6 +107,17 @@ export default function SignupPage() {
 
                 <Box component="form" onSubmit={handleUserSignup} mt={4} p={4} width="100%">
                     <Grid container spacing={2}>
+                        <Grid size={4}>
+                        <TextField
+                            required
+                            fullWidth
+                            label="Nom d'utilisateur"
+                            name="TenantCode"
+                            value={userRegistrationForm.TenantCode}
+                            onChange={handleUserRegistrationFormChange}
+                        />
+                        </Grid>
+
                         <Grid size={4}>
                         <TextField
                             required

@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "../hooks/AuthContext";
 
 interface UserLoginForm {
+  TenantCode: string;
   Username: string;
   Password: string;
 }
@@ -17,6 +18,7 @@ export default function LoginPage() {
   const { loginUser } = useAuthUserApi();
   const { login } = useAuthContext();
   const [userLoginForm, setUserLoginForm] = useState<UserLoginForm>({
+    TenantCode: "",
     Username: "",
     Password: "",
   });
@@ -37,6 +39,7 @@ export default function LoginPage() {
 
     try {
           const userLoginData = new FormData();
+          userLoginData.append("Username", userLoginForm.TenantCode);
           userLoginData.append("Username", userLoginForm.Username);
           userLoginData.append("Password", userLoginForm.Password);
 
@@ -78,6 +81,13 @@ export default function LoginPage() {
               Se connecter à votre compte
             </Typography>
 
+            <TextField
+              label="Code de la clinique"
+              name="TenantCode"
+              fullWidth
+              margin="normal"
+              onChange={handleUserLoginFormChange}
+          />
             <TextField
               label="Nom d'utilisateur"
               name="Username"

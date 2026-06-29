@@ -111,7 +111,7 @@ export default function SignupPage() {
                         <TextField
                             required
                             fullWidth
-                            label="Nom d'utilisateur"
+                            label="Code de la clinique"
                             name="TenantCode"
                             value={userRegistrationForm.TenantCode}
                             onChange={handleUserRegistrationFormChange}

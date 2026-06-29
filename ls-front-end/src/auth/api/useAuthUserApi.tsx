@@ -51,8 +51,9 @@ export default function useAuthUserApi(){
             return response.data;
             
         } catch (err: any) {
-            console.error("User signup failed:", err.response?.data || err.message);
-            throw err;
+            console.log(err.response?.status);
+            console.log(err.response?.data);
+            console.log(err.response?.headers);
         }
 
     }

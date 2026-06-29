@@ -48,7 +48,7 @@ namespace LS.TenantApi.Controllers
             // _auditLogPublisher = auditLogPublisher;
         }
 
-        [HttpGet("get-tenant-code/{tenantCode}")]
+        [HttpGet("get-tenant-subdomain/{tenantCode}")]
         public async Task<IActionResult> GetTenantBySubdomain(string tenantCode)
         {
             var tenant = await _tenantRepository.GetTenantBySubdomain(tenantCode);

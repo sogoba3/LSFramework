@@ -19,7 +19,8 @@ public class TenantMiddleware
         // Bootstrap endpoints.
         // These MUST NOT resolve a tenant.
         //
-        if (context.Request.Path.StartsWithSegments("/api/tenant/admin-signup") ||
+        if (context.Request.Path.StartsWithSegments("/tenant/get-tenant-subdomain") ||
+            context.Request.Path.StartsWithSegments("/api/tenant/admin-signup") ||
             context.Request.Path.StartsWithSegments("/api/tenant/get-tenant-subdomain") ||
             context.Request.Path.StartsWithSegments("/api/auth-user/login") ||
             context.Request.Path.StartsWithSegments("/api/auth-user/signup"))

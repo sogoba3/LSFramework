@@ -2,13 +2,17 @@
 *.tfstate
 *.tfstate.*backup
 .terraformrc
+
 terraform.tfvars
-# terraform.tfvars.json
-# *.tfvars
-# *.tfvars.json
+terraform.tfvars.json
+*.tfvars
+*.tfvars.json
+
 .terraform.tfstate
 .terraform.tfstate.backup
 .terraform.lock.hcl
 *.log
 crash.log
-# .terraform/
+
+
+.terraform/

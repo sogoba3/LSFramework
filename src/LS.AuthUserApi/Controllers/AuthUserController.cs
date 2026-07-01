@@ -85,6 +85,25 @@ namespace LS.AuthUserApi.Controllers
                 authRequest.AuthParameters.Add("PASSWORD", lafiyaSiraUserLoginDto.Password);
                 var response = await _cognitoClient.AdminInitiateAuthAsync(authRequest);
 
+                var userResponse = await _cognitoClient.AdminGetUserAsync(
+                new AdminGetUserRequest
+                {
+                    UserPoolId = _userPoolId,
+                    Username = lafiyaSiraUserLoginDto.Username
+                });
+
+                var cognitoTenantId = userResponse.UserAttributes
+                    .FirstOrDefault(x => x.Name == "custom:tenant_id")
+                    ?.Value;
+
+                if (cognitoTenantId == null ||
+                    cognitoTenantId != tenantId.Value.ToString())
+                {
+                    _result.HasError = true;
+                    _result.Message = "Invalid tenant code for this user.";
+                    return _result;
+                }
+
                 //await transaction.CommitAsync();
                 var returnDto = new
                 {

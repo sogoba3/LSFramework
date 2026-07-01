@@ -94,7 +94,7 @@ module "ls_framework_edge" {
     aws          = aws
     aws.virginia = aws.virginia
   }
-  ls_framework_alb_dns_name = module.ls_framework_alb.ls_framework_alb_dns_name
+  ls_framework_alb_dns_name                         = module.ls_framework_alb.ls_framework_alb_dns_name
   ls_framework_frontend_bucket_regional_domain_name = module.ls_framework_data.ls_framework_frontend_bucket_regional_domain_name
 
   project_prefix = local.env_context.resource_prefix

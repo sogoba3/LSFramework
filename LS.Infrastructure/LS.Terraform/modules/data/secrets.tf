@@ -19,7 +19,6 @@ resource "aws_secretsmanager_secret_version" "ls_framework_sqlserver_secret_valu
     password = var.ls_framework_sqlserver_password
   })
 }
-
 ######################################################################################
 resource "aws_secretsmanager_secret" "ls_framework_cognito_secret" {
   name = "${var.project_prefix}/cognito26"

@@ -36,7 +36,7 @@ resource "aws_ecs_service" "ls_framework_ecs_service_name" {
   #   registry_arn = var.ls_framework_service_discovery_arn
   # }
   lifecycle {
-    ignore_changes = [ task_definition ]
+    ignore_changes = [ task_definition, load_balancer ]
   }
   tags = {
     Name = "gateway-api-service"
